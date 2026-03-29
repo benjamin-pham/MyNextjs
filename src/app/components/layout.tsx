@@ -1,6 +1,6 @@
+import { ComponentSearch } from "@/app/components/component-search"
 import { Sidebar } from "./_sidebar"
 import { ModeToggle } from "@/components/mode-toggle"
-import { ComponentSearch } from "@/components/component-search"
 
 export default function ComponentsLayout({
   children,
