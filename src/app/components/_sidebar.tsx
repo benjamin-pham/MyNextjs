@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 const components: { name: string; href: string }[] = [
   { name: "Accordion", href: "/components/accordion" },
   { name: "Alert", href: "/components/alert" },
+  { name: "Alert Dialog", href: "/components/alert-dialog" },
 ]
 
 export function Sidebar() {
