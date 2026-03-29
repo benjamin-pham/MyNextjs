@@ -20,5 +20,6 @@ export const components: ComponentItem[] = [
   { name: "Chart", href: "/components/chart", description: "Hiển thị dữ liệu dưới dạng biểu đồ" },
   { name: "Checkbox", href: "/components/checkbox", description: "Ô vuông đánh dấu cho phép chọn hoặc bỏ chọn một tùy chọn" },
   { name: "Command", href: "/components/command", description: "Command palette giúp tìm kiếm và thực hiện các thao tác nhanh chóng" },
-  { name: "Context Menu", href: "/components/context-menu", description: "Menu ngữ cảnh hiển thị khi nhấp chuột phải với các hành động phù hợp" }
+  { name: "Context Menu", href: "/components/context-menu", description: "Menu ngữ cảnh hiển thị khi nhấp chuột phải với các hành động phù hợp" },
+  { name: "Data Table", href: "/components/data-table", description: "Bảng dữ liệu mạnh mẽ với sắp xếp, lọc, phân trang và chọn hàng dùng TanStack Table" }
 ]
