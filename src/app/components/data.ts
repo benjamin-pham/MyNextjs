@@ -29,5 +29,6 @@ export const components: ComponentItem[] = [
   { name: "Empty", href: "/components/empty", description: "Trạng thái rỗng hiển thị khi không có dữ liệu — dùng trong bảng, danh sách hoặc kết quả tìm kiếm" },
   { name: "Field", href: "/components/field", description: "Bộ layout component cho form — nhãn, mô tả, thông báo lỗi và nhóm các trường liên quan" },
   { name: "Hover Card", href: "/components/hover-card", description: "Hiển thị nội dung bổ sung khi hover vào một phần tử — dùng để preview thông tin người dùng, link, repository" },
-  { name: "Input", href: "/components/input", description: "Trường nhập liệu văn bản hỗ trợ tất cả type HTML chuẩn, trạng thái disabled/invalid và icon wrapper pattern" }
+  { name: "Input", href: "/components/input", description: "Trường nhập liệu văn bản hỗ trợ tất cả type HTML chuẩn, trạng thái disabled/invalid và icon wrapper pattern" },
+  { name: "Input Group", href: "/components/input-group", description: "Nhóm input kết hợp với addon, icon, button trong một border chung — URL prefix, tiền tệ, password toggle" }
 ]
