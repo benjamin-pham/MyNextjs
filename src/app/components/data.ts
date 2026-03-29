@@ -17,5 +17,6 @@ export const components: ComponentItem[] = [
   { name: "Calendar", href: "/components/calendar", description: "Chọn ngày hoặc phạm vi ngày với giao diện lịch" },
   { name: "Card", href: "/components/card", description: "Thẻ chứa nội dung với nhiều tùy chọn cấu hình" },
   { name: "Carousel", href: "/components/carousel", description: "Trình chiếu hình ảnh hoặc nội dung theo dạng xoay vòng" },
-  { name: "Chart", href: "/components/chart", description: "Hiển thị dữ liệu dưới dạng biểu đồ" }
+  { name: "Chart", href: "/components/chart", description: "Hiển thị dữ liệu dưới dạng biểu đồ" },
+  { name: "Checkbox", href: "/components/checkbox", description: "Ô vuông đánh dấu cho phép chọn hoặc bỏ chọn một tùy chọn" }
 ]
