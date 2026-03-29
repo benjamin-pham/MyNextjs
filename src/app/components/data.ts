@@ -27,5 +27,6 @@ export const components: ComponentItem[] = [
   { name: "Drawer", href: "/components/drawer", description: "Panel trượt ra từ cạnh màn hình, hỗ trợ 4 hướng và gesture kéo trên mobile" },
   { name: "Dropdown Menu", href: "/components/dropdown-menu", description: "Menu thả xuống hiển thị danh sách hành động hoặc tuỳ chọn khi nhấn vào trigger" },
   { name: "Empty", href: "/components/empty", description: "Trạng thái rỗng hiển thị khi không có dữ liệu — dùng trong bảng, danh sách hoặc kết quả tìm kiếm" },
-  { name: "Field", href: "/components/field", description: "Bộ layout component cho form — nhãn, mô tả, thông báo lỗi và nhóm các trường liên quan" }
+  { name: "Field", href: "/components/field", description: "Bộ layout component cho form — nhãn, mô tả, thông báo lỗi và nhóm các trường liên quan" },
+  { name: "Hover Card", href: "/components/hover-card", description: "Hiển thị nội dung bổ sung khi hover vào một phần tử — dùng để preview thông tin người dùng, link, repository" }
 ]
