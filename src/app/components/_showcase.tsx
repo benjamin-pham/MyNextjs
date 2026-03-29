@@ -22,8 +22,18 @@ export function ShowcaseSection({
 
 /* ─── CodeBlock (collapsible) ─────────────────────────────────────────────── */
 
-export function CodeBlock({ code, className }: { code: string; className?: string }) {
-  const [open, setOpen] = useState(false)
+export function CodeBlock({ code, className, alwaysOpen, defaultOpen }: { code: string; className?: string; alwaysOpen?: boolean; defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(alwaysOpen || defaultOpen || false)
+
+  if (alwaysOpen) {
+    return (
+      <div className={cn("rounded-lg border overflow-hidden text-xs", className)}>
+        <pre className="bg-muted px-4 py-3 overflow-x-auto leading-relaxed text-foreground/80">
+          <code>{code.trim()}</code>
+        </pre>
+      </div>
+    )
+  }
 
   return (
     <div className={cn("rounded-lg border overflow-hidden text-xs", className)}>
