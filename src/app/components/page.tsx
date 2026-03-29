@@ -5,6 +5,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: "Alert", href: "/components/alert", description: "Default & destructive variants, with icon support" },
   { name: "Alert Dialog", href: "/components/alert-dialog", description: "A modal dialog that interrupts the user with important content and expects a response." },
   { name: "Aspect Ratio", href: "/components/aspect-ratio", description: "Giữ tỷ lệ khung hình cho media & nội dung" },
+  { name: "Avatar", href: "/components/avatar", description: "Hiển thị hình đại diện người dùng với nhiều tuỳ chọn cấu hình" },
 ]
 
 export default function ComponentsPage() {
