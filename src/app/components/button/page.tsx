@@ -39,6 +39,16 @@ export default function ButtonPage() {
         </p>
       </div>
 
+      {/* ── Import ── */}
+      <ShowcaseSection title="Import">
+        <CodeBlock alwaysOpen code={`import { Button } from "@/components/ui/button"`} />
+      </ShowcaseSection>
+
+      {/* ── Sử dụng ── */}
+      <ShowcaseSection title="Sử dụng">
+        <CodeBlock alwaysOpen code={`<Button variant="outline">Button</Button>`} />
+      </ShowcaseSection>
+
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
         <div className="flex flex-wrap gap-3">
