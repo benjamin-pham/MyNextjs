@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 
 const components: { name: string; href: string }[] = [
-
+  { name: "Accordion", href: "/components/accordion" },
 ]
 
 export function Sidebar() {

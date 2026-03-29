@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 const components: { name: string; href: string; description: string }[] = [
+  { name: "Accordion", href: "/components/accordion", description: "A vertically stacked set of interactive headings that each contain a title, content snippet, and an icon indicating whether the content is expanded or collapsed." },
 ]
 
 export default function ComponentsPage() {
