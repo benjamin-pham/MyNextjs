@@ -25,5 +25,6 @@ export const components: ComponentItem[] = [
   { name: "Dialog", href: "/components/dialog", description: "Cửa sổ modal xuất hiện phía trên trang, yêu cầu người dùng thực hiện hành động hoặc xem thông tin quan trọng" },
   { name: "Direction", href: "/components/direction", description: "Provider thiết lập hướng văn bản LTR/RTL cho toàn bộ cây component con, hỗ trợ ứng dụng đa ngôn ngữ" },
   { name: "Drawer", href: "/components/drawer", description: "Panel trượt ra từ cạnh màn hình, hỗ trợ 4 hướng và gesture kéo trên mobile" },
-  { name: "Dropdown Menu", href: "/components/dropdown-menu", description: "Menu thả xuống hiển thị danh sách hành động hoặc tuỳ chọn khi nhấn vào trigger" }
+  { name: "Dropdown Menu", href: "/components/dropdown-menu", description: "Menu thả xuống hiển thị danh sách hành động hoặc tuỳ chọn khi nhấn vào trigger" },
+  { name: "Empty", href: "/components/empty", description: "Trạng thái rỗng hiển thị khi không có dữ liệu — dùng trong bảng, danh sách hoặc kết quả tìm kiếm" }
 ]
