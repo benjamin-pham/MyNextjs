@@ -16,6 +16,7 @@ const components: { name: string; href: string }[] = [
   { name: "Button Group", href: "/components/button-group" },
   { name: "Calendar", href: "/components/calendar" },
   { name: "Card", href: "/components/card" },
+  { name: "Carousel", href: "/components/carousel" },
 ]
 
 export function Sidebar() {

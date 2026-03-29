@@ -12,6 +12,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: "Button Group", href: "/components/button-group", description: "Nhóm các nút liên quan với nhau" },
   { name: "Calendar", href: "/components/calendar", description: "Chọn ngày hoặc phạm vi ngày với giao diện lịch" },
   { name: "Card", href: "/components/card", description: "Thẻ chứa nội dung với nhiều tùy chọn cấu hình" },
+  { name: "Carousel", href: "/components/carousel", description: "Trình chiếu hình ảnh hoặc nội dung theo dạng xoay vòng" },
 ]
 
 export default function ComponentsPage() {
