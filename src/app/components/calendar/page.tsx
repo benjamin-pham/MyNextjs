@@ -179,6 +179,33 @@ export default function CalendarPage() {
         </p>
       </div>
 
+      {/* ── Import ── */}
+      <ShowcaseSection title="Import">
+        <CodeBlock
+          alwaysOpen
+          code={`import { Calendar } from "@/components/ui/calendar"`}
+        />
+      </ShowcaseSection>
+
+      {/* ── Sử dụng ── */}
+      <ShowcaseSection title="Sử dụng">
+        <CodeBlock
+          alwaysOpen
+          code={`
+const [date, setDate] = React.useState<Date | undefined>(new Date())
+
+return (
+  <Calendar
+    mode="single"
+    selected={date}
+    onSelect={setDate}
+    className="rounded-lg border"
+  />
+)
+          `}
+        />
+      </ShowcaseSection>
+
       {/* ── 1. Cơ bản ── */}
       <ShowcaseSection title="1. Cơ bản">
         <p className="text-sm text-muted-foreground">
