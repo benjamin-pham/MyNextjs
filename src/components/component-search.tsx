@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { components } from "@/app/components/data"
 import { Button } from "@/components/ui/button"
 import {
+  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -54,23 +55,25 @@ export function ComponentSearch() {
         onOpenChange={setOpen}
         className="sm:max-w-2xl"
       >
-        <CommandInput placeholder="Tìm kiếm components..." />
-        <CommandList>
-          <CommandEmpty>Không tìm thấy component nào.</CommandEmpty>
-          <CommandGroup heading="Components">
-            {components.map((component) => (
-              <CommandItem
-                key={component.href}
-                value={component.name}
-                onSelect={() => {
-                  runCommand(() => router.push(component.href))
-                }}
-              >
-                {component.name}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </CommandList>
+        <Command>
+          <CommandInput placeholder="Tìm kiếm components..." />
+          <CommandList>
+            <CommandEmpty>Không tìm thấy component nào.</CommandEmpty>
+            <CommandGroup heading="Components">
+              {components.map((component) => (
+                <CommandItem
+                  key={component.href}
+                  value={component.name}
+                  onSelect={() => {
+                    runCommand(() => router.push(component.href))
+                  }}
+                >
+                  {component.name}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
       </CommandDialog>
     </>
   )
