@@ -20,6 +20,43 @@ export default function BreadcrumbShowcasePage() {
         </p>
       </div>
 
+      {/* ── Import ── */}
+      <ShowcaseSection title="Import">
+        <CodeBlock
+          alwaysOpen
+          code={`import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"`}
+        />
+      </ShowcaseSection>
+
+      {/* ── Sử dụng ── */}
+      <ShowcaseSection title="Sử dụng">
+        <CodeBlock
+          alwaysOpen
+          code={`<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`}
+        />
+      </ShowcaseSection>
+
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
         <p className="text-sm text-muted-foreground">
