@@ -22,6 +22,28 @@ export default function AspectRatioPage() {
         </p>
       </div>
 
+      {/* ── Import ── */}
+      <ShowcaseSection title="Import">
+        <CodeBlock alwaysOpen code={`import { AspectRatio } from "@/components/ui/aspect-ratio"`} />
+      </ShowcaseSection>
+
+      {/* ── Sử dụng ── */}
+      <ShowcaseSection title="Sử dụng">
+        <div className="max-w-sm">
+          <AspectRatio ratio={16 / 9}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+              alt="Demo image"
+              className="h-full w-full rounded-md object-cover"
+            />
+          </AspectRatio>
+        </div>
+        <CodeBlock alwaysOpen code={`<AspectRatio ratio={16 / 9}>
+  <Image src="..." alt="Image" className="rounded-md object-cover" />
+</AspectRatio>`} />
+      </ShowcaseSection>
+
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
         <p className="text-sm text-muted-foreground">
