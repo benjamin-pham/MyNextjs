@@ -10,6 +10,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: "Breadcrumb", href: "/components/breadcrumb", description: "Điều hướng phân cấp hiển thị vị trí hiện tại trong cấu trúc trang" },
   { name: "Button", href: "/components/button", description: "Các loại nút cơ bản với nhiều biến thể và trạng thái" },
   { name: "Button Group", href: "/components/button-group", description: "Nhóm các nút liên quan với nhau" },
+  { name: "Calendar", href: "/components/calendar", description: "Chọn ngày hoặc phạm vi ngày với giao diện lịch" },
 ]
 
 export default function ComponentsPage() {
