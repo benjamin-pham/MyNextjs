@@ -10,6 +10,7 @@ const components: { name: string; href: string }[] = [
   { name: "Alert Dialog", href: "/components/alert-dialog" },
   { name: "Aspect Ratio", href: "/components/aspect-ratio" },
   { name: "Avatar", href: "/components/avatar" },
+  { name: "Badge", href: "/components/badge" },
 ]
 
 export function Sidebar() {
