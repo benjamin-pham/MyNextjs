@@ -11,6 +11,7 @@ const components: { name: string; href: string }[] = [
   { name: "Aspect Ratio", href: "/components/aspect-ratio" },
   { name: "Avatar", href: "/components/avatar" },
   { name: "Badge", href: "/components/badge" },
+  { name: "Breadcrumb", href: "/components/breadcrumb" }
 ]
 
 export function Sidebar() {

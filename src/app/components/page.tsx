@@ -7,6 +7,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: "Aspect Ratio", href: "/components/aspect-ratio", description: "Giữ tỷ lệ khung hình cho media & nội dung" },
   { name: "Avatar", href: "/components/avatar", description: "Hiển thị hình đại diện người dùng với nhiều tuỳ chọn cấu hình" },
   { name: "Badge", href: "/components/badge", description: "Hiển thị trạng thái, số lượng hoặc nhãn thông tin một cách nhỏ gọn" },
+  { name: "Breadcrumb", href: "/components/breadcrumb", description: "Điều hướng phân cấp hiển thị vị trí hiện tại trong cấu trúc trang" }
 ]
 
 export default function ComponentsPage() {
