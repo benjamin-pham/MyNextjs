@@ -19,5 +19,6 @@ export const components: ComponentItem[] = [
   { name: "Carousel", href: "/components/carousel", description: "Trình chiếu hình ảnh hoặc nội dung theo dạng xoay vòng" },
   { name: "Chart", href: "/components/chart", description: "Hiển thị dữ liệu dưới dạng biểu đồ" },
   { name: "Checkbox", href: "/components/checkbox", description: "Ô vuông đánh dấu cho phép chọn hoặc bỏ chọn một tùy chọn" },
-  { name: "Command", href: "/components/command", description: "Command palette giúp tìm kiếm và thực hiện các thao tác nhanh chóng" }
+  { name: "Command", href: "/components/command", description: "Command palette giúp tìm kiếm và thực hiện các thao tác nhanh chóng" },
+  { name: "Context Menu", href: "/components/context-menu", description: "Menu ngữ cảnh hiển thị khi nhấp chuột phải với các hành động phù hợp" }
 ]
