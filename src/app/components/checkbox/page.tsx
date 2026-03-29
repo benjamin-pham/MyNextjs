@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Field, FieldContent, FieldDescription, FieldGroup, FieldLabel, FieldLegend, FieldSet, FieldTitle } from "@/components/ui/field"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/components/_showcase"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 export default function CheckboxPage() {
@@ -15,10 +15,12 @@ export default function CheckboxPage() {
 
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cơ bản">
-        <Field orientation="horizontal">
-          <Checkbox id="terms" />
-          <FieldLabel htmlFor="terms">Chấp nhận các điều khoản và hệ thống dịch vụ</FieldLabel>
-        </Field>
+        <DemoBlock>
+          <Field orientation="horizontal">
+            <Checkbox id="terms" />
+            <FieldLabel htmlFor="terms">Chấp nhận các điều khoản và hệ thống dịch vụ</FieldLabel>
+          </Field>
+        </DemoBlock>
         <CodeBlock code={`
 <Field orientation="horizontal">
   <Checkbox id="terms" />
@@ -31,27 +33,29 @@ export default function CheckboxPage() {
 
       {/* ── 2. Các trạng thái ── */}
       <ShowcaseSection title="2. Các trạng thái">
-        <div className="flex flex-col gap-4">
-          <Field orientation="horizontal">
-            <Checkbox id="checked" defaultChecked />
-            <FieldLabel htmlFor="checked">Mặc định đã chọn (defaultChecked)</FieldLabel>
-          </Field>
-          
-          <Field orientation="horizontal" data-disabled>
-            <Checkbox id="disabled" disabled />
-            <FieldLabel htmlFor="disabled">Vô hiệu hoá (disabled)</FieldLabel>
-          </Field>
-          
-          <Field orientation="horizontal" data-disabled>
-            <Checkbox id="disabled-checked" disabled defaultChecked />
-            <FieldLabel htmlFor="disabled-checked">Vô hiệu hoá, đã chọn</FieldLabel>
-          </Field>
-          
-          <Field orientation="horizontal" data-invalid>
-            <Checkbox id="invalid" aria-invalid="true" />
-            <FieldLabel htmlFor="invalid" className="text-destructive">Trạng thái lỗi (aria-invalid)</FieldLabel>
-          </Field>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-col gap-4 w-full justify-start items-start">
+            <Field orientation="horizontal">
+              <Checkbox id="checked" defaultChecked />
+              <FieldLabel htmlFor="checked">Mặc định đã chọn (defaultChecked)</FieldLabel>
+            </Field>
+            
+            <Field orientation="horizontal" data-disabled>
+              <Checkbox id="disabled" disabled />
+              <FieldLabel htmlFor="disabled">Vô hiệu hoá (disabled)</FieldLabel>
+            </Field>
+            
+            <Field orientation="horizontal" data-disabled>
+              <Checkbox id="disabled-checked" disabled defaultChecked />
+              <FieldLabel htmlFor="disabled-checked">Vô hiệu hoá, đã chọn</FieldLabel>
+            </Field>
+            
+            <Field orientation="horizontal" data-invalid>
+              <Checkbox id="invalid" aria-invalid="true" />
+              <FieldLabel htmlFor="invalid" className="text-destructive">Trạng thái lỗi (aria-invalid)</FieldLabel>
+            </Field>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Field orientation="horizontal">
   <Checkbox defaultChecked />
@@ -72,17 +76,19 @@ export default function CheckboxPage() {
 
       {/* ── 3. Ví dụ với văn bản mô tả (Description) ── */}
       <ShowcaseSection title="3. Có kèm văn bản mô tả">
-        <Field orientation="horizontal">
-          <Checkbox id="terms1" />
-          <FieldContent>
-            <FieldTitle>
-              <FieldLabel htmlFor="terms1">Đồng ý nhận nội dung quảng cáo</FieldLabel>
-            </FieldTitle>
-            <FieldDescription>
-              Bạn hiểu và đồng ý cho phép nhận các email sự kiện và bản tin hàng tuần của chúng tôi.
-            </FieldDescription>
-          </FieldContent>
-        </Field>
+        <DemoBlock>
+          <Field orientation="horizontal">
+            <Checkbox id="terms1" />
+            <FieldContent>
+              <FieldTitle>
+                <FieldLabel htmlFor="terms1">Đồng ý nhận nội dung quảng cáo</FieldLabel>
+              </FieldTitle>
+              <FieldDescription>
+                Bạn hiểu và đồng ý cho phép nhận các email sự kiện và bản tin hàng tuần của chúng tôi.
+              </FieldDescription>
+            </FieldContent>
+          </Field>
+        </DemoBlock>
         <CodeBlock code={`
 <Field orientation="horizontal">
   <Checkbox id="terms1" />
@@ -100,28 +106,30 @@ export default function CheckboxPage() {
 
       {/* ── 4. Nhóm Checkbox (Group) ── */}
       <ShowcaseSection title="4. Nhóm Checkbox (Group)">
-        <FieldSet>
-          <div>
-            <FieldLegend>Tính năng liên lạc</FieldLegend>
-            <FieldDescription>
-              Hãy chọn các phương thức bổ sung để chúng tôi có thể liên hệ với bạn trong những tình huống khẩn cấp.
-            </FieldDescription>
-          </div>
-          <FieldGroup>
-            <Field orientation="horizontal">
-              <Checkbox id="group-email" defaultChecked />
-              <FieldLabel htmlFor="group-email">Nhận thông báo qua Email</FieldLabel>
-            </Field>
-            <Field orientation="horizontal">
-              <Checkbox id="group-sms" />
-              <FieldLabel htmlFor="group-sms">Nhận thông báo qua SMS (Tốn phí nội hạt)</FieldLabel>
-            </Field>
-            <Field orientation="horizontal">
-              <Checkbox id="group-push" defaultChecked />
-              <FieldLabel htmlFor="group-push">Hiển thị cảnh báo đẩy (Push Notification)</FieldLabel>
-            </Field>
-          </FieldGroup>
-        </FieldSet>
+        <DemoBlock>
+          <FieldSet>
+            <div>
+              <FieldLegend>Tính năng liên lạc</FieldLegend>
+              <FieldDescription>
+                Hãy chọn các phương thức bổ sung để chúng tôi có thể liên hệ với bạn trong những tình huống khẩn cấp.
+              </FieldDescription>
+            </div>
+            <FieldGroup>
+              <Field orientation="horizontal">
+                <Checkbox id="group-email" defaultChecked />
+                <FieldLabel htmlFor="group-email">Nhận thông báo qua Email</FieldLabel>
+              </Field>
+              <Field orientation="horizontal">
+                <Checkbox id="group-sms" />
+                <FieldLabel htmlFor="group-sms">Nhận thông báo qua SMS (Tốn phí nội hạt)</FieldLabel>
+              </Field>
+              <Field orientation="horizontal">
+                <Checkbox id="group-push" defaultChecked />
+                <FieldLabel htmlFor="group-push">Hiển thị cảnh báo đẩy (Push Notification)</FieldLabel>
+              </Field>
+            </FieldGroup>
+          </FieldSet>
+        </DemoBlock>
         <CodeBlock code={`
 <FieldSet>
   <div>
@@ -149,46 +157,48 @@ export default function CheckboxPage() {
         <p className="text-sm text-muted-foreground mb-4">
           Ứng dụng phổ biến của Checkbox là chọn nhiều hàng (rows) trong danh sách dữ liệu.
         </p>
-        <div className="rounded-md border">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[50px] text-center">
-                  <Checkbox aria-label="Chọn tất cả" />
-                </TableHead>
-                <TableHead>Mã đơn hàng</TableHead>
-                <TableHead>Trạng thái</TableHead>
-                <TableHead className="text-right">Tổng tiền</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="text-center">
-                  <Checkbox aria-label="Chọn hàng 1" />
-                </TableCell>
-                <TableCell className="font-medium">INV001</TableCell>
-                <TableCell>Đã trả</TableCell>
-                <TableCell className="text-right">$250.00</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="text-center">
-                  <Checkbox aria-label="Chọn hàng 2" />
-                </TableCell>
-                <TableCell className="font-medium">INV002</TableCell>
-                <TableCell>Chờ xử lý</TableCell>
-                <TableCell className="text-right">$150.00</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="text-center">
-                  <Checkbox aria-label="Chọn hàng 3" />
-                </TableCell>
-                <TableCell className="font-medium">INV003</TableCell>
-                <TableCell>Chưa thanh toán</TableCell>
-                <TableCell className="text-right">$350.00</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </div>
+        <DemoBlock>
+          <div className="rounded-md border w-full">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[50px] text-center">
+                    <Checkbox aria-label="Chọn tất cả" />
+                  </TableHead>
+                  <TableHead>Mã đơn hàng</TableHead>
+                  <TableHead>Trạng thái</TableHead>
+                  <TableHead className="text-right">Tổng tiền</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="text-center">
+                    <Checkbox aria-label="Chọn hàng 1" />
+                  </TableCell>
+                  <TableCell className="font-medium">INV001</TableCell>
+                  <TableCell>Đã trả</TableCell>
+                  <TableCell className="text-right">$250.00</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="text-center">
+                    <Checkbox aria-label="Chọn hàng 2" />
+                  </TableCell>
+                  <TableCell className="font-medium">INV002</TableCell>
+                  <TableCell>Chờ xử lý</TableCell>
+                  <TableCell className="text-right">$150.00</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="text-center">
+                    <Checkbox aria-label="Chọn hàng 3" />
+                  </TableCell>
+                  <TableCell className="font-medium">INV003</TableCell>
+                  <TableCell>Chưa thanh toán</TableCell>
+                  <TableCell className="text-right">$350.00</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Table>
   <TableHeader>

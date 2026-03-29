@@ -14,7 +14,7 @@ import {
   AlertDialogMedia,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/components/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
 
@@ -128,23 +128,25 @@ export default function AlertDialogPage() {
         <p className="text-sm text-muted-foreground">
           Tối thiểu cần: <code className="text-xs font-mono">AlertDialog</code> → <code className="text-xs font-mono">AlertDialogTrigger</code> + <code className="text-xs font-mono">AlertDialogContent</code> (header, footer).
         </p>
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button variant="outline">Mở dialog</Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Bạn có chắc không?</AlertDialogTitle>
-              <AlertDialogDescription>
-                Hành động này không thể hoàn tác. Dữ liệu sẽ bị xóa vĩnh viễn khỏi hệ thống.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Hủy</AlertDialogCancel>
-              <AlertDialogAction>Xác nhận</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        <DemoBlock>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="outline">Mở dialog</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Bạn có chắc không?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Hành động này không thể hoàn tác. Dữ liệu sẽ bị xóa vĩnh viễn khỏi hệ thống.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Hủy</AlertDialogCancel>
+                <AlertDialogAction>Xác nhận</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </DemoBlock>
         <CodeBlock code={`
 <AlertDialog>
   <AlertDialogTrigger asChild>
@@ -172,43 +174,45 @@ export default function AlertDialogPage() {
           <code className="text-xs font-mono">AlertDialogContent</code> hỗ trợ <code className="text-xs font-mono">size="default"</code> (mặc định) và <code className="text-xs font-mono">size="sm"</code>.
           Với <code className="text-xs font-mono">size="sm"</code>, footer hiển thị dạng grid 2 cột thay vì flex-row.
         </p>
-        <div className="flex gap-3 flex-wrap">
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="outline">size="default"</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent size="default">
-              <AlertDialogHeader>
-                <AlertDialogTitle>Kích thước default</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Max-width sm:max-w-sm. Footer các button nằm hàng ngang bên phải.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Hủy</AlertDialogCancel>
-                <AlertDialogAction>Xác nhận</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+        <DemoBlock>
+          <div className="flex gap-3 flex-wrap">
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline">size="default"</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent size="default">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Kích thước default</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Max-width sm:max-w-sm. Footer các button nằm hàng ngang bên phải.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Hủy</AlertDialogCancel>
+                  <AlertDialogAction>Xác nhận</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
 
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="outline">size="sm"</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent size="sm">
-              <AlertDialogHeader>
-                <AlertDialogTitle>Kích thước sm</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Footer hiển thị dạng 2 cột, phù hợp cho dialog xác nhận nhanh.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Hủy</AlertDialogCancel>
-                <AlertDialogAction variant="destructive">Xóa</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline">size="sm"</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent size="sm">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Kích thước sm</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Footer hiển thị dạng 2 cột, phù hợp cho dialog xác nhận nhanh.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Hủy</AlertDialogCancel>
+                  <AlertDialogAction variant="destructive">Xóa</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 // size="default" — max-w-sm, footer flex-row
 <AlertDialogContent size="default">...</AlertDialogContent>
@@ -224,49 +228,51 @@ export default function AlertDialogPage() {
           Đặt <code className="text-xs font-mono">AlertDialogMedia</code> trước <code className="text-xs font-mono">AlertDialogTitle</code> trong header.
           Ở breakpoint sm trở lên, media hiển thị bên trái và span 2 hàng của title + description.
         </p>
-        <div className="flex gap-3 flex-wrap">
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="destructive">Xóa tài khoản</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogMedia>
-                  <TrashIcon />
-                </AlertDialogMedia>
-                <AlertDialogTitle>Xóa tài khoản</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Tất cả dữ liệu liên quan đến tài khoản này sẽ bị xóa vĩnh viễn. Hành động này không thể hoàn tác.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Giữ tài khoản</AlertDialogCancel>
-                <AlertDialogAction variant="destructive">Xóa vĩnh viễn</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+        <DemoBlock>
+          <div className="flex gap-3 flex-wrap">
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive">Xóa tài khoản</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogMedia>
+                    <TrashIcon />
+                  </AlertDialogMedia>
+                  <AlertDialogTitle>Xóa tài khoản</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Tất cả dữ liệu liên quan đến tài khoản này sẽ bị xóa vĩnh viễn. Hành động này không thể hoàn tác.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Giữ tài khoản</AlertDialogCancel>
+                  <AlertDialogAction variant="destructive">Xóa vĩnh viễn</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
 
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="outline">Cảnh báo</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogMedia className="text-yellow-500 bg-yellow-50 dark:bg-yellow-900/20">
-                  <AlertTriangleIcon />
-                </AlertDialogMedia>
-                <AlertDialogTitle>Cảnh báo</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Thao tác này sẽ ảnh hưởng đến toàn bộ nhóm của bạn. Vui lòng xác nhận.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Hủy</AlertDialogCancel>
-                <AlertDialogAction>Tiếp tục</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline">Cảnh báo</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogMedia className="text-yellow-500 bg-yellow-50 dark:bg-yellow-900/20">
+                    <AlertTriangleIcon />
+                  </AlertDialogMedia>
+                  <AlertDialogTitle>Cảnh báo</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Thao tác này sẽ ảnh hưởng đến toàn bộ nhóm của bạn. Vui lòng xác nhận.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Hủy</AlertDialogCancel>
+                  <AlertDialogAction>Tiếp tục</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <AlertDialogHeader>
   <AlertDialogMedia>
@@ -288,55 +294,57 @@ export default function AlertDialogPage() {
         <p className="text-sm text-muted-foreground">
           <code className="text-xs font-mono">AlertDialogAction</code> và <code className="text-xs font-mono">AlertDialogCancel</code> nhận prop <code className="text-xs font-mono">variant</code> và <code className="text-xs font-mono">size</code> giống <code className="text-xs font-mono">Button</code>.
         </p>
-        <div className="flex gap-3 flex-wrap">
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button>Action: default</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Xác nhận</AlertDialogTitle>
-                <AlertDialogDescription>Action dùng <code>variant="default"</code>.</AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Hủy</AlertDialogCancel>
-                <AlertDialogAction variant="default">Xác nhận</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+        <DemoBlock>
+          <div className="flex gap-3 flex-wrap">
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button>Action: default</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Xác nhận</AlertDialogTitle>
+                  <AlertDialogDescription>Action dùng <code>variant="default"</code>.</AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Hủy</AlertDialogCancel>
+                  <AlertDialogAction variant="default">Xác nhận</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
 
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="destructive">Action: destructive</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Cảnh báo nguy hiểm</AlertDialogTitle>
-                <AlertDialogDescription>Action dùng <code>variant="destructive"</code>.</AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Hủy</AlertDialogCancel>
-                <AlertDialogAction variant="destructive">Xóa</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive">Action: destructive</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Cảnh báo nguy hiểm</AlertDialogTitle>
+                  <AlertDialogDescription>Action dùng <code>variant="destructive"</code>.</AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Hủy</AlertDialogCancel>
+                  <AlertDialogAction variant="destructive">Xóa</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
 
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="outline">Cancel: ghost</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Cancel variant</AlertDialogTitle>
-                <AlertDialogDescription>Cancel dùng <code>variant="ghost"</code>.</AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel variant="ghost">Bỏ qua</AlertDialogCancel>
-                <AlertDialogAction>Tiếp tục</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline">Cancel: ghost</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Cancel variant</AlertDialogTitle>
+                  <AlertDialogDescription>Cancel dùng <code>variant="ghost"</code>.</AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel variant="ghost">Bỏ qua</AlertDialogCancel>
+                  <AlertDialogAction>Tiếp tục</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 // Action destructive
 <AlertDialogAction variant="destructive">Xóa</AlertDialogAction>
@@ -354,7 +362,9 @@ export default function AlertDialogPage() {
         <p className="text-sm text-muted-foreground">
           Bỏ <code className="text-xs font-mono">AlertDialogTrigger</code>, điều khiển dialog bằng <code className="text-xs font-mono">open</code> và <code className="text-xs font-mono">onOpenChange</code> — hữu ích khi cần mở dialog từ logic nghiệp vụ hoặc sự kiện ngoài UI.
         </p>
-        <ControlledDemo />
+        <DemoBlock>
+          <ControlledDemo />
+        </DemoBlock>
         <CodeBlock code={`
 const [open, setOpen] = useState(false)
 

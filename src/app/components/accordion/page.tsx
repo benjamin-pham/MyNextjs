@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/components/_showcase"
 
 /* ─── controlled demo ────────────────────────────────────────────────────── */
 
@@ -108,20 +108,22 @@ export default function AccordionPage() {
 
       {/* ── 1. Usage cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
-        <Accordion type="single" collapsible className="px-3">
-          <AccordionItem value="q1">
-            <AccordionTrigger>Accordion là gì?</AccordionTrigger>
-            <AccordionContent>
-              Accordion cho phép người dùng mở/đóng từng phần nội dung, giúp tiết kiệm không gian và giảm tải thị giác.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="q2">
-            <AccordionTrigger>Khi nào nên dùng?</AccordionTrigger>
-            <AccordionContent>
-              Dùng cho FAQ, cài đặt nhóm, navigation phân cấp, hoặc bất kỳ nơi nào cần ẩn bớt nội dung thứ cấp.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        <DemoBlock>
+          <Accordion type="single" collapsible className="w-full max-w-xl px-3">
+            <AccordionItem value="q1">
+              <AccordionTrigger>Accordion là gì?</AccordionTrigger>
+              <AccordionContent>
+                Accordion cho phép người dùng mở/đóng từng phần nội dung, giúp tiết kiệm không gian và giảm tải thị giác.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="q2">
+              <AccordionTrigger>Khi nào nên dùng?</AccordionTrigger>
+              <AccordionContent>
+                Dùng cho FAQ, cài đặt nhóm, navigation phân cấp, hoặc bất kỳ nơi nào cần ẩn bớt nội dung thứ cấp.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </DemoBlock>
         <CodeBlock code={`
 <Accordion type="single" collapsible>
   <AccordionItem value="q1">
@@ -137,22 +139,24 @@ export default function AccordionPage() {
         <p className="text-sm text-muted-foreground">
           Mặc định khi mở mục mới, mục cũ tự đóng. Thêm <code className="text-xs font-mono">collapsible</code> để cho phép click lại để đóng.
         </p>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <p className="text-xs font-medium">Không có collapsible</p>
-            <Accordion type="single" className="px-3">
-              <AccordionItem value="a"><AccordionTrigger>Mục A</AccordionTrigger><AccordionContent>Không thể đóng bằng click lại.</AccordionContent></AccordionItem>
-              <AccordionItem value="b"><AccordionTrigger>Mục B</AccordionTrigger><AccordionContent>Mở mục này đóng mục kia.</AccordionContent></AccordionItem>
-            </Accordion>
+        <DemoBlock>
+          <div className="grid w-full gap-4 md:grid-cols-2">
+            <div className="space-y-2">
+              <p className="text-xs font-medium">Không có collapsible</p>
+              <Accordion type="single" className="px-3">
+                <AccordionItem value="a"><AccordionTrigger>Mục A</AccordionTrigger><AccordionContent>Không thể đóng bằng click lại.</AccordionContent></AccordionItem>
+                <AccordionItem value="b"><AccordionTrigger>Mục B</AccordionTrigger><AccordionContent>Mở mục này đóng mục kia.</AccordionContent></AccordionItem>
+              </Accordion>
+            </div>
+            <div className="space-y-2">
+              <p className="text-xs font-medium">Có collapsible</p>
+              <Accordion type="single" collapsible className="px-3">
+                <AccordionItem value="a"><AccordionTrigger>Mục A</AccordionTrigger><AccordionContent>Click lại để đóng.</AccordionContent></AccordionItem>
+                <AccordionItem value="b"><AccordionTrigger>Mục B</AccordionTrigger><AccordionContent>Click lại để đóng.</AccordionContent></AccordionItem>
+              </Accordion>
+            </div>
           </div>
-          <div className="space-y-2">
-            <p className="text-xs font-medium">Có collapsible</p>
-            <Accordion type="single" collapsible className="px-3">
-              <AccordionItem value="a"><AccordionTrigger>Mục A</AccordionTrigger><AccordionContent>Click lại để đóng.</AccordionContent></AccordionItem>
-              <AccordionItem value="b"><AccordionTrigger>Mục B</AccordionTrigger><AccordionContent>Click lại để đóng.</AccordionContent></AccordionItem>
-            </Accordion>
-          </div>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`
 // Không collapsible — luôn giữ 1 mục mở
 <Accordion type="single">...</Accordion>
@@ -164,11 +168,13 @@ export default function AccordionPage() {
 
       {/* ── 3. type="multiple" ── */}
       <ShowcaseSection title={`3. type="multiple" — nhiều mục mở cùng lúc`}>
-        <Accordion type="multiple" className="px-3">
-          <AccordionItem value="m1"><AccordionTrigger>Mục 1</AccordionTrigger><AccordionContent>Có thể mở cùng Mục 2, Mục 3.</AccordionContent></AccordionItem>
-          <AccordionItem value="m2"><AccordionTrigger>Mục 2</AccordionTrigger><AccordionContent>Các mục hoàn toàn độc lập nhau.</AccordionContent></AccordionItem>
-          <AccordionItem value="m3"><AccordionTrigger>Mục 3</AccordionTrigger><AccordionContent>Tất cả có thể mở đồng thời.</AccordionContent></AccordionItem>
-        </Accordion>
+        <DemoBlock>
+          <Accordion type="multiple" className="w-full max-w-xl px-3">
+            <AccordionItem value="m1"><AccordionTrigger>Mục 1</AccordionTrigger><AccordionContent>Có thể mở cùng Mục 2, Mục 3.</AccordionContent></AccordionItem>
+            <AccordionItem value="m2"><AccordionTrigger>Mục 2</AccordionTrigger><AccordionContent>Các mục hoàn toàn độc lập nhau.</AccordionContent></AccordionItem>
+            <AccordionItem value="m3"><AccordionTrigger>Mục 3</AccordionTrigger><AccordionContent>Tất cả có thể mở đồng thời.</AccordionContent></AccordionItem>
+          </Accordion>
+        </DemoBlock>
         <CodeBlock code={`
 <Accordion type="multiple">
   <AccordionItem value="m1">...</AccordionItem>
@@ -182,23 +188,25 @@ export default function AccordionPage() {
         <p className="text-sm text-muted-foreground">
           Uncontrolled — chỉ dùng lần đầu render, React không quản lý state sau đó.
         </p>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <p className="text-xs font-medium">single — string</p>
-            <Accordion type="single" collapsible defaultValue="dv-1" className="px-3">
-              <AccordionItem value="dv-1"><AccordionTrigger>Mặc định mở</AccordionTrigger><AccordionContent>{'defaultValue="dv-1"'}</AccordionContent></AccordionItem>
-              <AccordionItem value="dv-2"><AccordionTrigger>Đóng mặc định</AccordionTrigger><AccordionContent>Nội dung.</AccordionContent></AccordionItem>
-            </Accordion>
+        <DemoBlock>
+          <div className="grid w-full gap-4 md:grid-cols-2">
+            <div className="space-y-2">
+              <p className="text-xs font-medium">single — string</p>
+              <Accordion type="single" collapsible defaultValue="dv-1" className="px-3">
+                <AccordionItem value="dv-1"><AccordionTrigger>Mặc định mở</AccordionTrigger><AccordionContent>{'defaultValue="dv-1"'}</AccordionContent></AccordionItem>
+                <AccordionItem value="dv-2"><AccordionTrigger>Đóng mặc định</AccordionTrigger><AccordionContent>Nội dung.</AccordionContent></AccordionItem>
+              </Accordion>
+            </div>
+            <div className="space-y-2">
+              <p className="text-xs font-medium">multiple — string[]</p>
+              <Accordion type="multiple" defaultValue={["dv-a", "dv-c"]} className="px-3">
+                <AccordionItem value="dv-a"><AccordionTrigger>Mục A (mở)</AccordionTrigger><AccordionContent>Trong defaultValue.</AccordionContent></AccordionItem>
+                <AccordionItem value="dv-b"><AccordionTrigger>Mục B (đóng)</AccordionTrigger><AccordionContent>Không có trong defaultValue.</AccordionContent></AccordionItem>
+                <AccordionItem value="dv-c"><AccordionTrigger>Mục C (mở)</AccordionTrigger><AccordionContent>Trong defaultValue.</AccordionContent></AccordionItem>
+              </Accordion>
+            </div>
           </div>
-          <div className="space-y-2">
-            <p className="text-xs font-medium">multiple — string[]</p>
-            <Accordion type="multiple" defaultValue={["dv-a", "dv-c"]} className="px-3">
-              <AccordionItem value="dv-a"><AccordionTrigger>Mục A (mở)</AccordionTrigger><AccordionContent>Trong defaultValue.</AccordionContent></AccordionItem>
-              <AccordionItem value="dv-b"><AccordionTrigger>Mục B (đóng)</AccordionTrigger><AccordionContent>Không có trong defaultValue.</AccordionContent></AccordionItem>
-              <AccordionItem value="dv-c"><AccordionTrigger>Mục C (mở)</AccordionTrigger><AccordionContent>Trong defaultValue.</AccordionContent></AccordionItem>
-            </Accordion>
-          </div>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`
 // type="single" — truyền string
 <Accordion type="single" collapsible defaultValue="item-1">
@@ -217,16 +225,18 @@ export default function AccordionPage() {
         <p className="text-sm text-muted-foreground">
           Kiểm soát hoàn toàn từ component cha — hữu ích khi cần mở/đóng từ bên ngoài (button, URL, logic nghiệp vụ).
         </p>
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <p className="text-xs font-medium">{'type="single"'}</p>
-            <ControlledSingleDemo />
+        <DemoBlock>
+          <div className="w-full space-y-6">
+            <div className="space-y-2">
+              <p className="text-xs font-medium">{'type="single"'}</p>
+              <ControlledSingleDemo />
+            </div>
+            <div className="space-y-2">
+              <p className="text-xs font-medium">{'type="multiple"'}</p>
+              <ControlledMultipleDemo />
+            </div>
           </div>
-          <div className="space-y-2">
-            <p className="text-xs font-medium">{'type="multiple"'}</p>
-            <ControlledMultipleDemo />
-          </div>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`
 // type="single"
 const [open, setOpen] = useState<string>("")
@@ -249,16 +259,18 @@ const [open, setOpen] = useState<string[]>([])
         <p className="text-sm text-muted-foreground">
           Có thể vô hiệu hoá từng <code className="text-xs font-mono">AccordionItem</code> riêng lẻ.
         </p>
-        <Accordion type="single" collapsible className="px-3">
-          <AccordionItem value="ok">
-            <AccordionTrigger>Bình thường</AccordionTrigger>
-            <AccordionContent>Hoạt động bình thường.</AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="dis" disabled>
-            <AccordionTrigger>Bị disabled (cả item)</AccordionTrigger>
-            <AccordionContent>Nội dung này không thể mở.</AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        <DemoBlock>
+          <Accordion type="single" collapsible className="w-full max-w-xl px-3">
+            <AccordionItem value="ok">
+              <AccordionTrigger>Bình thường</AccordionTrigger>
+              <AccordionContent>Hoạt động bình thường.</AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="dis" disabled>
+              <AccordionTrigger>Bị disabled (cả item)</AccordionTrigger>
+              <AccordionContent>Nội dung này không thể mở.</AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </DemoBlock>
         <CodeBlock code={`
 <AccordionItem value="item-1" disabled>
   <AccordionTrigger>Tiêu đề</AccordionTrigger>
@@ -272,31 +284,33 @@ const [open, setOpen] = useState<string[]>([])
         <p className="text-sm text-muted-foreground">
           <code className="text-xs font-mono">AccordionContent</code> render HTML thông thường — hỗ trợ paragraph, link, danh sách, v.v.
         </p>
-        <Accordion type="single" collapsible className="px-3">
-          <AccordionItem value="rc-1">
-            <AccordionTrigger>Paragraph & link</AccordionTrigger>
-            <AccordionContent>
-              <p>Đoạn văn đầu tiên giải thích về tính năng.</p>
-              <p>Đoạn văn thứ hai với <a href="#" onClick={(e) => e.preventDefault()}>một link ví dụ</a> bên trong.</p>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="rc-2">
-            <AccordionTrigger>Danh sách & code</AccordionTrigger>
-            <AccordionContent>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Bước 1: cài đặt <code>npm install</code></li>
-                <li>Bước 2: chạy <code>npm run dev</code></li>
-                <li>Bước 3: mở <code>localhost:3000</code></li>
-              </ul>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="rc-3">
-            <AccordionTrigger>Custom className</AccordionTrigger>
-            <AccordionContent className="text-blue-600 dark:text-blue-400 font-medium">
-              Đây là nội dung với className tuỳ chỉnh — màu xanh và in đậm.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        <DemoBlock>
+          <Accordion type="single" collapsible className="w-full max-w-xl px-3">
+            <AccordionItem value="rc-1">
+              <AccordionTrigger>Paragraph & link</AccordionTrigger>
+              <AccordionContent>
+                <p>Đoạn văn đầu tiên giải thích về tính năng.</p>
+                <p>Đoạn văn thứ hai với <a href="#" onClick={(e) => e.preventDefault()}>một link ví dụ</a> bên trong.</p>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="rc-2">
+              <AccordionTrigger>Danh sách & code</AccordionTrigger>
+              <AccordionContent>
+                <ul className="list-disc pl-4 space-y-1">
+                  <li>Bước 1: cài đặt <code>npm install</code></li>
+                  <li>Bước 2: chạy <code>npm run dev</code></li>
+                  <li>Bước 3: mở <code>localhost:3000</code></li>
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="rc-3">
+              <AccordionTrigger>Custom className</AccordionTrigger>
+              <AccordionContent className="text-blue-600 dark:text-blue-400 font-medium">
+                Đây là nội dung với className tuỳ chỉnh — màu xanh và in đậm.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </DemoBlock>
         <CodeBlock code={`
 <AccordionContent>
   <p>Đoạn văn thứ nhất.</p>

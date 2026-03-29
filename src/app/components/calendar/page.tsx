@@ -4,7 +4,7 @@ import React from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
 import type { DateRange } from "react-day-picker"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/components/_showcase"
 
 /* ─── demos ───────────────────────────────────────────────────────────────── */
 
@@ -211,7 +211,9 @@ return (
         <p className="text-sm text-muted-foreground">
           Chế độ <code className="text-xs font-mono">mode="single"</code> cho phép chọn một ngày.
         </p>
-        <BasicDemo />
+        <DemoBlock>
+          <BasicDemo />
+        </DemoBlock>
         <CodeBlock code={`
 const [date, setDate] = React.useState<Date | undefined>(new Date())
 
@@ -229,7 +231,9 @@ const [date, setDate] = React.useState<Date | undefined>(new Date())
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">mode="range"</code> để chọn khoảng từ ngày đến ngày.
         </p>
-        <RangeDemo />
+        <DemoBlock>
+          <RangeDemo />
+        </DemoBlock>
         <CodeBlock code={`
 const [range, setRange] = React.useState<DateRange | undefined>()
 
@@ -247,7 +251,9 @@ const [range, setRange] = React.useState<DateRange | undefined>()
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">numberOfMonths={"{2}"}</code> để hiển thị hai tháng cạnh nhau.
         </p>
-        <RangeTwoMonthsDemo />
+        <DemoBlock>
+          <RangeTwoMonthsDemo />
+        </DemoBlock>
         <CodeBlock code={`
 <Calendar
   mode="range"
@@ -264,7 +270,9 @@ const [range, setRange] = React.useState<DateRange | undefined>()
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">captionLayout="dropdown"</code> để hiện dropdown chọn tháng và năm.
         </p>
-        <DropdownDemo />
+        <DemoBlock>
+          <DropdownDemo />
+        </DemoBlock>
         <CodeBlock code={`
 <Calendar
   mode="single"
@@ -281,7 +289,9 @@ const [range, setRange] = React.useState<DateRange | undefined>()
         <p className="text-sm text-muted-foreground">
           Kết hợp với các nút nhanh để chọn ngày phổ biến mà không cần bấm vào lịch.
         </p>
-        <PresetsDemo />
+        <DemoBlock>
+          <PresetsDemo />
+        </DemoBlock>
         <CodeBlock code={`
 const presets = [
   { label: "Hôm nay", days: 0 },
@@ -312,7 +322,9 @@ const presets = [
         <p className="text-sm text-muted-foreground">
           Kết hợp Calendar với input <code className="text-xs font-mono">type="time"</code> để chọn cả ngày lẫn giờ.
         </p>
-        <DateTimeDemo />
+        <DemoBlock>
+          <DateTimeDemo />
+        </DemoBlock>
         <CodeBlock code={`
 <Calendar mode="single" selected={date} onSelect={setDate} />
 
@@ -330,7 +342,9 @@ const presets = [
         <p className="text-sm text-muted-foreground">
           Dùng prop <code className="text-xs font-mono">disabled</code> để vô hiệu hóa các ngày cụ thể (ví dụ: ngày đã đặt).
         </p>
-        <BookedDatesDemo />
+        <DemoBlock>
+          <BookedDatesDemo />
+        </DemoBlock>
         <CodeBlock code={`
 const bookedDates = [
   addDays(new Date(), 2),
@@ -351,7 +365,9 @@ const bookedDates = [
         <p className="text-sm text-muted-foreground">
           Thêm <code className="text-xs font-mono">showWeekNumber</code> để hiển thị số tuần ISO bên trái.
         </p>
-        <WeekNumbersDemo />
+        <DemoBlock>
+          <WeekNumbersDemo />
+        </DemoBlock>
         <CodeBlock code={`
 <Calendar
   mode="single"

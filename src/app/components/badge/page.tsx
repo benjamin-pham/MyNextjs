@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/components/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
 
@@ -51,9 +51,11 @@ export default function BadgePage() {
 
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
-        <div className="flex flex-wrap gap-3">
-          <Badge>Default</Badge>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3">
+            <Badge>Default</Badge>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`<Badge>Default</Badge>`} />
       </ShowcaseSection>
 
@@ -68,14 +70,16 @@ export default function BadgePage() {
             </span>
           ))}
         </p>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Badge variant="default">Default</Badge>
-          <Badge variant="secondary">Secondary</Badge>
-          <Badge variant="destructive">Destructive</Badge>
-          <Badge variant="outline">Outline</Badge>
-          <Badge variant="ghost">Ghost</Badge>
-          <Badge variant="link">Link</Badge>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Badge variant="default">Default</Badge>
+            <Badge variant="secondary">Secondary</Badge>
+            <Badge variant="destructive">Destructive</Badge>
+            <Badge variant="outline">Outline</Badge>
+            <Badge variant="ghost">Ghost</Badge>
+            <Badge variant="link">Link</Badge>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Badge variant="default">Default</Badge>
 <Badge variant="secondary">Secondary</Badge>
@@ -93,25 +97,27 @@ export default function BadgePage() {
           <code className="text-xs font-mono">data-icon="inline-start"</code> hoặc{" "}
           <code className="text-xs font-mono">data-icon="inline-end"</code> để điều chỉnh padding tự động.
         </p>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Badge>
-            <ClockIcon />
-            Icon start
-          </Badge>
-          <Badge variant="secondary">
-            Icon end
-            <ArrowIcon />
-          </Badge>
-          <Badge variant="outline">
-            <CheckIcon />
-            Cả hai
-            <XIcon />
-          </Badge>
-          <Badge variant="destructive">
-            <XIcon />
-            Lỗi
-          </Badge>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Badge>
+              <ClockIcon />
+              Icon start
+            </Badge>
+            <Badge variant="secondary">
+              Icon end
+              <ArrowIcon />
+            </Badge>
+            <Badge variant="outline">
+              <CheckIcon />
+              Cả hai
+              <XIcon />
+            </Badge>
+            <Badge variant="destructive">
+              <XIcon />
+              Lỗi
+            </Badge>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Badge>
   <svg data-icon="inline-start">...</svg>
@@ -136,11 +142,13 @@ export default function BadgePage() {
         <p className="text-sm text-muted-foreground">
           Thêm <code className="text-xs font-mono">aria-invalid="true"</code> để hiển thị trạng thái lỗi với viền đỏ.
         </p>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Badge>Bình thường</Badge>
-          <Badge aria-invalid="true">aria-invalid</Badge>
-          <Badge variant="outline" aria-invalid="true">Outline + invalid</Badge>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Badge>Bình thường</Badge>
+            <Badge aria-invalid="true">aria-invalid</Badge>
+            <Badge variant="outline" aria-invalid="true">Outline + invalid</Badge>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Badge>Bình thường</Badge>
 <Badge aria-invalid="true">aria-invalid</Badge>
@@ -152,14 +160,16 @@ export default function BadgePage() {
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">asChild</code> để Badge render thành thẻ con (ví dụ <code className="text-xs font-mono">&lt;a&gt;</code>), giữ nguyên style Badge nhưng dùng thẻ khác trong DOM.
         </p>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Badge asChild variant="outline">
-            <a href="#">Badge dạng link</a>
-          </Badge>
-          <Badge asChild variant="secondary">
-            <a href="#">New</a>
-          </Badge>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Badge asChild variant="outline">
+              <a href="#">Badge dạng link</a>
+            </Badge>
+            <Badge asChild variant="secondary">
+              <a href="#">New</a>
+            </Badge>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Badge asChild variant="outline">
   <a href="/docs">Badge dạng link</a>
@@ -172,27 +182,29 @@ export default function BadgePage() {
         <p className="text-sm text-muted-foreground">
           Badge thường được dùng kèm với các thành phần khác để biểu thị trạng thái.
         </p>
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm">
-            <span className="font-medium">Đơn hàng #1042</span>
-            <Badge variant="secondary">Đang xử lý</Badge>
+        <DemoBlock>
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 text-sm">
+              <span className="font-medium">Đơn hàng #1042</span>
+              <Badge variant="secondary">Đang xử lý</Badge>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <span className="font-medium">Thanh toán</span>
+              <Badge>
+                <CheckIcon />
+                Thành công
+              </Badge>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <span className="font-medium">Kết nối API</span>
+              <Badge variant="destructive">Lỗi</Badge>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <span className="font-medium">Tính năng Beta</span>
+              <Badge variant="outline">Beta</Badge>
+            </div>
           </div>
-          <div className="flex items-center gap-2 text-sm">
-            <span className="font-medium">Thanh toán</span>
-            <Badge>
-              <CheckIcon />
-              Thành công
-            </Badge>
-          </div>
-          <div className="flex items-center gap-2 text-sm">
-            <span className="font-medium">Kết nối API</span>
-            <Badge variant="destructive">Lỗi</Badge>
-          </div>
-          <div className="flex items-center gap-2 text-sm">
-            <span className="font-medium">Tính năng Beta</span>
-            <Badge variant="outline">Beta</Badge>
-          </div>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`
 <div className="flex items-center gap-2">
   <span>Đơn hàng #1042</span>

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/components/_showcase"
 import {
   Carousel,
   CarouselContent,
@@ -25,25 +25,27 @@ export default function CarouselPage() {
 
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
-        <div className="flex justify-center flex-col items-center">
-            <Carousel className="w-full max-w-xs">
-              <CarouselContent>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselItem key={index}>
-                    <div className="p-1">
-                      <Card>
-                        <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted/20">
-                            <span className="text-4xl font-semibold">{index + 1}</span>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-        </div>
+        <DemoBlock>
+          <div className="flex justify-center flex-col items-center">
+              <Carousel className="w-full max-w-xs">
+                <CarouselContent>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index}>
+                      <div className="p-1">
+                        <Card>
+                          <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted/20">
+                              <span className="text-4xl font-semibold">{index + 1}</span>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`<Carousel className="w-full max-w-xs">
   <CarouselContent>
     {Array.from({ length: 5 }).map((_, index) => (
@@ -68,25 +70,27 @@ export default function CarouselPage() {
          <p className="text-sm text-muted-foreground">
           Sử dụng `basis-*` trên <code className="text-xs font-mono">CarouselItem</code> để thay đổi số lượng mục hiển thị cùng lúc.
         </p>
-        <div className="flex justify-center flex-col items-center">
-            <Carousel className="w-full max-w-sm">
-              <CarouselContent>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                      <Card>
-                        <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted/20">
-                            <span className="text-3xl font-semibold">{index + 1}</span>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-        </div>
+        <DemoBlock>
+          <div className="flex justify-center flex-col items-center">
+              <Carousel className="w-full max-w-sm">
+                <CarouselContent>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                      <div className="p-1">
+                        <Card>
+                          <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted/20">
+                              <span className="text-3xl font-semibold">{index + 1}</span>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`<Carousel className="w-full max-w-sm">
   <CarouselContent>
     <CarouselItem className="md:basis-1/2 lg:basis-1/3">
@@ -107,25 +111,27 @@ export default function CarouselPage() {
          <p className="text-sm text-muted-foreground">
           Sử dụng giá trị âm cho margin ở <code className="text-xs font-mono">CarouselContent</code> và padding/margin tương ứng ở <code className="text-xs font-mono">CarouselItem</code> để tạo khoảng cách. Mặc định là `-ml-4` và `pl-4`.
         </p>
-        <div className="flex justify-center flex-col items-center">
-            <Carousel className="w-full max-w-sm">
-              <CarouselContent className="-ml-1">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                      <Card>
-                        <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted/20">
-                            <span className="text-2xl font-semibold">{index + 1}</span>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-        </div>
+        <DemoBlock>
+          <div className="flex justify-center flex-col items-center">
+              <Carousel className="w-full max-w-sm">
+                <CarouselContent className="-ml-1">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                      <div className="p-1">
+                        <Card>
+                          <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted/20">
+                              <span className="text-2xl font-semibold">{index + 1}</span>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`<Carousel>
   {/* Đổi khoảng cách thành 1 (0.25rem) */}
   <CarouselContent className="-ml-1">
@@ -143,25 +149,27 @@ export default function CarouselPage() {
          <p className="text-sm text-muted-foreground">
           Thêm thuộc tính <code className="text-xs font-mono">orientation="vertical"</code> để thay đổi hướng cuộn. Nút Previous/Next sẽ tự động xoay.
         </p>
-        <div className="flex justify-center mb-12">
-            <Carousel orientation="vertical" className="w-full max-w-xs">
-              <CarouselContent className="-mt-1 h-[200px]">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselItem key={index} className="pt-1 md:basis-1/2">
-                    <div className="p-1">
-                      <Card>
-                        <CardContent className="flex items-center justify-center p-6 py-6 bg-muted/20">
-                            <span className="text-3xl font-semibold">{index + 1}</span>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-        </div>
+        <DemoBlock>
+          <div className="flex justify-center mb-12">
+              <Carousel orientation="vertical" className="w-full max-w-xs">
+                <CarouselContent className="-mt-1 h-[200px]">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index} className="pt-1 md:basis-1/2">
+                      <div className="p-1">
+                        <Card>
+                          <CardContent className="flex items-center justify-center p-6 py-6 bg-muted/20">
+                              <span className="text-3xl font-semibold">{index + 1}</span>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`<Carousel orientation="vertical" className="w-full max-w-xs">
   <CarouselContent className="-mt-1 h-[200px]">
     <CarouselItem className="pt-1 md:basis-1/2">
@@ -178,31 +186,33 @@ export default function CarouselPage() {
         <p className="text-sm text-muted-foreground">
           Truyền tùy chọn Embla thông qua prop <code className="text-xs font-mono">opts</code>. Ví dụ: <code className="text-xs font-mono">align: "start"</code> và <code className="text-xs font-mono">loop: true</code>.
         </p>
-        <div className="flex justify-center flex-col items-center">
-            <Carousel 
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full max-w-sm"
-            >
-              <CarouselContent>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                      <Card>
-                        <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted/20">
-                            <span className="text-3xl font-semibold">{index + 1}</span>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-        </div>
+        <DemoBlock>
+          <div className="flex justify-center flex-col items-center">
+              <Carousel 
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full max-w-sm"
+              >
+                <CarouselContent>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                      <div className="p-1">
+                        <Card>
+                          <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted/20">
+                              <span className="text-3xl font-semibold">{index + 1}</span>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`<Carousel opts={{ align: "start", loop: true }}>
   <CarouselContent>
     <CarouselItem className="md:basis-1/2 lg:basis-1/3">

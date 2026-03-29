@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/components/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
 
@@ -51,9 +51,11 @@ export default function ButtonPage() {
 
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
-        <div className="flex flex-wrap gap-3">
-          <Button>Default</Button>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3">
+            <Button>Default</Button>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`<Button>Default</Button>`} />
       </ShowcaseSection>
 
@@ -68,14 +70,16 @@ export default function ButtonPage() {
             </span>
           ))}
         </p>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Button variant="default">Default</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="destructive">Destructive</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="link">Link</Button>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Button variant="default">Default</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="destructive">Destructive</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="link">Link</Button>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Button variant="default">Default</Button>
 <Button variant="secondary">Secondary</Button>
@@ -97,12 +101,14 @@ export default function ButtonPage() {
             </span>
           ))}
         </p>
-        <div className="flex flex-wrap items-end gap-3">
-          <Button size="xs">xs</Button>
-          <Button size="sm">sm</Button>
-          <Button size="default">default</Button>
-          <Button size="lg">lg</Button>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap items-end gap-3">
+            <Button size="xs">xs</Button>
+            <Button size="sm">sm</Button>
+            <Button size="default">default</Button>
+            <Button size="lg">lg</Button>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Button size="xs">xs</Button>
 <Button size="sm">sm</Button>
@@ -116,12 +122,14 @@ export default function ButtonPage() {
         <p className="text-sm text-muted-foreground">
           Dùng size <code className="text-xs font-mono">icon-xs</code>, <code className="text-xs font-mono">icon-sm</code>, <code className="text-xs font-mono">icon</code>, <code className="text-xs font-mono">icon-lg</code> cho button chỉ có icon (hình vuông).
         </p>
-        <div className="flex flex-wrap items-end gap-3">
-          <Button size="icon-xs" aria-label="icon-xs"><ArrowIconPlain /></Button>
-          <Button size="icon-sm" aria-label="icon-sm"><ArrowIconPlain /></Button>
-          <Button size="icon" aria-label="icon"><ArrowIconPlain /></Button>
-          <Button size="icon-lg" aria-label="icon-lg"><ArrowIconPlain /></Button>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap items-end gap-3">
+            <Button size="icon-xs" aria-label="icon-xs"><ArrowIconPlain /></Button>
+            <Button size="icon-sm" aria-label="icon-sm"><ArrowIconPlain /></Button>
+            <Button size="icon" aria-label="icon"><ArrowIconPlain /></Button>
+            <Button size="icon-lg" aria-label="icon-lg"><ArrowIconPlain /></Button>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Button size="icon-xs" aria-label="..."><ArrowIcon /></Button>
 <Button size="icon-sm" aria-label="..."><ArrowIcon /></Button>
@@ -137,25 +145,27 @@ export default function ButtonPage() {
           <code className="text-xs font-mono">data-icon="inline-start"</code> hoặc{" "}
           <code className="text-xs font-mono">data-icon="inline-end"</code> để điều chỉnh padding tự động.
         </p>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Button>
-            <PlusIcon />
-            Thêm mới
-          </Button>
-          <Button variant="outline">
-            Tiếp theo
-            <ArrowIcon />
-          </Button>
-          <Button variant="destructive">
-            <TrashIcon />
-            Xoá
-          </Button>
-          <Button variant="secondary">
-            <PlusIcon />
-            Tạo
-            <ArrowIcon />
-          </Button>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Button>
+              <PlusIcon />
+              Thêm mới
+            </Button>
+            <Button variant="outline">
+              Tiếp theo
+              <ArrowIcon />
+            </Button>
+            <Button variant="destructive">
+              <TrashIcon />
+              Xoá
+            </Button>
+            <Button variant="secondary">
+              <PlusIcon />
+              Tạo
+              <ArrowIcon />
+            </Button>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Button>
   <svg data-icon="inline-start">...</svg>
@@ -174,16 +184,20 @@ export default function ButtonPage() {
         <p className="text-sm text-muted-foreground">
           Hỗ trợ <code className="text-xs font-mono">disabled</code> và <code className="text-xs font-mono">aria-invalid</code>.
         </p>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Button>Normal</Button>
-          <Button disabled>Disabled</Button>
-          <Button aria-invalid="true">Invalid</Button>
-        </div>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Button variant="outline">Normal</Button>
-          <Button variant="outline" disabled>Disabled</Button>
-          <Button variant="outline" aria-invalid="true">Invalid</Button>
-        </div>
+        <DemoBlock>
+          <div className="space-y-4">
+            <div className="flex flex-wrap gap-3 items-center">
+              <Button>Normal</Button>
+              <Button disabled>Disabled</Button>
+              <Button aria-invalid="true">Invalid</Button>
+            </div>
+            <div className="flex flex-wrap gap-3 items-center">
+              <Button variant="outline">Normal</Button>
+              <Button variant="outline" disabled>Disabled</Button>
+              <Button variant="outline" aria-invalid="true">Invalid</Button>
+            </div>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Button>Normal</Button>
 <Button disabled>Disabled</Button>
@@ -196,14 +210,16 @@ export default function ButtonPage() {
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">asChild</code> để Button render thành thẻ con (ví dụ <code className="text-xs font-mono">&lt;a&gt;</code>), giữ nguyên style Button nhưng dùng thẻ khác trong DOM.
         </p>
-        <div className="flex flex-wrap gap-3 items-center">
-          <Button asChild variant="outline">
-            <a href="#">Button dạng link</a>
-          </Button>
-          <Button asChild variant="secondary">
-            <a href="#">Xem thêm</a>
-          </Button>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Button asChild variant="outline">
+              <a href="#">Button dạng link</a>
+            </Button>
+            <Button asChild variant="secondary">
+              <a href="#">Xem thêm</a>
+            </Button>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Button asChild variant="outline">
   <a href="/docs">Button dạng link</a>
@@ -213,17 +229,19 @@ export default function ButtonPage() {
 
       {/* ── 8. Variants × Sizes ── */}
       <ShowcaseSection title="8. Variants × Sizes">
-        <div className="space-y-3">
-          {(["default", "secondary", "destructive", "outline", "ghost", "link"] as const).map((variant) => (
-            <div key={variant} className="flex flex-wrap items-end gap-3">
-              {(["xs", "sm", "default", "lg"] as const).map((size) => (
-                <Button key={size} variant={variant} size={size}>
-                  {variant} · {size}
-                </Button>
-              ))}
-            </div>
-          ))}
-        </div>
+        <DemoBlock>
+          <div className="space-y-3">
+            {(["default", "secondary", "destructive", "outline", "ghost", "link"] as const).map((variant) => (
+              <div key={variant} className="flex flex-wrap items-end gap-3">
+                {(["xs", "sm", "default", "lg"] as const).map((size) => (
+                  <Button key={size} variant={variant} size={size}>
+                    {variant} · {size}
+                  </Button>
+                ))}
+              </div>
+            ))}
+          </div>
+        </DemoBlock>
       </ShowcaseSection>
 
       {/* ── 9. Props reference ── */}

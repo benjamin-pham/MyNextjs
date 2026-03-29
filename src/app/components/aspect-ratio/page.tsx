@@ -1,5 +1,5 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/components/_showcase"
 
 const ratios = [
   { label: "16 / 9", ratio: 16 / 9, note: "Widescreen video" },
@@ -29,16 +29,18 @@ export default function AspectRatioPage() {
 
       {/* ── Sử dụng ── */}
       <ShowcaseSection title="Sử dụng">
-        <div className="max-w-sm">
-          <AspectRatio ratio={16 / 9}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-              alt="Demo image"
-              className="h-full w-full rounded-md object-cover"
-            />
-          </AspectRatio>
-        </div>
+        <DemoBlock>
+          <div className="max-w-sm w-full">
+            <AspectRatio ratio={16 / 9}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+                alt="Demo image"
+                className="h-full w-full rounded-md object-cover"
+              />
+            </AspectRatio>
+          </div>
+        </DemoBlock>
         <CodeBlock alwaysOpen code={`<AspectRatio ratio={16 / 9}>
   <Image src="..." alt="Image" className="rounded-md object-cover" />
 </AspectRatio>`} />
@@ -50,13 +52,15 @@ export default function AspectRatioPage() {
           Truyền prop <code className="text-xs font-mono">ratio</code> dưới dạng số (chiều rộng / chiều cao).
           Nội dung bên trong cần có <code className="text-xs font-mono">h-full w-full</code> để lấp đầy khung.
         </p>
-        <div className="max-w-sm">
-          <AspectRatio ratio={16 / 9}>
-            <div className="flex h-full w-full items-center justify-center rounded-md border bg-muted text-sm text-muted-foreground">
-              16 / 9
-            </div>
-          </AspectRatio>
-        </div>
+        <DemoBlock>
+          <div className="max-w-sm w-full">
+            <AspectRatio ratio={16 / 9}>
+              <div className="flex h-full w-full items-center justify-center rounded-md border bg-muted text-sm text-muted-foreground">
+                16 / 9
+              </div>
+            </AspectRatio>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 
@@ -68,20 +72,22 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 
       {/* ── 2. Tỉ lệ phổ biến ── */}
       <ShowcaseSection title="2. Tỉ lệ phổ biến">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {ratios.map(({ label, ratio, note }) => (
-            <div key={label} className="space-y-2">
-              <AspectRatio ratio={ratio}>
-                <div className="flex h-full w-full items-center justify-center rounded-md border bg-muted text-xs text-muted-foreground">
-                  {label}
-                </div>
-              </AspectRatio>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">{label}</span> — {note}
-              </p>
-            </div>
-          ))}
-        </div>
+        <DemoBlock>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+            {ratios.map(({ label, ratio, note }) => (
+              <div key={label} className="space-y-2">
+                <AspectRatio ratio={ratio}>
+                  <div className="flex h-full w-full items-center justify-center rounded-md border bg-muted text-xs text-muted-foreground">
+                    {label}
+                  </div>
+                </AspectRatio>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">{label}</span> — {note}
+                </p>
+              </div>
+            ))}
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 {/* ratio nhận số thực — thường dùng biểu thức chia cho dễ đọc */}
 <AspectRatio ratio={16 / 9}>…</AspectRatio>   {/* widescreen */}
@@ -97,30 +103,32 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
           Dùng <code className="text-xs font-mono">object-cover</code> để ảnh luôn lấp đầy khung mà không bị méo,
           dù kích thước gốc khác với tỉ lệ chỉ định.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <AspectRatio ratio={16 / 9}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-                alt="Photo by Drew Beamer"
-                className="h-full w-full rounded-md object-cover"
-              />
-            </AspectRatio>
-            <p className="text-xs text-muted-foreground">16 / 9 — object-cover</p>
+        <DemoBlock>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+            <div className="space-y-2">
+              <AspectRatio ratio={16 / 9}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+                  alt="Photo by Drew Beamer"
+                  className="h-full w-full rounded-md object-cover"
+                />
+              </AspectRatio>
+              <p className="text-xs text-muted-foreground">16 / 9 — object-cover</p>
+            </div>
+            <div className="space-y-2">
+              <AspectRatio ratio={1}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+                  alt="Photo by Drew Beamer"
+                  className="h-full w-full rounded-md object-cover"
+                />
+              </AspectRatio>
+              <p className="text-xs text-muted-foreground">1 / 1 — object-cover</p>
+            </div>
           </div>
-          <div className="space-y-2">
-            <AspectRatio ratio={1}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-                alt="Photo by Drew Beamer"
-                className="h-full w-full rounded-md object-cover"
-              />
-            </AspectRatio>
-            <p className="text-xs text-muted-foreground">1 / 1 — object-cover</p>
-          </div>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`
 <AspectRatio ratio={16 / 9}>
   <img
@@ -137,31 +145,33 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
         <p className="text-sm text-muted-foreground">
           Bất kỳ nội dung nào cũng có thể đặt bên trong — embed video, placeholder, overlay, v.v.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg">
-          <div className="space-y-2">
-            <AspectRatio ratio={16 / 9}>
-              <div className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-md border bg-gradient-to-br from-violet-500 to-indigo-500 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-                <span className="text-xs font-medium">Play Video</span>
-              </div>
-            </AspectRatio>
-            <p className="text-xs text-muted-foreground">Video thumbnail overlay</p>
-          </div>
+        <DemoBlock>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg w-full">
+            <div className="space-y-2">
+              <AspectRatio ratio={16 / 9}>
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-md border bg-gradient-to-br from-violet-500 to-indigo-500 text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                  <span className="text-xs font-medium">Play Video</span>
+                </div>
+              </AspectRatio>
+              <p className="text-xs text-muted-foreground">Video thumbnail overlay</p>
+            </div>
 
-          <div className="space-y-2">
-            <AspectRatio ratio={4 / 3}>
-              <div className="flex h-full w-full items-center justify-center gap-2 rounded-md border bg-muted text-muted-foreground">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
-                </svg>
-                <span className="text-xs">Bản đồ</span>
-              </div>
-            </AspectRatio>
-            <p className="text-xs text-muted-foreground">Map embed placeholder</p>
+            <div className="space-y-2">
+              <AspectRatio ratio={4 / 3}>
+                <div className="flex h-full w-full items-center justify-center gap-2 rounded-md border bg-muted text-muted-foreground">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span className="text-xs">Bản đồ</span>
+                </div>
+              </AspectRatio>
+              <p className="text-xs text-muted-foreground">Map embed placeholder</p>
+            </div>
           </div>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`
 {/* Gradient overlay */}
 <AspectRatio ratio={16 / 9}>

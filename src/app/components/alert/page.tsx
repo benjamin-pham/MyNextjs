@@ -1,7 +1,6 @@
 import { Alert, AlertTitle, AlertDescription, AlertAction } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
-
+import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/components/_showcase"
 /* ─── icons ──────────────────────────────────────────────────────────────── */
 
 const InfoIcon = () => (
@@ -54,10 +53,12 @@ export default function AlertPage() {
 
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
-        <Alert>
-          <AlertTitle>Tiêu đề thông báo</AlertTitle>
-          <AlertDescription>Đây là nội dung mô tả thêm chi tiết về thông báo.</AlertDescription>
-        </Alert>
+        <DemoBlock>
+          <Alert className="w-full">
+            <AlertTitle>Tiêu đề thông báo</AlertTitle>
+            <AlertDescription>Đây là nội dung mô tả thêm chi tiết về thông báo.</AlertDescription>
+          </Alert>
+        </DemoBlock>
         <CodeBlock code={`
 <Alert>
   <AlertTitle>Tiêu đề thông báo</AlertTitle>
@@ -71,16 +72,18 @@ export default function AlertPage() {
         <p className="text-sm text-muted-foreground">
           Có 2 variant: <code className="text-xs font-mono">default</code> và <code className="text-xs font-mono">destructive</code>.
         </p>
-        <div className="space-y-3">
-          <Alert>
-            <AlertTitle>Default</AlertTitle>
-            <AlertDescription>Thông báo thông thường không kèm trạng thái đặc biệt.</AlertDescription>
-          </Alert>
-          <Alert variant="destructive">
-            <AlertTitle>Destructive</AlertTitle>
-            <AlertDescription>Có lỗi xảy ra. Vui lòng kiểm tra lại thông tin của bạn.</AlertDescription>
-          </Alert>
-        </div>
+        <DemoBlock>
+          <div className="space-y-3 w-full">
+            <Alert>
+              <AlertTitle>Default</AlertTitle>
+              <AlertDescription>Thông báo thông thường không kèm trạng thái đặc biệt.</AlertDescription>
+            </Alert>
+            <Alert variant="destructive">
+              <AlertTitle>Destructive</AlertTitle>
+              <AlertDescription>Có lỗi xảy ra. Vui lòng kiểm tra lại thông tin của bạn.</AlertDescription>
+            </Alert>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Alert>...</Alert>
 <Alert variant="destructive">...</Alert>
@@ -92,18 +95,20 @@ export default function AlertPage() {
         <p className="text-sm text-muted-foreground">
           Đặt bất kỳ <code className="text-xs font-mono">&lt;svg&gt;</code> nào làm con đầu tiên của <code className="text-xs font-mono">&lt;Alert&gt;</code>. Layout tự chuyển sang 2 cột, icon span 2 hàng.
         </p>
-        <div className="space-y-3">
-          <Alert>
-            <InfoIcon />
-            <AlertTitle>Thông tin</AlertTitle>
-            <AlertDescription>Icon tự động căn chỉnh với tiêu đề và mô tả.</AlertDescription>
-          </Alert>
-          <Alert variant="destructive">
-            <WarningIcon />
-            <AlertTitle>Cảnh báo</AlertTitle>
-            <AlertDescription>Hành động này không thể hoàn tác. Hãy cân nhắc trước khi tiếp tục.</AlertDescription>
-          </Alert>
-        </div>
+        <DemoBlock>
+          <div className="space-y-3 w-full">
+            <Alert>
+              <InfoIcon />
+              <AlertTitle>Thông tin</AlertTitle>
+              <AlertDescription>Icon tự động căn chỉnh với tiêu đề và mô tả.</AlertDescription>
+            </Alert>
+            <Alert variant="destructive">
+              <WarningIcon />
+              <AlertTitle>Cảnh báo</AlertTitle>
+              <AlertDescription>Hành động này không thể hoàn tác. Hãy cân nhắc trước khi tiếp tục.</AlertDescription>
+            </Alert>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Alert>
   <InfoIcon />          {/* SVG con đầu tiên → icon */}
@@ -118,23 +123,25 @@ export default function AlertPage() {
         <p className="text-sm text-muted-foreground">
           <code className="text-xs font-mono">AlertAction</code> hiển thị ở góc phải. Alert tự mở rộng padding-right khi có slot này.
         </p>
-        <div className="space-y-3">
-          <Alert>
-            <AlertTitle>Cập nhật khả dụng</AlertTitle>
-            <AlertDescription>Phiên bản mới đã sẵn sàng để cài đặt.</AlertDescription>
-            <AlertAction>
-              <Button size="xs" variant="outline">Cập nhật</Button>
-            </AlertAction>
-          </Alert>
-          <Alert variant="destructive">
-            <WarningIcon />
-            <AlertTitle>Phiên đăng nhập hết hạn</AlertTitle>
-            <AlertDescription>Vui lòng đăng nhập lại để tiếp tục.</AlertDescription>
-            <AlertAction>
-              <Button size="xs" variant="destructive">Đăng nhập</Button>
-            </AlertAction>
-          </Alert>
-        </div>
+        <DemoBlock>
+          <div className="space-y-3 w-full">
+            <Alert>
+              <AlertTitle>Cập nhật khả dụng</AlertTitle>
+              <AlertDescription>Phiên bản mới đã sẵn sàng để cài đặt.</AlertDescription>
+              <AlertAction>
+                <Button size="xs" variant="outline">Cập nhật</Button>
+              </AlertAction>
+            </Alert>
+            <Alert variant="destructive">
+              <WarningIcon />
+              <AlertTitle>Phiên đăng nhập hết hạn</AlertTitle>
+              <AlertDescription>Vui lòng đăng nhập lại để tiếp tục.</AlertDescription>
+              <AlertAction>
+                <Button size="xs" variant="destructive">Đăng nhập</Button>
+              </AlertAction>
+            </Alert>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Alert>
   <AlertTitle>Cập nhật khả dụng</AlertTitle>
@@ -151,14 +158,16 @@ export default function AlertPage() {
         <p className="text-sm text-muted-foreground">
           Cả <code className="text-xs font-mono">AlertTitle</code> và <code className="text-xs font-mono">AlertDescription</code> đều tuỳ chọn.
         </p>
-        <div className="space-y-3">
-          <Alert>
-            <AlertTitle>Chỉ có tiêu đề</AlertTitle>
-          </Alert>
-          <Alert>
-            <AlertDescription>Chỉ có mô tả, không có tiêu đề — phù hợp với thông báo ngắn gọn.</AlertDescription>
-          </Alert>
-        </div>
+        <DemoBlock>
+          <div className="space-y-3 w-full">
+            <Alert>
+              <AlertTitle>Chỉ có tiêu đề</AlertTitle>
+            </Alert>
+            <Alert>
+              <AlertDescription>Chỉ có mô tả, không có tiêu đề — phù hợp với thông báo ngắn gọn.</AlertDescription>
+            </Alert>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Alert><AlertTitle>Chỉ có tiêu đề</AlertTitle></Alert>
 <Alert><AlertDescription>Chỉ có mô tả.</AlertDescription></Alert>
@@ -170,13 +179,15 @@ export default function AlertPage() {
         <p className="text-sm text-muted-foreground">
           Các thẻ <code className="text-xs font-mono">&lt;a&gt;</code> bên trong <code className="text-xs font-mono">AlertTitle</code> và <code className="text-xs font-mono">AlertDescription</code> tự nhận style underline.
         </p>
-        <Alert>
-          <InfoIcon />
-          <AlertTitle>Xem <a href="#">tài liệu hướng dẫn</a> để biết thêm</AlertTitle>
-          <AlertDescription>
-            Chi tiết cấu hình có tại <a href="#">trang cài đặt</a> hoặc liên hệ <a href="#">support</a>.
-          </AlertDescription>
-        </Alert>
+        <DemoBlock>
+          <Alert className="w-full">
+            <InfoIcon />
+            <AlertTitle>Xem <a href="#">tài liệu hướng dẫn</a> để biết thêm</AlertTitle>
+            <AlertDescription>
+              Chi tiết cấu hình có tại <a href="#">trang cài đặt</a> hoặc liên hệ <a href="#">support</a>.
+            </AlertDescription>
+          </Alert>
+        </DemoBlock>
         <CodeBlock code={`
 <Alert>
   <AlertTitle>Xem <a href="/docs">tài liệu</a> để biết thêm</AlertTitle>

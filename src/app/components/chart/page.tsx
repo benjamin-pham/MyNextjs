@@ -10,7 +10,7 @@ import {
   ChartLegend,
   ChartLegendContent,
 } from "@/components/ui/chart"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/components/_showcase"
 
 const chartData = [
   { month: "Jan", desktop: 186, mobile: 80 },
@@ -79,7 +79,7 @@ export default function ChartPage() {
         <p className="text-sm text-muted-foreground mb-4">
           Biểu đồ cột cơ bản hiển thị so sánh dữ liệu qua các tiêu chí.
         </p>
-        <div className="border rounded-xl p-6 bg-card">
+        <DemoBlock>
           <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
             <BarChart accessibilityLayer data={chartData}>
               <CartesianGrid vertical={false} />
@@ -96,7 +96,7 @@ export default function ChartPage() {
               <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
             </BarChart>
           </ChartContainer>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 
@@ -117,7 +117,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLe
         <p className="text-sm text-muted-foreground mb-4">
           Biểu đồ đường thích hợp để hiển thị xu hướng dữ liệu theo thời gian.
         </p>
-        <div className="border rounded-xl p-6 bg-card">
+        <DemoBlock>
           <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
             <LineChart accessibilityLayer data={chartData} margin={{ left: 12, right: 12 }}>
               <CartesianGrid vertical={false} />
@@ -146,7 +146,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLe
               />
             </LineChart>
           </ChartContainer>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`import { Line, LineChart, CartesianGrid, XAxis } from "recharts"
 
 <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
@@ -166,7 +166,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLe
          <p className="text-sm text-muted-foreground mb-4">
           Biểu đồ miền giúp trực quan hóa cả xu hướng và tỷ trọng cộng dồn của dữ liệu.
         </p>
-        <div className="border rounded-xl p-6 bg-card">
+        <DemoBlock>
           <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
             <AreaChart accessibilityLayer data={chartData} margin={{ left: 12, right: 12 }}>
               <CartesianGrid vertical={false} />
@@ -197,7 +197,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLe
               />
             </AreaChart>
           </ChartContainer>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
@@ -217,21 +217,23 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLe
          <p className="text-sm text-muted-foreground mb-4">
           Biểu đồ vành khuyên (donut) hiển thị tỷ trọng của từng thành phần so với tổng thể.
         </p>
-        <div className="border rounded-xl p-6 bg-card flex justify-center">
-          <ChartContainer config={pieConfig} className="min-h-[250px] w-[250px] relative">
-            <PieChart>
-              <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-              <Pie
-                data={pieData}
-                dataKey="visitors"
-                nameKey="browser"
-                innerRadius={60}
-                strokeWidth={5}
-                paddingAngle={2}
-              />
-            </PieChart>
-          </ChartContainer>
-        </div>
+        <DemoBlock>
+          <div className="flex justify-center w-full">
+            <ChartContainer config={pieConfig} className="min-h-[250px] w-[250px] relative">
+              <PieChart>
+                <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                <Pie
+                  data={pieData}
+                  dataKey="visitors"
+                  nameKey="browser"
+                  innerRadius={60}
+                  strokeWidth={5}
+                  paddingAngle={2}
+                />
+              </PieChart>
+            </ChartContainer>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`import { Pie, PieChart } from "recharts"
 
 const pieData = [
@@ -265,55 +267,57 @@ const pieConfig = {
           <code className="text-xs font-mono">CartesianGrid</code> giúp người dùng dễ dàng căn chỉnh và so sánh các mốc dữ liệu. Dưới đây là các ví dụ sử dụng lưới dọc, lưới ngang, toàn bộ lưới và lưới đứt nét.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Lưới ngang (Horizontal) */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">Chỉ lưới ngang (Mặc định)</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <BarChart data={chartData} margin={{ left: 12, right: 12 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              </BarChart>
-            </ChartContainer>
+        <DemoBlock>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            {/* Lưới ngang (Horizontal) */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">Chỉ lưới ngang (Mặc định)</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <BarChart data={chartData} margin={{ left: 12, right: 12 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            </div>
+  
+            {/* Lưới dọc (Vertical) */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">Chỉ lưới dọc</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <BarChart data={chartData} margin={{ left: 12, right: 12 }}>
+                  <CartesianGrid horizontal={false} />
+                  <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            </div>
+  
+            {/* Cả ngang và dọc */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">Lưới toàn bộ (Kẻ ô)</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <AreaChart data={chartData} margin={{ left: 12, right: 12 }}>
+                  <CartesianGrid />
+                  <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <Area dataKey="desktop" type="monotone" fill="var(--color-desktop)" fillOpacity={0.4} stroke="var(--color-desktop)" />
+                </AreaChart>
+              </ChartContainer>
+            </div>
+  
+            {/* Lưới nét đứt */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">Lưới đứt nét</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <LineChart data={chartData} margin={{ left: 12, right: 12 }}>
+                  <CartesianGrid strokeDasharray="4 4" vertical={false} />
+                  <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <Line dataKey="desktop" type="linear" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
+                </LineChart>
+              </ChartContainer>
+            </div>
           </div>
-
-          {/* Lưới dọc (Vertical) */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">Chỉ lưới dọc</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <BarChart data={chartData} margin={{ left: 12, right: 12 }}>
-                <CartesianGrid horizontal={false} />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </div>
-
-          {/* Cả ngang và dọc */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">Lưới toàn bộ (Kẻ ô)</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <AreaChart data={chartData} margin={{ left: 12, right: 12 }}>
-                <CartesianGrid />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <Area dataKey="desktop" type="monotone" fill="var(--color-desktop)" fillOpacity={0.4} stroke="var(--color-desktop)" />
-              </AreaChart>
-            </ChartContainer>
-          </div>
-
-          {/* Lưới nét đứt */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">Lưới đứt nét</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <LineChart data={chartData} margin={{ left: 12, right: 12 }}>
-                <CartesianGrid strokeDasharray="4 4" vertical={false} />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <Line dataKey="desktop" type="linear" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
-              </LineChart>
-            </ChartContainer>
-          </div>
-        </div>
+        </DemoBlock>
 
         <CodeBlock code={`<CartesianGrid vertical={false} /> {/* Chỉ lưới ngang (thường dùng) */}
 
@@ -330,31 +334,33 @@ const pieConfig = {
           <code className="text-xs font-mono">XAxis</code> được dùng để hiển thị các mốc dữ liệu bên dưới biểu đồ. Việc ẩn đi các đường trục (axis line) hay vạch ngang (tick line) giúp biểu đồ trở nên "clean" và hiện đại hơn.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Axis mặc định */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">Mặc định (Có đường trục & tick)</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <BarChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" axisLine={true} tickLine={true} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              </BarChart>
-            </ChartContainer>
+        <DemoBlock>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            {/* Axis mặc định */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">Mặc định (Có đường trục & tick)</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <BarChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" axisLine={true} tickLine={true} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            </div>
+  
+            {/* Axis rút gọn */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">Rút gọn (Ẩn đường trục & tick)</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <BarChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={12} tickFormatter={(value) => value.slice(0, 3)} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            </div>
           </div>
-
-          {/* Axis rút gọn */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">Rút gọn (Ẩn đường trục & tick)</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <BarChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={12} tickFormatter={(value) => value.slice(0, 3)} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </div>
-        </div>
+        </DemoBlock>
 
         <CodeBlock code={`<XAxis dataKey="month" /> {/* Mặc định */}
 
@@ -373,59 +379,61 @@ const pieConfig = {
           <code className="text-xs font-mono">ChartTooltipContent</code> cung cấp nhiều định dạng cho phần indicator (dấu hiệu nhận biết) và nhãn hiển thị (label). Nhờ vậy tooltip có thể trông liền mạch hơn với style của biểu đồ. Hãy di chuột vào các biểu đồ dưới đây để xem sự khác biệt.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Default (Dot) */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">1. Indicator dạng chấm (Mặc định)</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <BarChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dot" />} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              </BarChart>
-            </ChartContainer>
+        <DemoBlock>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            {/* Default (Dot) */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">1. Indicator dạng chấm (Mặc định)</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <BarChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dot" />} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            </div>
+  
+            {/* Line Indicator */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">2. Indicator đường mảnh</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <BarChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            </div>
+  
+            {/* Dashed Indicator */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">3. Indicator viền nét đứt</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <AreaChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
+                  <Area dataKey="desktop" type="monotone" fill="var(--color-desktop)" fillOpacity={0.4} stroke="var(--color-desktop)" />
+                </AreaChart>
+              </ChartContainer>
+            </div>
+  
+            {/* Hide Label */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">4. Ẩn tiêu đề nhãn (Hide Label)</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <LineChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                  <Line dataKey="desktop" type="linear" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
+                </LineChart>
+              </ChartContainer>
+            </div>
           </div>
-
-          {/* Line Indicator */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">2. Indicator đường mảnh</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <BarChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </div>
-
-          {/* Dashed Indicator */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">3. Indicator viền nét đứt</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <AreaChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
-                <Area dataKey="desktop" type="monotone" fill="var(--color-desktop)" fillOpacity={0.4} stroke="var(--color-desktop)" />
-              </AreaChart>
-            </ChartContainer>
-          </div>
-
-          {/* Hide Label */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">4. Ẩn tiêu đề nhãn (Hide Label)</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <LineChart data={chartData} margin={{ left: 12, right: 12, bottom: 4 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                <Line dataKey="desktop" type="linear" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
-              </LineChart>
-            </ChartContainer>
-          </div>
-        </div>
+        </DemoBlock>
 
         <CodeBlock code={`<ChartTooltip content={<ChartTooltipContent indicator="dot" />} />      {/* Chấm tròn (Mặc định) */}
 
@@ -443,35 +451,37 @@ const pieConfig = {
           <code className="text-xs font-mono">ChartLegend</code> định nghĩa phần chỉ dẫn chú thích màu đại diện cho dữ liệu. Bạn có thể chừa vị trí lên trên hoặc ẩn đi các khối icon kế bên title.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Default */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">Mặc định (Dưới cùng, có Icon)</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <BarChart data={chartData} margin={{ left: 12, right: 12 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <ChartLegend content={<ChartLegendContent />} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-              </BarChart>
-            </ChartContainer>
+        <DemoBlock>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            {/* Default */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">Mặc định (Dưới cùng, có Icon)</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <BarChart data={chartData} margin={{ left: 12, right: 12 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <ChartLegend content={<ChartLegendContent />} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                  <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            </div>
+  
+            {/* Top & No Icon */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium">Nằm trên (Top) & Ẩn Icon</h3>
+              <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                <BarChart data={chartData} margin={{ top: 12, left: 12, right: 12 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <ChartLegend verticalAlign="top" content={<ChartLegendContent hideIcon />} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                  <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            </div>
           </div>
-
-          {/* Top & No Icon */}
-          <div className="border rounded-xl p-4 bg-card">
-            <h3 className="mb-4 text-sm font-medium">Nằm trên (Top) & Ẩn Icon</h3>
-            <ChartContainer config={chartConfig} className="h-[150px] w-full">
-              <BarChart data={chartData} margin={{ top: 12, left: 12, right: 12 }}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
-                <ChartLegend verticalAlign="top" content={<ChartLegendContent hideIcon />} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </div>
-        </div>
+        </DemoBlock>
 
         <CodeBlock code={`<ChartLegend content={<ChartLegendContent />} />      {/* Nằm dưới biểu đồ, có icon màu */}
 

@@ -6,7 +6,12 @@ import {
   AvatarGroup,
   AvatarGroupCount,
 } from "@/components/ui/avatar"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import {
+  ShowcaseSection,
+  DemoBlock,
+  CodeBlock,
+  PropsTable,
+} from "@/app/components/_showcase"
 
 /* ─── page ───────────────────────────────────────────────────────────────── */
 
@@ -39,15 +44,17 @@ export default function AvatarPage() {
           <code className="text-xs font-mono">AvatarImage</code> hiển thị ảnh;{" "}
           <code className="text-xs font-mono">AvatarFallback</code> tự động xuất hiện khi ảnh chưa tải xong hoặc lỗi.
         </p>
-        <div className="flex items-center gap-4">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-        </div>
+        <DemoBlock>
+          <div className="flex items-center gap-4">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Avatar>
   <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
@@ -63,20 +70,22 @@ export default function AvatarPage() {
           <code className="text-xs font-mono">default</code> (32px),{" "}
           <code className="text-xs font-mono">lg</code> (40px).
         </p>
-        <div className="flex items-center gap-4">
-          <Avatar size="sm">
-            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-            <AvatarFallback>SM</AvatarFallback>
-          </Avatar>
-          <Avatar size="default">
-            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <Avatar size="lg">
-            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-            <AvatarFallback>LG</AvatarFallback>
-          </Avatar>
-        </div>
+        <DemoBlock>
+          <div className="flex items-center gap-4">
+            <Avatar size="sm">
+              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+              <AvatarFallback>SM</AvatarFallback>
+            </Avatar>
+            <Avatar size="default">
+              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar size="lg">
+              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+              <AvatarFallback>LG</AvatarFallback>
+            </Avatar>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Avatar size="sm">...</Avatar>
 <Avatar size="default">...</Avatar>   {/* mặc định, có thể bỏ qua */}
@@ -90,17 +99,19 @@ export default function AvatarPage() {
           Khi không có ảnh hoặc ảnh lỗi, <code className="text-xs font-mono">AvatarFallback</code> hiển thị chữ viết tắt.
           Text size tự thu nhỏ ở size <code className="text-xs font-mono">sm</code>.
         </p>
-        <div className="flex items-center gap-4">
-          <Avatar size="sm">
-            <AvatarFallback>AB</AvatarFallback>
-          </Avatar>
-          <Avatar size="default">
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <Avatar size="lg">
-            <AvatarFallback>XY</AvatarFallback>
-          </Avatar>
-        </div>
+        <DemoBlock>
+          <div className="flex items-center gap-4">
+            <Avatar size="sm">
+              <AvatarFallback>AB</AvatarFallback>
+            </Avatar>
+            <Avatar size="default">
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar size="lg">
+              <AvatarFallback>XY</AvatarFallback>
+            </Avatar>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Avatar>
   <AvatarFallback>CN</AvatarFallback>
@@ -115,23 +126,25 @@ export default function AvatarPage() {
           Kích thước badge tự scale theo size của Avatar. Ở size <code className="text-xs font-mono">sm</code>,
           icon bên trong badge bị ẩn.
         </p>
-        <div className="flex items-center gap-4">
-          <Avatar size="sm">
-            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-            <AvatarBadge />
-          </Avatar>
-          <Avatar size="default">
-            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-            <AvatarBadge />
-          </Avatar>
-          <Avatar size="lg">
-            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-            <AvatarBadge />
-          </Avatar>
-        </div>
+        <DemoBlock>
+          <div className="flex items-center gap-4">
+            <Avatar size="sm">
+              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+              <AvatarBadge />
+            </Avatar>
+            <Avatar size="default">
+              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+              <AvatarBadge />
+            </Avatar>
+            <Avatar size="lg">
+              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+              <AvatarBadge />
+            </Avatar>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <Avatar size="lg">
   <AvatarImage src="..." alt="..." />
@@ -148,34 +161,36 @@ export default function AvatarPage() {
           <code className="text-xs font-mono">AvatarGroupCount</code> hiển thị số lượng còn lại, tự scale
           kích thước theo size của các Avatar trong nhóm.
         </p>
-        <div className="flex flex-col gap-4">
-          <AvatarGroup>
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar>
-              <AvatarFallback>AB</AvatarFallback>
-            </Avatar>
-            <Avatar>
-              <AvatarFallback>XY</AvatarFallback>
-            </Avatar>
-            <AvatarGroupCount>+5</AvatarGroupCount>
-          </AvatarGroup>
-          <AvatarGroup>
-            <Avatar size="lg">
-              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar size="lg">
-              <AvatarFallback>AB</AvatarFallback>
-            </Avatar>
-            <Avatar size="lg">
-              <AvatarFallback>XY</AvatarFallback>
-            </Avatar>
-            <AvatarGroupCount>+5</AvatarGroupCount>
-          </AvatarGroup>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-col gap-4">
+            <AvatarGroup>
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar>
+                <AvatarFallback>AB</AvatarFallback>
+              </Avatar>
+              <Avatar>
+                <AvatarFallback>XY</AvatarFallback>
+              </Avatar>
+              <AvatarGroupCount>+5</AvatarGroupCount>
+            </AvatarGroup>
+            <AvatarGroup>
+              <Avatar size="lg">
+                <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar size="lg">
+                <AvatarFallback>AB</AvatarFallback>
+              </Avatar>
+              <Avatar size="lg">
+                <AvatarFallback>XY</AvatarFallback>
+              </Avatar>
+              <AvatarGroupCount>+5</AvatarGroupCount>
+            </AvatarGroup>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <AvatarGroup>
   <Avatar>

@@ -8,7 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/components/_showcase"
 
 export default function BreadcrumbShowcasePage() {
   return (
@@ -67,23 +67,24 @@ export default function BreadcrumbShowcasePage() {
           <code className="text-xs font-mono">BreadcrumbPage</code> thay vì{" "}
           <code className="text-xs font-mono">BreadcrumbLink</code>.
         </p>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <CodeBlock code={`
-<Breadcrumb>
+        <DemoBlock>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </DemoBlock>
+        <CodeBlock code={`<Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
       <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -97,8 +98,7 @@ export default function BreadcrumbShowcasePage() {
       <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
     </BreadcrumbItem>
   </BreadcrumbList>
-</Breadcrumb>
-        `} />
+</Breadcrumb>`} />
       </ShowcaseSection>
 
       {/* ── 2. Với Next.js Link ── */}
@@ -108,30 +108,46 @@ export default function BreadcrumbShowcasePage() {
           <code className="text-xs font-mono">BreadcrumbLink</code> để render thành{" "}
           <code className="text-xs font-mono">&lt;Link&gt;</code> của Next.js, giữ nguyên client-side navigation.
         </p>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/">Home</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/components">Components</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <CodeBlock code={`
-<BreadcrumbLink asChild>
-  <Link href="/">Home</Link>
-</BreadcrumbLink>
-        `} />
+        <DemoBlock>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/">Home</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/components">Components</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </DemoBlock>
+        <CodeBlock code={`<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink asChild>
+        <Link href="/">Home</Link>
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink asChild>
+        <Link href="/components">Components</Link>
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`} />
       </ShowcaseSection>
 
       {/* ── 3. Với ellipsis ── */}
@@ -139,30 +155,46 @@ export default function BreadcrumbShowcasePage() {
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">BreadcrumbEllipsis</code> để ẩn bớt các cấp trung gian khi đường dẫn quá dài.
         </p>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbEllipsis />
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <CodeBlock code={`
-<BreadcrumbItem>
-  <BreadcrumbEllipsis />
-</BreadcrumbItem>
-        `} />
+        <DemoBlock>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbEllipsis />
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </DemoBlock>
+        <CodeBlock code={`<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbEllipsis />
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`} />
       </ShowcaseSection>
 
       {/* ── 4. Custom separator ── */}
@@ -170,71 +202,101 @@ export default function BreadcrumbShowcasePage() {
         <p className="text-sm text-muted-foreground">
           Truyền nội dung vào <code className="text-xs font-mono">BreadcrumbSeparator</code> để thay ký tự phân cách mặc định (chevron).
         </p>
-        <div className="space-y-3">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>·</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>·</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-        <CodeBlock code={`
-<BreadcrumbSeparator>/</BreadcrumbSeparator>
-<BreadcrumbSeparator>·</BreadcrumbSeparator>
-        `} />
+        <DemoBlock>
+          <div className="space-y-3">
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator>/</BreadcrumbSeparator>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator>/</BreadcrumbSeparator>
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator>·</BreadcrumbSeparator>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator>·</BreadcrumbSeparator>
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>/</BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>/</BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>·</BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>·</BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`} />
       </ShowcaseSection>
 
       {/* ── 5. Nhiều cấp ── */}
       <ShowcaseSection title="5. Nhiều cấp phân cấp">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/dashboard/settings">Settings</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/dashboard/settings/profile">Profile</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Edit</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <CodeBlock code={`
-<Breadcrumb>
+        <DemoBlock>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/dashboard/settings">Settings</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/dashboard/settings/profile">Profile</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Edit</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </DemoBlock>
+        <CodeBlock code={`<Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>
     <BreadcrumbSeparator />
@@ -242,10 +304,11 @@ export default function BreadcrumbShowcasePage() {
     <BreadcrumbSeparator />
     <BreadcrumbItem><BreadcrumbLink href="/dashboard/settings">Settings</BreadcrumbLink></BreadcrumbItem>
     <BreadcrumbSeparator />
+    <BreadcrumbItem><BreadcrumbLink href="/dashboard/settings/profile">Profile</BreadcrumbLink></BreadcrumbItem>
+    <BreadcrumbSeparator />
     <BreadcrumbItem><BreadcrumbPage>Edit</BreadcrumbPage></BreadcrumbItem>
   </BreadcrumbList>
-</Breadcrumb>
-        `} />
+</Breadcrumb>`} />
       </ShowcaseSection>
 
       {/* ── 6. Props reference ── */}

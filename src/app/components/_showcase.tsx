@@ -20,6 +20,27 @@ export function ShowcaseSection({
   )
 }
 
+/* ─── DemoBlock ──────────────────────────────────────────────────────────── */
+
+export function DemoBlock({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
+  return (
+    <div
+      className={cn(
+        "flex min-h-[350px] w-full items-center justify-center rounded-lg border bg-card p-10",
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
 /* ─── CodeBlock (collapsible) ─────────────────────────────────────────────── */
 
 export function CodeBlock({ code, className, alwaysOpen, defaultOpen }: { code: string; className?: string; alwaysOpen?: boolean; defaultOpen?: boolean }) {

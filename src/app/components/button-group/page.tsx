@@ -4,7 +4,7 @@ import {
   ButtonGroupSeparator,
   ButtonGroupText,
 } from "@/components/ui/button-group"
-import { ShowcaseSection, CodeBlock, PropsTable } from "@/app/components/_showcase"
+import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/components/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
 
@@ -79,13 +79,15 @@ export default function ButtonGroupPage() {
           Bọc các <code className="text-xs font-mono">&lt;Button&gt;</code> bên trong{" "}
           <code className="text-xs font-mono">&lt;ButtonGroup&gt;</code> — border và border-radius sẽ tự động hợp nhất.
         </p>
-        <div className="flex flex-wrap gap-3">
-          <ButtonGroup>
-            <Button variant="outline">Left</Button>
-            <Button variant="outline">Center</Button>
-            <Button variant="outline">Right</Button>
-          </ButtonGroup>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3">
+            <ButtonGroup>
+              <Button variant="outline">Left</Button>
+              <Button variant="outline">Center</Button>
+              <Button variant="outline">Right</Button>
+            </ButtonGroup>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup>
   <Button variant="outline">Left</Button>
@@ -102,24 +104,26 @@ export default function ButtonGroupPage() {
           <code className="text-xs font-mono">"horizontal"</code> (mặc định) hoặc{" "}
           <code className="text-xs font-mono">"vertical"</code>.
         </p>
-        <div className="flex flex-wrap gap-6 items-start">
-          <div className="space-y-1">
-            <p className="text-xs text-muted-foreground">horizontal</p>
-            <ButtonGroup>
-              <Button variant="outline">Top</Button>
-              <Button variant="outline">Middle</Button>
-              <Button variant="outline">Bottom</Button>
-            </ButtonGroup>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-6 items-start">
+            <div className="space-y-1">
+              <p className="text-xs text-muted-foreground">horizontal</p>
+              <ButtonGroup>
+                <Button variant="outline">Top</Button>
+                <Button variant="outline">Middle</Button>
+                <Button variant="outline">Bottom</Button>
+              </ButtonGroup>
+            </div>
+            <div className="space-y-1">
+              <p className="text-xs text-muted-foreground">vertical</p>
+              <ButtonGroup orientation="vertical">
+                <Button variant="outline">Top</Button>
+                <Button variant="outline">Middle</Button>
+                <Button variant="outline">Bottom</Button>
+              </ButtonGroup>
+            </div>
           </div>
-          <div className="space-y-1">
-            <p className="text-xs text-muted-foreground">vertical</p>
-            <ButtonGroup orientation="vertical">
-              <Button variant="outline">Top</Button>
-              <Button variant="outline">Middle</Button>
-              <Button variant="outline">Bottom</Button>
-            </ButtonGroup>
-          </div>
-        </div>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup orientation="horizontal">
   ...
@@ -136,18 +140,20 @@ export default function ButtonGroupPage() {
         <p className="text-sm text-muted-foreground">
           ButtonGroup hoạt động với mọi variant của Button.
         </p>
-        <div className="flex flex-col gap-3">
-          {(["default", "outline", "secondary", "ghost", "destructive"] as const).map((variant) => (
-            <div key={variant} className="flex items-center gap-4">
-              <span className="w-24 text-xs text-muted-foreground">{variant}</span>
-              <ButtonGroup>
-                <Button variant={variant}>One</Button>
-                <Button variant={variant}>Two</Button>
-                <Button variant={variant}>Three</Button>
-              </ButtonGroup>
-            </div>
-          ))}
-        </div>
+        <DemoBlock>
+          <div className="flex flex-col gap-3">
+            {(["default", "outline", "secondary", "ghost", "destructive"] as const).map((variant) => (
+              <div key={variant} className="flex items-center gap-4">
+                <span className="w-24 text-xs text-muted-foreground">{variant}</span>
+                <ButtonGroup>
+                  <Button variant={variant}>One</Button>
+                  <Button variant={variant}>Two</Button>
+                  <Button variant={variant}>Three</Button>
+                </ButtonGroup>
+              </div>
+            ))}
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup>
   <Button variant="default">One</Button>
@@ -162,18 +168,20 @@ export default function ButtonGroupPage() {
         <p className="text-sm text-muted-foreground">
           Truyền cùng <code className="text-xs font-mono">size</code> cho tất cả Button trong nhóm để đồng đều kích thước.
         </p>
-        <div className="flex flex-col gap-3">
-          {(["xs", "sm", "default", "lg"] as const).map((size) => (
-            <div key={size} className="flex items-center gap-4">
-              <span className="w-16 text-xs text-muted-foreground">{size}</span>
-              <ButtonGroup>
-                <Button variant="outline" size={size}>One</Button>
-                <Button variant="outline" size={size}>Two</Button>
-                <Button variant="outline" size={size}>Three</Button>
-              </ButtonGroup>
-            </div>
-          ))}
-        </div>
+        <DemoBlock>
+          <div className="flex flex-col gap-3">
+            {(["xs", "sm", "default", "lg"] as const).map((size) => (
+              <div key={size} className="flex items-center gap-4">
+                <span className="w-16 text-xs text-muted-foreground">{size}</span>
+                <ButtonGroup>
+                  <Button variant="outline" size={size}>One</Button>
+                  <Button variant="outline" size={size}>Two</Button>
+                  <Button variant="outline" size={size}>Three</Button>
+                </ButtonGroup>
+              </div>
+            ))}
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup>
   <Button variant="outline" size="sm">One</Button>
@@ -188,13 +196,15 @@ export default function ButtonGroupPage() {
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">&lt;ButtonGroupSeparator&gt;</code> để chèn đường kẻ ngăn cách giữa các button.
         </p>
-        <ButtonGroup>
-          <Button variant="outline">Copy</Button>
-          <ButtonGroupSeparator />
-          <Button variant="outline">Paste</Button>
-          <ButtonGroupSeparator />
-          <Button variant="outline">Cut</Button>
-        </ButtonGroup>
+        <DemoBlock>
+          <ButtonGroup>
+            <Button variant="outline">Copy</Button>
+            <ButtonGroupSeparator />
+            <Button variant="outline">Paste</Button>
+            <ButtonGroupSeparator />
+            <Button variant="outline">Cut</Button>
+          </ButtonGroup>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup>
   <Button variant="outline">Copy</Button>
@@ -211,16 +221,18 @@ export default function ButtonGroupPage() {
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">&lt;ButtonGroupText&gt;</code> để thêm nhãn văn bản tĩnh (prefix / suffix) kèm với button.
         </p>
-        <div className="flex flex-col gap-3">
-          <ButtonGroup>
-            <ButtonGroupText>https://</ButtonGroupText>
-            <Button variant="outline">example.com</Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button variant="outline">Amount</Button>
-            <ButtonGroupText>USD</ButtonGroupText>
-          </ButtonGroup>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-col gap-3">
+            <ButtonGroup>
+              <ButtonGroupText>https://</ButtonGroupText>
+              <Button variant="outline">example.com</Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button variant="outline">Amount</Button>
+              <ButtonGroupText>USD</ButtonGroupText>
+            </ButtonGroup>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup>
   <ButtonGroupText>https://</ButtonGroupText>
@@ -239,17 +251,19 @@ export default function ButtonGroupPage() {
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">size="icon"</code> cho các button chỉ chứa icon.
         </p>
-        <ButtonGroup>
-          <Button variant="outline" size="icon" aria-label="Bold">
-            <BoldIcon />
-          </Button>
-          <Button variant="outline" size="icon" aria-label="Italic">
-            <ItalicIcon />
-          </Button>
-          <Button variant="outline" size="icon" aria-label="Underline">
-            <UnderlineIcon />
-          </Button>
-        </ButtonGroup>
+        <DemoBlock>
+          <ButtonGroup>
+            <Button variant="outline" size="icon" aria-label="Bold">
+              <BoldIcon />
+            </Button>
+            <Button variant="outline" size="icon" aria-label="Italic">
+              <ItalicIcon />
+            </Button>
+            <Button variant="outline" size="icon" aria-label="Underline">
+              <UnderlineIcon />
+            </Button>
+          </ButtonGroup>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup>
   <Button variant="outline" size="icon" aria-label="Bold">
@@ -264,18 +278,20 @@ export default function ButtonGroupPage() {
 
       {/* ── 8. Icon + text ── */}
       <ShowcaseSection title="8. Icon kết hợp với text">
-        <div className="flex flex-wrap gap-3">
-          <ButtonGroup>
-            <Button variant="outline">
-              <LoginIcon />
-              Login
-            </Button>
-            <Button variant="outline">
-              Register
-              <ArrowIcon />
-            </Button>
-          </ButtonGroup>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3">
+            <ButtonGroup>
+              <Button variant="outline">
+                <LoginIcon />
+                Login
+              </Button>
+              <Button variant="outline">
+                Register
+                <ArrowIcon />
+              </Button>
+            </ButtonGroup>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup>
   <Button variant="outline">
@@ -295,18 +311,20 @@ export default function ButtonGroupPage() {
         <p className="text-sm text-muted-foreground">
           Thêm <code className="text-xs font-mono">disabled</code> vào từng button riêng lẻ hoặc toàn bộ nhóm.
         </p>
-        <div className="flex flex-col gap-3">
-          <ButtonGroup>
-            <Button variant="outline" disabled>One</Button>
-            <Button variant="outline" disabled>Two</Button>
-            <Button variant="outline" disabled>Three</Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button variant="outline">Active</Button>
-            <Button variant="outline" disabled>Disabled</Button>
-            <Button variant="outline">Active</Button>
-          </ButtonGroup>
-        </div>
+        <DemoBlock>
+          <div className="flex flex-col gap-3">
+            <ButtonGroup>
+              <Button variant="outline" disabled>One</Button>
+              <Button variant="outline" disabled>Two</Button>
+              <Button variant="outline" disabled>Three</Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button variant="outline">Active</Button>
+              <Button variant="outline" disabled>Disabled</Button>
+              <Button variant="outline">Active</Button>
+            </ButtonGroup>
+          </div>
+        </DemoBlock>
         <CodeBlock code={`
 <ButtonGroup>
   <Button variant="outline" disabled>One</Button>
