@@ -22,5 +22,6 @@ export const components: ComponentItem[] = [
   { name: "Command", href: "/components/command", description: "Command palette giúp tìm kiếm và thực hiện các thao tác nhanh chóng" },
   { name: "Context Menu", href: "/components/context-menu", description: "Menu ngữ cảnh hiển thị khi nhấp chuột phải với các hành động phù hợp" },
   { name: "Data Table", href: "/components/data-table", description: "Bảng dữ liệu mạnh mẽ với sắp xếp, lọc, phân trang và chọn hàng dùng TanStack Table" },
-  { name: "Dialog", href: "/components/dialog", description: "Cửa sổ modal xuất hiện phía trên trang, yêu cầu người dùng thực hiện hành động hoặc xem thông tin quan trọng" }
+  { name: "Dialog", href: "/components/dialog", description: "Cửa sổ modal xuất hiện phía trên trang, yêu cầu người dùng thực hiện hành động hoặc xem thông tin quan trọng" },
+  { name: "Direction", href: "/components/direction", description: "Provider thiết lập hướng văn bản LTR/RTL cho toàn bộ cây component con, hỗ trợ ứng dụng đa ngôn ngữ" }
 ]
