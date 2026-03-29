@@ -3,22 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-
-const components: { name: string; href: string }[] = [
-  { name: "Accordion", href: "/components/accordion" },
-  { name: "Alert", href: "/components/alert" },
-  { name: "Alert Dialog", href: "/components/alert-dialog" },
-  { name: "Aspect Ratio", href: "/components/aspect-ratio" },
-  { name: "Avatar", href: "/components/avatar" },
-  { name: "Badge", href: "/components/badge" },
-  { name: "Breadcrumb", href: "/components/breadcrumb" },
-  { name: "Button", href: "/components/button" },
-  { name: "Button Group", href: "/components/button-group" },
-  { name: "Calendar", href: "/components/calendar" },
-  { name: "Card", href: "/components/card" },
-  { name: "Carousel", href: "/components/carousel" },
-  { name: "Chart", href: "/components/chart" },
-]
+import { components } from "./data"
 
 export function Sidebar() {
   const pathname = usePathname()
