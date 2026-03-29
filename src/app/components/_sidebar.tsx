@@ -8,6 +8,7 @@ const components: { name: string; href: string }[] = [
   { name: "Accordion", href: "/components/accordion" },
   { name: "Alert", href: "/components/alert" },
   { name: "Alert Dialog", href: "/components/alert-dialog" },
+  { name: "Aspect Ratio", href: "/components/aspect-ratio" },
 ]
 
 export function Sidebar() {

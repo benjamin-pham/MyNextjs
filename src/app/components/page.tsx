@@ -4,6 +4,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: "Accordion", href: "/components/accordion", description: "A vertically stacked set of interactive headings that each contain a title, content snippet, and an icon indicating whether the content is expanded or collapsed." },
   { name: "Alert", href: "/components/alert", description: "Default & destructive variants, with icon support" },
   { name: "Alert Dialog", href: "/components/alert-dialog", description: "A modal dialog that interrupts the user with important content and expects a response." },
+  { name: "Aspect Ratio", href: "/components/aspect-ratio", description: "Giữ tỷ lệ khung hình cho media & nội dung" },
 ]
 
 export default function ComponentsPage() {
