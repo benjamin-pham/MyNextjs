@@ -28,6 +28,30 @@ export default function AlertPage() {
         </p>
       </div>
 
+      {/* ── Import ── */}
+      <ShowcaseSection title="Import">
+        <CodeBlock alwaysOpen code={`import {
+  Alert,
+  AlertAction,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"`} />
+      </ShowcaseSection>
+
+      {/* ── Sử dụng ── */}
+      <ShowcaseSection title="Sử dụng">
+        <CodeBlock alwaysOpen code={`<Alert>
+  <InfoIcon />
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add components and dependencies to your app using the cli.
+  </AlertDescription>
+  <AlertAction>
+    <Button variant="outline">Enable</Button>
+  </AlertAction>
+</Alert>`} />
+      </ShowcaseSection>
+
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
         <Alert>
