@@ -11,6 +11,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: "Button", href: "/components/button", description: "Các loại nút cơ bản với nhiều biến thể và trạng thái" },
   { name: "Button Group", href: "/components/button-group", description: "Nhóm các nút liên quan với nhau" },
   { name: "Calendar", href: "/components/calendar", description: "Chọn ngày hoặc phạm vi ngày với giao diện lịch" },
+  { name: "Card", href: "/components/card", description: "Thẻ chứa nội dung với nhiều tùy chọn cấu hình" },
 ]
 
 export default function ComponentsPage() {
