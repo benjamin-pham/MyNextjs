@@ -13,6 +13,7 @@ const components: { name: string; href: string }[] = [
   { name: "Badge", href: "/components/badge" },
   { name: "Breadcrumb", href: "/components/breadcrumb" },
   { name: "Button", href: "/components/button" },
+  { name: "Button Group", href: "/components/button-group" },
 ]
 
 export function Sidebar() {

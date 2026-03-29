@@ -9,6 +9,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: "Badge", href: "/components/badge", description: "Hiển thị trạng thái, số lượng hoặc nhãn thông tin một cách nhỏ gọn" },
   { name: "Breadcrumb", href: "/components/breadcrumb", description: "Điều hướng phân cấp hiển thị vị trí hiện tại trong cấu trúc trang" },
   { name: "Button", href: "/components/button", description: "Các loại nút cơ bản với nhiều biến thể và trạng thái" },
+  { name: "Button Group", href: "/components/button-group", description: "Nhóm các nút liên quan với nhau" },
 ]
 
 export default function ComponentsPage() {
