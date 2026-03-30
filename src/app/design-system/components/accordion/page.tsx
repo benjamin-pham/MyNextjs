@@ -8,6 +8,13 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card"
 
 /* ─── controlled demo ────────────────────────────────────────────────────── */
 
@@ -68,6 +75,95 @@ function ControlledMultipleDemo() {
         <button onClick={() => setOpen([])} className="rounded border px-2 py-1 text-xs hover:bg-muted transition-colors">Đóng tất cả</button>
       </div>
     </div>
+  )
+}
+
+
+const borderItems = [
+  {
+    value: "billing",
+    trigger: "How does billing work?",
+    content:
+      "We offer monthly and annual subscription plans. Billing is charged at the beginning of each cycle, and you can cancel anytime. All plans include automatic backups, 24/7 support, and unlimited team members.",
+  },
+  {
+    value: "security",
+    trigger: "Is my data secure?",
+    content:
+      "Yes. We use end-to-end encryption, SOC 2 Type II compliance, and regular third-party security audits. All data is encrypted at rest and in transit using industry-standard protocols.",
+  },
+  {
+    value: "integration",
+    trigger: "What integrations do you support?",
+    content:
+      "We integrate with 500+ popular tools including Slack, Zapier, Salesforce, HubSpot, and more. You can also build custom integrations using our REST API and webhooks.",
+  },
+]
+
+export function AccordionBorders() {
+  return (
+    <Accordion
+      type="single"
+      collapsible
+      className="max-w-xl rounded-lg border px-0"
+      defaultValue="billing"
+    >
+      {borderItems.map((item) => (
+        <AccordionItem
+          key={item.value}
+          value={item.value}
+          className="border-b px-4 last:border-b-0"
+        >
+          <AccordionTrigger>{item.trigger}</AccordionTrigger>
+          <AccordionContent>{item.content}</AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
+  )
+}
+
+const cardItems = [
+  {
+    value: "plans",
+    trigger: "What subscription plans do you offer?",
+    content:
+      "We offer three subscription tiers: Starter ($9/month), Professional ($29/month), and Enterprise ($99/month). Each plan includes increasing storage limits, API access, priority support, and team collaboration features.",
+  },
+  {
+    value: "billing",
+    trigger: "How does billing work?",
+    content:
+      "Billing occurs automatically at the start of each billing cycle. We accept all major credit cards, PayPal, and ACH transfers for enterprise customers. You'll receive an invoice via email after each payment.",
+  },
+  {
+    value: "cancel",
+    trigger: "How do I cancel my subscription?",
+    content:
+      "You can cancel your subscription anytime from your account settings. There are no cancellation fees or penalties. Your access will continue until the end of your current billing period.",
+  },
+]
+
+export function AccordionCard() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Subscription & Billing</CardTitle>
+        <CardDescription>
+          Common questions about your account, plans, payments and
+          cancellations.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Accordion type="single" collapsible defaultValue="plans">
+          {cardItems.map((item) => (
+            <AccordionItem key={item.value} value={item.value}>
+              <AccordionTrigger>{item.trigger}</AccordionTrigger>
+              <AccordionContent>{item.content}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -324,8 +420,65 @@ const [open, setOpen] = useState<string[]>([])
         `} />
       </ShowcaseSection>
 
-      {/* ── 8. Props reference ── */}
-      <ShowcaseSection title="8. Props reference">
+      {/* ── 8. Borders ── */}
+      <ShowcaseSection title="8. Borders variant">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng border xung quanh container và padding ngang cho item để tạo kiểu dáng card.
+        </p>
+        <DemoBlock>
+          <AccordionBorders />
+        </DemoBlock>
+        <CodeBlock code={`
+<Accordion
+  type="single"
+  collapsible
+  className="max-w-lg rounded-lg border"
+  defaultValue="billing"
+>
+  {items.map((item) => (
+    <AccordionItem
+      key={item.value}
+      value={item.value}
+      className="border-b px-4 last:border-b-0"
+    >
+      <AccordionTrigger>{item.trigger}</AccordionTrigger>
+      <AccordionContent>{item.content}</AccordionContent>
+    </AccordionItem>
+  ))}
+</Accordion>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 9. Card ── */}
+      <ShowcaseSection title="9. Trong Card">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp Accordion bên trong component Card để tạo khu vực FAQ hoặc cài đặt chuyên nghiệp.
+        </p>
+        <DemoBlock>
+          <AccordionCard />
+        </DemoBlock>
+        <CodeBlock code={`
+<Card className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Subscription & Billing</CardTitle>
+    <CardDescription>...</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <Accordion type="single" collapsible defaultValue="plans">
+      {items.map((item) => (
+        <AccordionItem key={item.value} value={item.value}>
+          <AccordionTrigger>{item.trigger}</AccordionTrigger>
+          <AccordionContent>{item.content}</AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
+  </CardContent>
+</Card>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 10. Props reference ── */}
+      <ShowcaseSection title="10. Props reference">
         <div className="space-y-6">
           <div className="space-y-2">
             <h3 className="text-sm font-semibold font-mono">&lt;Accordion&gt;</h3>
@@ -367,8 +520,8 @@ const [open, setOpen] = useState<string[]>([])
         </div>
       </ShowcaseSection>
 
-      {/* ── 9. Lưu ý ── */}
-      <ShowcaseSection title="9. Lưu ý khi sử dụng">
+      {/* ── 11. Lưu ý ── */}
+      <ShowcaseSection title="11. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Mỗi <code className="text-xs font-mono">AccordionItem</code> phải có <code className="text-xs font-mono">value</code> duy nhất trong cùng một <code className="text-xs font-mono">Accordion</code>.</li>
           <li><code className="text-xs font-mono">collapsible</code> chỉ có tác dụng khi <code className="text-xs font-mono">{'type="single"'}</code>, bỏ qua khi <code className="text-xs font-mono">{'type="multiple"'}</code>.</li>
