@@ -29,7 +29,6 @@ export const components: ComponentItem[] = [
   { name: "Command", href: "/design-system/components/command", description: "Command palette giúp tìm kiếm và thực hiện các thao tác nhanh chóng" },
   { name: "Context Menu", href: "/design-system/components/context-menu", description: "Menu ngữ cảnh hiển thị khi nhấp chuột phải với các hành động phù hợp" },
   { name: "Dialog", href: "/design-system/components/dialog", description: "Cửa sổ modal xuất hiện phía trên trang, yêu cầu người dùng thực hiện hành động hoặc xem thông tin quan trọng" },
-  { name: "Direction", href: "/design-system/components/direction", description: "Provider thiết lập hướng văn bản LTR/RTL cho toàn bộ cây component con, hỗ trợ ứng dụng đa ngôn ngữ" },
   { name: "Drawer", href: "/design-system/components/drawer", description: "Panel trượt ra từ cạnh màn hình, hỗ trợ 4 hướng và gesture kéo trên mobile" },
   { name: "Dropdown Menu", href: "/design-system/components/dropdown-menu", description: "Menu thả xuống hiển thị danh sách hành động hoặc tuỳ chọn khi nhấn vào trigger" },
   { name: "Empty", href: "/design-system/components/empty", description: "Trạng thái rỗng hiển thị khi không có dữ liệu — dùng trong bảng, danh sách hoặc kết quả tìm kiếm" },
