@@ -1,5 +1,6 @@
 import { Alert, AlertTitle, AlertDescription, AlertAction } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
+import { AlertTriangleIcon } from "lucide-react"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
 /* ─── icons ──────────────────────────────────────────────────────────────── */
 
@@ -196,8 +197,34 @@ export default function AlertPage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 7. Props reference ── */}
-      <ShowcaseSection title="7. Props reference">
+      {/* ── 7. Custom Colors ── */}
+      <ShowcaseSection title="7. Custom Colors">
+        <p className="text-sm text-muted-foreground">
+          Bạn có thể tuỳ chỉnh màu sắc bản thân bằng cách sử dụng các class Tailwind trực tiếp trên <code className="text-xs font-mono">&lt;Alert&gt;</code>.
+        </p>
+        <DemoBlock>
+          <Alert className="max-w-md border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
+            <AlertTriangleIcon />
+            <AlertTitle>Your subscription will expire in 3 days.</AlertTitle>
+            <AlertDescription>
+              Renew now to avoid service interruption or upgrade to a paid plan to
+              continue using the service.
+            </AlertDescription>
+          </Alert>
+        </DemoBlock>
+        <CodeBlock code={`
+<Alert className="border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
+  <AlertTriangleIcon />
+  <AlertTitle>Your subscription will expire in 3 days.</AlertTitle>
+  <AlertDescription>
+    Renew now to avoid service interruption...
+  </AlertDescription>
+</Alert>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 8. Props reference ── */}
+      <ShowcaseSection title="8. Props reference">
         <div className="space-y-6">
           <div className="space-y-2">
             <h3 className="text-sm font-semibold font-mono">&lt;Alert&gt;</h3>
@@ -233,8 +260,8 @@ export default function AlertPage() {
         </div>
       </ShowcaseSection>
 
-      {/* ── 8. Lưu ý ── */}
-      <ShowcaseSection title="8. Lưu ý khi sử dụng">
+      {/* ── 9. Lưu ý ── */}
+      <ShowcaseSection title="9. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Icon phải là <code className="text-xs font-mono">&lt;svg&gt;</code> đặt làm con đầu tiên trực tiếp của <code className="text-xs font-mono">&lt;Alert&gt;</code> — không bọc thêm wrapper.</li>
           <li>SVG không cần set <code className="text-xs font-mono">{'className="size-4"'}</code> vì Alert tự áp dụng khi không có class size.</li>
