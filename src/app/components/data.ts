@@ -40,4 +40,5 @@ export const components: ComponentItem[] = [
   { name: "Navigation Menu", href: "/components/navigation-menu", description: "Thành phần menu điều hướng chính của ứng dụng, hỗ trợ hiển thị danh sách, submenu với animation mượt mà." },
   { name: "Pagination", href: "/components/pagination", description: "Hệ thống điều hướng phân trang giúp người dùng di chuyển giữa các tập dữ liệu lớn." },
   { name: "Popover", href: "/components/popover", description: "Cửa sổ nội dung nổi bật xuất hiện khi nhấn vào trigger — hỗ trợ header, title, description và anchor." },
+  { name: "Progress", href: "/components/progress", description: "Thanh hiển thị tiến độ hoàn thành của một tác vụ hoặc thời gian chờ." },
 ]
