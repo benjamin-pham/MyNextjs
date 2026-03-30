@@ -1,4 +1,6 @@
+import { ArrowUpIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Spinner } from "@/components/ui/spinner"
 import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/design-system/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
@@ -244,8 +246,72 @@ export default function ButtonPage() {
         </DemoBlock>
       </ShowcaseSection>
 
-      {/* ── 9. Props reference ── */}
-      <ShowcaseSection title="9. Props reference">
+      {/* ── 9. Rounded ── */}
+      <ShowcaseSection title="9. Rounded">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">rounded-full</code> để tạo button hình tròn hoặc có các góc bo tròn hoàn toàn.
+        </p>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-8">
+            <Button variant="outline" size="icon" className="rounded-full">
+              <ArrowUpIcon className="size-4" />
+            </Button>
+            <Button size="icon" className="rounded-full">
+              <PlusIcon />
+            </Button>
+            <Button className="rounded-full px-6">
+              Rounded Button
+            </Button>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`
+<Button variant="outline" size="icon" className="rounded-full">
+  <ArrowUpIcon className="size-4" />
+</Button>
+
+<Button size="icon" className="rounded-full">
+  <PlusIcon />
+</Button>
+
+<Button className="rounded-full px-6">
+  Rounded Button
+</Button>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 10. Trạng thái Loading (Spinner) ── */}
+      <ShowcaseSection title="10. Trạng thái Loading (Spinner)">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng component <code className="text-xs font-mono">Spinner</code> bên trong Button để hiển thị trạng thái đang xử lý.
+          Thường dùng kết hợp với thuộc tính <code className="text-xs font-mono">disabled</code>.
+        </p>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Button variant="outline" disabled>
+              <Spinner data-icon="inline-start" />
+              Generating
+            </Button>
+            <Button variant="secondary" disabled>
+              Downloading
+              <Spinner data-icon="inline-start" />
+            </Button>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`
+<Button variant="outline" disabled>
+  <Spinner data-icon="inline-start" />
+  Generating
+</Button>
+
+<Button variant="secondary" disabled>
+  Downloading
+  <Spinner data-icon="inline-start" />
+</Button>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 11. Props reference ── */}
+      <ShowcaseSection title="11. Props reference">
         <PropsTable rows={[
           { prop: "variant", type: '"default" | "secondary" | "destructive" | "outline" | "ghost" | "link"', default_: '"default"', description: "Kiểu hiển thị của button." },
           { prop: "size", type: '"xs" | "sm" | "default" | "lg" | "icon-xs" | "icon-sm" | "icon" | "icon-lg"', default_: '"default"', description: "Kích thước button. Các size icon- tạo button hình vuông." },
@@ -256,14 +322,16 @@ export default function ButtonPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 10. Lưu ý ── */}
-      <ShowcaseSection title="10. Lưu ý khi sử dụng">
+      {/* ── 12. Lưu ý ── */}
+      <ShowcaseSection title="12. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Button render thành <code className="text-xs font-mono">&lt;button&gt;</code> mặc định — dùng <code className="text-xs font-mono">asChild</code> nếu cần render thành <code className="text-xs font-mono">&lt;a&gt;</code> hoặc thẻ khác.</li>
           <li>Icon SVG không cần set <code className="text-xs font-mono">className="size-4"</code> thủ công — Button tự áp dụng <code className="text-xs font-mono">size-4</code> cho SVG không có class size.</li>
           <li><code className="text-xs font-mono">data-icon="inline-start"</code> / <code className="text-xs font-mono">inline-end</code> điều chỉnh padding trái/phải tự động khi có icon.</li>
           <li>Các size <code className="text-xs font-mono">icon-*</code> tạo button vuông — chỉ nên chứa một icon, kèm <code className="text-xs font-mono">aria-label</code> để đảm bảo accessibility.</li>
           <li>Variant <code className="text-xs font-mono">ghost</code> và <code className="text-xs font-mono">link</code> chỉ hiện style khi hover — phù hợp cho button ít nổi bật trong giao diện.</li>
+          <li>Dùng <code className="text-xs font-mono">rounded-full</code> để tạo nút hình tròn (cho size icon) hoặc nút dạng "pill".</li>
+          <li>Khi hiển thị trạng thái loading, hãy sử dụng <code className="text-xs font-mono">Spinner</code> và thuộc tính <code className="text-xs font-mono">disabled</code>.</li>
         </ul>
       </ShowcaseSection>
     </div>
