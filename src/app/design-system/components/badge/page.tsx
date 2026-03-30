@@ -1,4 +1,6 @@
 import { Badge } from "@/components/ui/badge"
+import { Spinner } from "@/components/ui/spinner"
+
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
@@ -90,8 +92,55 @@ export default function BadgePage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 3. Với icon ── */}
-      <ShowcaseSection title="3. Với icon">
+      {/* ── 3. Custom Colors ── */}
+      <ShowcaseSection title="3. Custom Colors">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng Tailwind CSS utility classes để tùy chỉnh màu sắc cho Badge.
+        </p>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-2">
+            <Badge className="bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+              Blue
+            </Badge>
+            <Badge className="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">
+              Green
+            </Badge>
+            <Badge className="bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-300">
+              Sky
+            </Badge>
+            <Badge className="bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300">
+              Purple
+            </Badge>
+            <Badge className="bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300">
+              Red
+            </Badge>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`
+<Badge className="bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+  Blue
+</Badge>
+
+<Badge className="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">
+  Green
+</Badge>
+
+<Badge className="bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-300">
+  Sky
+</Badge>
+
+<Badge className="bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300">
+  Purple
+</Badge>
+
+<Badge className="bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300">
+  Red
+</Badge>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 4. Với icon ── */}
+      <ShowcaseSection title="4. Với icon">
         <p className="text-sm text-muted-foreground">
           Đặt <code className="text-xs font-mono">&lt;svg&gt;</code> với{" "}
           <code className="text-xs font-mono">data-icon="inline-start"</code> hoặc{" "}
@@ -137,8 +186,38 @@ export default function BadgePage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 4. Trạng thái invalid ── */}
-      <ShowcaseSection title="4. Trạng thái invalid">
+      {/* ── 5. Với Spinner ── */}
+      <ShowcaseSection title="5. Với Spinner">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">&lt;Spinner&gt;</code> để hiển thị trạng thái đang xử lý.
+        </p>
+        <DemoBlock>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Badge variant="destructive">
+              <Spinner data-icon="inline-start" />
+              Deleting
+            </Badge>
+            <Badge variant="secondary">
+              Generating
+              <Spinner data-icon="inline-end" />
+            </Badge>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`
+<Badge variant="destructive">
+  <Spinner data-icon="inline-start" />
+  Deleting
+</Badge>
+
+<Badge variant="secondary">
+  Generating
+  <Spinner data-icon="inline-end" />
+</Badge>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 6. Trạng thái invalid ── */}
+      <ShowcaseSection title="6. Trạng thái invalid">
         <p className="text-sm text-muted-foreground">
           Thêm <code className="text-xs font-mono">aria-invalid="true"</code> để hiển thị trạng thái lỗi với viền đỏ.
         </p>
@@ -155,8 +234,8 @@ export default function BadgePage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 5. asChild ── */}
-      <ShowcaseSection title="5. asChild — render thành thẻ khác">
+      {/* ── 7. asChild ── */}
+      <ShowcaseSection title="7. asChild — render thành thẻ khác">
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">asChild</code> để Badge render thành thẻ con (ví dụ <code className="text-xs font-mono">&lt;a&gt;</code>), giữ nguyên style Badge nhưng dùng thẻ khác trong DOM.
         </p>
@@ -177,8 +256,8 @@ export default function BadgePage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 6. Ví dụ thực tế ── */}
-      <ShowcaseSection title="6. Ví dụ thực tế">
+      {/* ── 8. Ví dụ thực tế ── */}
+      <ShowcaseSection title="8. Ví dụ thực tế">
         <p className="text-sm text-muted-foreground">
           Badge thường được dùng kèm với các thành phần khác để biểu thị trạng thái.
         </p>
@@ -221,8 +300,8 @@ export default function BadgePage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 7. Props reference ── */}
-      <ShowcaseSection title="7. Props reference">
+      {/* ── 9. Props reference ── */}
+      <ShowcaseSection title="9. Props reference">
         <PropsTable rows={[
           { prop: "variant", type: '"default" | "secondary" | "destructive" | "outline" | "ghost" | "link"', default_: '"default"', description: "Kiểu hiển thị của badge." },
           { prop: "asChild", type: "boolean", default_: "false", description: "Khi true, render thành thẻ con thay vì <span>. Dùng với Slot." },
@@ -231,8 +310,8 @@ export default function BadgePage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 8. Lưu ý ── */}
-      <ShowcaseSection title="8. Lưu ý khi sử dụng">
+      {/* ── 10. Lưu ý ── */}
+      <ShowcaseSection title="10. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Badge render thành <code className="text-xs font-mono">&lt;span&gt;</code> mặc định — không phải thẻ tương tác, không nên dùng thay cho button hay link trực tiếp.</li>
           <li>Dùng <code className="text-xs font-mono">asChild</code> nếu cần Badge có hành vi tương tác (ví dụ: thẻ <code className="text-xs font-mono">&lt;a&gt;</code>).</li>
