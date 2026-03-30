@@ -6,12 +6,49 @@ import {
   AvatarGroup,
   AvatarGroupCount,
 } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import {
   ShowcaseSection,
   DemoBlock,
   CodeBlock,
   PropsTable,
 } from "@/app/design-system/_showcase"
+
+/* ─── components ─────────────────────────────────────────────────────────── */
+
+export function AvatarDropdown() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="rounded-full">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-32">
+        <DropdownMenuGroup>
+          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>Billing</DropdownMenuItem>
+          <DropdownMenuItem>Settings</DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem variant="destructive">Log out</DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
 
 /* ─── page ───────────────────────────────────────────────────────────────── */
 
@@ -205,8 +242,45 @@ export default function AvatarPage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 6. Props reference ── */}
-      <ShowcaseSection title="6. Props reference">
+      {/* ── 6. Avatar Dropdown ── */}
+      <ShowcaseSection title="6. Avatar Dropdown">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp <code className="text-xs font-mono">Avatar</code> với <code className="text-xs font-mono">DropdownMenu</code> để tạo menu người dùng.
+        </p>
+        <DemoBlock>
+          <AvatarDropdown />
+        </DemoBlock>
+        <CodeBlock code={`
+export function AvatarDropdown() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="rounded-full">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-32">
+        <DropdownMenuGroup>
+          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>Billing</DropdownMenuItem>
+          <DropdownMenuItem>Settings</DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem variant="destructive">Log out</DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 7. Props reference ── */}
+      <ShowcaseSection title="7. Props reference">
         <div className="space-y-6">
           <div className="space-y-2">
             <h3 className="text-sm font-semibold font-mono">&lt;Avatar&gt;</h3>
@@ -259,8 +333,8 @@ export default function AvatarPage() {
         </div>
       </ShowcaseSection>
 
-      {/* ── 7. Lưu ý ── */}
-      <ShowcaseSection title="7. Lưu ý khi sử dụng">
+      {/* ── 8. Lưu ý ── */}
+      <ShowcaseSection title="8. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Luôn cung cấp <code className="text-xs font-mono">AvatarFallback</code> kèm theo <code className="text-xs font-mono">AvatarImage</code> — đây là lưới an toàn khi ảnh tải thất bại.</li>
           <li>Thuộc tính <code className="text-xs font-mono">alt</code> trên <code className="text-xs font-mono">AvatarImage</code> là bắt buộc cho accessibility — dùng tên người dùng thực.</li>
