@@ -28,7 +28,6 @@ export const components: ComponentItem[] = [
   { name: "Combobox", href: "/design-system/components/combobox", description: "Thành phần cho phép người dùng chọn một hoặc nhiều giá trị từ một danh sách có thể tìm kiếm." },
   { name: "Command", href: "/design-system/components/command", description: "Command palette giúp tìm kiếm và thực hiện các thao tác nhanh chóng" },
   { name: "Context Menu", href: "/design-system/components/context-menu", description: "Menu ngữ cảnh hiển thị khi nhấp chuột phải với các hành động phù hợp" },
-  { name: "Data Table", href: "/design-system/components/data-table", description: "Bảng dữ liệu mạnh mẽ với sắp xếp, lọc, phân trang và chọn hàng dùng TanStack Table" },
   { name: "Dialog", href: "/design-system/components/dialog", description: "Cửa sổ modal xuất hiện phía trên trang, yêu cầu người dùng thực hiện hành động hoặc xem thông tin quan trọng" },
   { name: "Direction", href: "/design-system/components/direction", description: "Provider thiết lập hướng văn bản LTR/RTL cho toàn bộ cây component con, hỗ trợ ứng dụng đa ngôn ngữ" },
   { name: "Drawer", href: "/design-system/components/drawer", description: "Panel trượt ra từ cạnh màn hình, hỗ trợ 4 hướng và gesture kéo trên mobile" },
