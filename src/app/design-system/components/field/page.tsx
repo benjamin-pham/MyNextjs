@@ -1,3 +1,6 @@
+"use client"
+
+import * as React from "react"
 import {
   Field,
   FieldLabel,
@@ -14,16 +17,264 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Switch } from "@/components/ui/switch"
+import { Slider } from "@/components/ui/slider"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
+import { CreditCard, Wallet, Smartphone } from "lucide-react"
 
 /* ─── page ───────────────────────────────────────────────────────────────── */
+
+export function FieldSlider() {
+  const [value, setValue] = React.useState([200, 800])
+
+  return (
+    <Field className="w-full max-w-xs">
+      <FieldTitle>Price Range</FieldTitle>
+      <FieldDescription>
+        Set your budget range ($
+        <span className="font-medium tabular-nums">{value[0]}</span> -{" "}
+        <span className="font-medium tabular-nums">{value[1]}</span>).
+      </FieldDescription>
+      <Slider
+        value={value}
+        onValueChange={(value) => setValue(value as [number, number])}
+        max={1000}
+        min={0}
+        step={10}
+        className="mt-2 w-full"
+        aria-label="Price Range"
+      />
+    </Field>
+  )
+}
+
+export function FieldFieldset() {
+  return (
+    <FieldSet className="w-full max-w-sm">
+      <FieldLegend>Address Information</FieldLegend>
+      <FieldDescription>
+        We need your address to deliver your order.
+      </FieldDescription>
+      <FieldGroup>
+        <Field>
+          <FieldLabel htmlFor="street">Street Address</FieldLabel>
+          <Input id="street" type="text" placeholder="123 Main St" />
+        </Field>
+        <div className="grid grid-cols-2 gap-4">
+          <Field>
+            <FieldLabel htmlFor="city">City</FieldLabel>
+            <Input id="city" type="text" placeholder="New York" />
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="zip">Postal Code</FieldLabel>
+            <Input id="zip" type="text" placeholder="90502" />
+          </Field>
+        </div>
+      </FieldGroup>
+    </FieldSet>
+  )
+}
+
+export function FieldCheckbox() {
+  return (
+    <FieldGroup className="w-full max-w-xs">
+      <FieldSet>
+        <FieldLegend variant="label">
+          Show these items on the desktop
+        </FieldLegend>
+        <FieldDescription>
+          Select the items you want to show on the desktop.
+        </FieldDescription>
+        <FieldGroup className="gap-3">
+          <Field orientation="horizontal">
+            <Checkbox id="finder-pref-9k2-hard-disks-ljj" />
+            <FieldLabel
+              htmlFor="finder-pref-9k2-hard-disks-ljj"
+              className="font-normal"
+            >
+              Hard disks
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox id="finder-pref-9k2-external-disks-1yg" />
+            <FieldLabel
+              htmlFor="finder-pref-9k2-external-disks-1yg"
+              className="font-normal"
+            >
+              External disks
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox id="finder-pref-9k2-cds-dvds-fzt" />
+            <FieldLabel
+              htmlFor="finder-pref-9k2-cds-dvds-fzt"
+              className="font-normal"
+            >
+              CDs, DVDs, and iPods
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox id="finder-pref-9k2-connected-servers-6l2" />
+            <FieldLabel
+              htmlFor="finder-pref-9k2-connected-servers-6l2"
+              className="font-normal"
+            >
+              Connected servers
+            </FieldLabel>
+          </Field>
+        </FieldGroup>
+      </FieldSet>
+      <FieldSeparator />
+      <Field orientation="horizontal">
+        <Checkbox id="finder-pref-9k2-sync-folders-nep" defaultChecked />
+        <FieldContent>
+          <FieldLabel htmlFor="finder-pref-9k2-sync-folders-nep">
+            Sync Desktop & Documents folders
+          </FieldLabel>
+          <FieldDescription>
+            Your Desktop & Documents folders are being synced with iCloud Drive.
+            You can access them from other devices.
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+    </FieldGroup>
+  )
+}
+
+export function FieldRadio() {
+  return (
+    <FieldSet className="w-full max-w-xs">
+      <FieldLegend variant="label">Subscription Plan</FieldLegend>
+      <FieldDescription>
+        Yearly and lifetime plans offer significant savings.
+      </FieldDescription>
+      <RadioGroup defaultValue="monthly">
+        <Field orientation="horizontal">
+          <RadioGroupItem value="monthly" id="plan-monthly" />
+          <FieldLabel htmlFor="plan-monthly" className="font-normal">
+            Monthly ($9.99/month)
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem value="yearly" id="plan-yearly" />
+          <FieldLabel htmlFor="plan-yearly" className="font-normal">
+            Yearly ($99.99/year)
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem value="lifetime" id="plan-lifetime" />
+          <FieldLabel htmlFor="plan-lifetime" className="font-normal">
+            Lifetime ($299.99)
+          </FieldLabel>
+        </Field>
+      </RadioGroup>
+    </FieldSet>
+  )
+}
+
+export function FieldSwitch() {
+  return (
+    <Field orientation="horizontal" className="w-fit">
+      <FieldLabel htmlFor="2fa">Multi-factor authentication</FieldLabel>
+      <Switch id="2fa" />
+    </Field>
+  )
+}
+
+export function FieldChoiceCard() {
+  return (
+    <FieldSet className="w-full max-w-md">
+      <FieldLegend variant="label">Payment Method</FieldLegend>
+      <FieldDescription>Choose your preferred way to pay.</FieldDescription>
+      <RadioGroup
+        defaultValue="card"
+        className="grid grid-cols-1 gap-3 sm:grid-cols-3 mt-2"
+      >
+        <FieldLabel className="flex-1 cursor-pointer">
+          <RadioGroupItem value="card" id="pm-card" className="sr-only" />
+          <Field className="items-center justify-center py-4">
+            <CreditCard className="size-6 mb-2" />
+            <span className="text-xs font-medium uppercase tracking-wider">
+              Card
+            </span>
+          </Field>
+        </FieldLabel>
+
+        <FieldLabel className="flex-1 cursor-pointer">
+          <RadioGroupItem value="paypal" id="pm-paypal" className="sr-only" />
+          <Field className="items-center justify-center py-4">
+            <Wallet className="size-6 mb-2" />
+            <span className="text-xs font-medium uppercase tracking-wider">
+              PayPal
+            </span>
+          </Field>
+        </FieldLabel>
+
+        <FieldLabel className="flex-1 cursor-pointer">
+          <RadioGroupItem value="apple" id="pm-apple" className="sr-only" />
+          <Field className="items-center justify-center py-4">
+            <Smartphone className="size-6 mb-2" />
+            <span className="text-xs font-medium uppercase tracking-wider">
+              Apple Pay
+            </span>
+          </Field>
+        </FieldLabel>
+      </RadioGroup>
+    </FieldSet>
+  )
+}
+
+export function FieldGroupExample() {
+  return (
+    <FieldGroup className="w-full max-w-xs">
+      <FieldSet>
+        <FieldLabel>Responses</FieldLabel>
+        <FieldDescription>
+          Get notified when ChatGPT responds to requests that take time, like
+          research or image generation.
+        </FieldDescription>
+        <FieldGroup data-slot="checkbox-group">
+          <Field orientation="horizontal">
+            <Checkbox id="push" defaultChecked disabled />
+            <FieldLabel htmlFor="push" className="font-normal">
+              Push notifications
+            </FieldLabel>
+          </Field>
+        </FieldGroup>
+      </FieldSet>
+      <FieldSeparator />
+      <FieldSet>
+        <FieldLabel>Tasks</FieldLabel>
+        <FieldDescription>
+          Get notified when tasks you&apos;ve created have updates.{" "}
+          <a href="#">Manage tasks</a>
+        </FieldDescription>
+        <FieldGroup data-slot="checkbox-group">
+          <Field orientation="horizontal">
+            <Checkbox id="push-tasks" />
+            <FieldLabel htmlFor="push-tasks" className="font-normal">
+              Push notifications
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox id="email-tasks" />
+            <FieldLabel htmlFor="email-tasks" className="font-normal">
+              Email notifications
+            </FieldLabel>
+          </Field>
+        </FieldGroup>
+      </FieldSet>
+    </FieldGroup>
+  )
+}
 
 export default function FieldPage() {
   return (
@@ -198,85 +449,8 @@ export default function FieldPage() {
 </Field>`} />
       </ShowcaseSection>
 
-      {/* ── 4. FieldGroup ── */}
-      <ShowcaseSection title="4. FieldGroup — Nhóm nhiều trường">
-        <p className="text-sm text-muted-foreground">
-          <code className="text-xs font-mono">FieldGroup</code> xếp nhiều <code className="text-xs font-mono">Field</code> theo chiều dọc với khoảng cách đều nhau.
-        </p>
-        <DemoBlock>
-          <FieldGroup>
-            <Field>
-              <FieldLabel htmlFor="g-first">Tên</FieldLabel>
-              <Input id="g-first" placeholder="Văn A" />
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="g-last">Họ</FieldLabel>
-              <Input id="g-last" placeholder="Nguyễn" />
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="g-email">Email</FieldLabel>
-              <Input id="g-email" type="email" placeholder="you@example.com" />
-              <FieldDescription>Chúng tôi sẽ không chia sẻ email của bạn.</FieldDescription>
-            </Field>
-          </FieldGroup>
-        </DemoBlock>
-        <CodeBlock code={`<FieldGroup>
-  <Field>
-    <FieldLabel htmlFor="first">Tên</FieldLabel>
-    <Input id="first" placeholder="Văn A" />
-  </Field>
-  <Field>
-    <FieldLabel htmlFor="last">Họ</FieldLabel>
-    <Input id="last" placeholder="Nguyễn" />
-  </Field>
-  <Field>
-    <FieldLabel htmlFor="email">Email</FieldLabel>
-    <Input id="email" type="email" placeholder="you@example.com" />
-    <FieldDescription>Chúng tôi sẽ không chia sẻ email.</FieldDescription>
-  </Field>
-</FieldGroup>`} />
-      </ShowcaseSection>
-
-      {/* ── 5. FieldSet + FieldLegend ── */}
-      <ShowcaseSection title="5. FieldSet + FieldLegend — Nhóm checkbox/radio">
-        <p className="text-sm text-muted-foreground">
-          Dùng <code className="text-xs font-mono">FieldSet</code> + <code className="text-xs font-mono">FieldLegend</code> cho các nhóm checkbox hoặc radio để đảm bảo ngữ nghĩa HTML đúng.{" "}
-          <code className="text-xs font-mono">FieldLegend</code> có 2 variant:{" "}
-          <code className="text-xs font-mono">legend</code> (chữ lớn hơn) và{" "}
-          <code className="text-xs font-mono">label</code> (cùng cỡ với FieldLabel).
-        </p>
-        <DemoBlock>
-          <FieldSet>
-            <FieldLegend>Thông báo qua</FieldLegend>
-            <Field orientation="horizontal">
-              <Checkbox id="cb-email" />
-              <FieldLabel htmlFor="cb-email">Email</FieldLabel>
-            </Field>
-            <Field orientation="horizontal">
-              <Checkbox id="cb-sms" />
-              <FieldLabel htmlFor="cb-sms">SMS</FieldLabel>
-            </Field>
-            <Field orientation="horizontal">
-              <Checkbox id="cb-push" defaultChecked />
-              <FieldLabel htmlFor="cb-push">Push notification</FieldLabel>
-            </Field>
-          </FieldSet>
-        </DemoBlock>
-        <CodeBlock code={`<FieldSet>
-  <FieldLegend>Thông báo qua</FieldLegend>
-  <Field orientation="horizontal">
-    <Checkbox id="email" />
-    <FieldLabel htmlFor="email">Email</FieldLabel>
-  </Field>
-  <Field orientation="horizontal">
-    <Checkbox id="sms" />
-    <FieldLabel htmlFor="sms">SMS</FieldLabel>
-  </Field>
-</FieldSet>`} />
-      </ShowcaseSection>
-
-      {/* ── 6. FieldSeparator ── */}
-      <ShowcaseSection title="6. FieldSeparator — Đường phân cách">
+      {/* ── 4. FieldSeparator ── */}
+      <ShowcaseSection title="4. FieldSeparator — Đường phân cách">
         <p className="text-sm text-muted-foreground">
           Dùng trong <code className="text-xs font-mono">FieldGroup</code> để ngăn cách các nhóm trường.
           Có thể thêm text ở giữa.
@@ -309,52 +483,378 @@ export default function FieldPage() {
 </FieldGroup>`} />
       </ShowcaseSection>
 
-      {/* ── 7. FieldContent (horizontal với description) ── */}
-      <ShowcaseSection title="7. FieldContent — Mô tả bên cạnh input">
+      {/* ── 5. FieldContent — Bố cục ngang đa thành phần ── */}
+      <ShowcaseSection title="5. FieldContent — Bố cục ngang đa thành phần">
         <p className="text-sm text-muted-foreground">
-          Trong layout <code className="text-xs font-mono">horizontal</code>, dùng{" "}
-          <code className="text-xs font-mono">FieldContent</code> để bọc input + description thành một cột,
-          giữ nhãn căn trái.
+          Sử dụng <code className="text-xs font-mono">FieldContent</code> khi làm form nằm ngang (horizontal) 
+          để nhóm các thành phần phụ trợ (mô tả, thông báo lỗi) cùng với input chính. 
+          Nó đảm bảo nhãn bên trái luôn căn lề chính xác với dòng đầu tiên của nội dung bên phải.
         </p>
+
         <DemoBlock>
-          <FieldGroup>
+          <FieldGroup className="w-full max-w-xl">
             <Field orientation="horizontal">
-              <FieldLabel htmlFor="fc-username">Tên đăng nhập</FieldLabel>
+              <FieldLabel htmlFor="fc-visibility" className="sm:w-32 shrink-0 pt-1.5">Công khai hồ sơ</FieldLabel>
               <FieldContent>
-                <Input id="fc-username" placeholder="nguyenvana" />
-                <FieldDescription>Tên dùng để đăng nhập vào hệ thống.</FieldDescription>
+                <Switch id="fc-visibility" defaultChecked />
+                <FieldDescription>Cho phép mọi người tìm thấy bạn qua email hoặc tên người dùng.</FieldDescription>
               </FieldContent>
             </Field>
+
             <Field orientation="horizontal">
-              <FieldLabel htmlFor="fc-bio">Giới thiệu</FieldLabel>
+              <FieldLabel htmlFor="fc-bio" className="sm:w-32 shrink-0 pt-2">Tiểu sử</FieldLabel>
               <FieldContent>
-                <Textarea id="fc-bio" placeholder="Vài dòng về bạn..." />
-                <FieldDescription>Tối đa 160 ký tự.</FieldDescription>
+                <Textarea id="fc-bio" placeholder="Kể về bạn..." className="min-h-[100px]" />
+                <FieldDescription>Tối đa 160 ký tự. Sử dụng Markdown để định dạng.</FieldDescription>
+              </FieldContent>
+            </Field>
+
+            <Field orientation="horizontal" data-invalid="true">
+              <FieldLabel htmlFor="fc-email" className="sm:w-32 shrink-0 pt-2">Email</FieldLabel>
+              <FieldContent>
+                <Input id="fc-email" defaultValue="not-an-email" aria-invalid="true" />
+                <FieldError>Email này đã được sử dụng bởi một tài khoản khác.</FieldError>
               </FieldContent>
             </Field>
           </FieldGroup>
         </DemoBlock>
-        <CodeBlock code={`<FieldGroup>
-  <Field orientation="horizontal">
-    <FieldLabel htmlFor="username">Tên đăng nhập</FieldLabel>
-    <FieldContent>
-      <Input id="username" placeholder="nguyenvana" />
-      <FieldDescription>Tên dùng để đăng nhập.</FieldDescription>
-    </FieldContent>
-  </Field>
 
+        <CodeBlock code={`<Field orientation="horizontal">
+  <FieldLabel className="sm:w-32 pt-1">Công khai hồ sơ</FieldLabel>
+  <FieldContent>
+    <div className="flex h-9 items-center">
+      <Switch defaultChecked />
+    </div>
+    <FieldDescription>Cho phép mọi người tìm thấy bạn.</FieldDescription>
+  </FieldContent>
+</Field>
+
+<Field orientation="horizontal">
+  <FieldLabel className="sm:w-32 pt-2">Tiểu sử</FieldLabel>
+  <FieldContent>
+    <Textarea placeholder="Kể về bạn..." />
+    <FieldDescription>Tối đa 160 ký tự.</FieldDescription>
+  </FieldContent>
+</Field>
+
+<Field orientation="horizontal" data-invalid="true">
+  <FieldLabel className="sm:w-32 pt-2">Email</FieldLabel>
+  <FieldContent>
+    <Input aria-invalid="true" />
+    <FieldError>Email này đã được sử dụng.</FieldError>
+  </FieldContent>
+</Field>`} />
+      </ShowcaseSection>
+
+      {/* ── 6. Textarea ── */}
+      <ShowcaseSection title="6. Textarea">
+        <DemoBlock>
+          <FieldSet className="w-full max-w-xs">
+            <FieldGroup>
+              <Field>
+                <FieldLabel htmlFor="feedback">Feedback</FieldLabel>
+                <Textarea
+                  id="feedback"
+                  placeholder="Your feedback helps us improve..."
+                  rows={4}
+                />
+                <FieldDescription>
+                  Share your thoughts about our service.
+                </FieldDescription>
+              </Field>
+            </FieldGroup>
+          </FieldSet>
+        </DemoBlock>
+        <CodeBlock code={`<FieldSet className="w-full max-w-xs">
+  <FieldGroup>
+    <Field>
+      <FieldLabel htmlFor="feedback">Feedback</FieldLabel>
+      <Textarea
+        id="feedback"
+        placeholder="Your feedback helps us improve..."
+        rows={4}
+      />
+      <FieldDescription>
+        Share your thoughts about our service.
+      </FieldDescription>
+    </Field>
+  </FieldGroup>
+</FieldSet>`} />
+      </ShowcaseSection>
+
+      {/* ── 7. Select ── */}
+      <ShowcaseSection title="7. Select">
+        <DemoBlock>
+          <Field className="w-full max-w-xs">
+            <FieldLabel>Department</FieldLabel>
+            <Select>
+              <SelectTrigger>
+                <SelectValue placeholder="Choose department" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="engineering">Engineering</SelectItem>
+                  <SelectItem value="design">Design</SelectItem>
+                  <SelectItem value="marketing">Marketing</SelectItem>
+                  <SelectItem value="sales">Sales</SelectItem>
+                  <SelectItem value="support">Customer Support</SelectItem>
+                  <SelectItem value="hr">Human Resources</SelectItem>
+                  <SelectItem value="finance">Finance</SelectItem>
+                  <SelectItem value="operations">Operations</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <FieldDescription>
+              Select your department or area of work.
+            </FieldDescription>
+          </Field>
+        </DemoBlock>
+        <CodeBlock code={`<Field className="w-full max-w-xs">
+  <FieldLabel>Department</FieldLabel>
+  <Select>
+    <SelectTrigger>
+      <SelectValue placeholder="Choose department" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectItem value="engineering">Engineering</SelectItem>
+        <SelectItem value="design">Design</SelectItem>
+        <SelectItem value="marketing">Marketing</SelectItem>
+        <SelectItem value="sales">Sales</SelectItem>
+        <SelectItem value="support">Customer Support</SelectItem>
+        <SelectItem value="hr">Human Resources</SelectItem>
+        <SelectItem value="finance">Finance</SelectItem>
+        <SelectItem value="operations">Operations</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+  <FieldDescription>
+    Select your department or area of work.
+  </FieldDescription>
+</Field>`} />
+      </ShowcaseSection>
+
+      {/* ── 8. Slider ── */}
+      <ShowcaseSection title="8. Slider">
+        <DemoBlock>
+          <FieldSlider />
+        </DemoBlock>
+        <CodeBlock code={`"use client"
+
+import * as React from "react"
+
+import {
+  Field,
+  FieldDescription,
+  FieldTitle,
+} from "@/components/ui/field"
+import { Slider } from "@/components/ui/slider"
+
+export function FieldSlider() {
+  const [value, setValue] = React.useState([200, 800])
+
+  return (
+    <Field className="w-full max-w-xs">
+      <FieldTitle>Price Range</FieldTitle>
+      <FieldDescription>
+        Set your budget range ($
+        <span className="font-medium tabular-nums">{value[0]}</span> -{" "}
+        <span className="font-medium tabular-nums">{value[1]}</span>).
+      </FieldDescription>
+      <Slider
+        value={value}
+        onValueChange={(value) => setValue(value as [number, number])}
+        max={1000}
+        min={0}
+        step={10}
+        className="mt-2 w-full"
+        aria-label="Price Range"
+      />
+    </Field>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 9. Cấu trúc phức tạp với FieldSet ── */}
+      <ShowcaseSection title="9. Cấu trúc phức tạp với FieldSet">
+        <DemoBlock>
+          <FieldFieldset />
+        </DemoBlock>
+        <CodeBlock code={`<FieldSet className="w-full max-w-sm">
+  <FieldLegend>Address Information</FieldLegend>
+  <FieldDescription>
+    We need your address to deliver your order.
+  </FieldDescription>
+  <FieldGroup>
+    <Field>
+      <FieldLabel htmlFor="street">Street Address</FieldLabel>
+      <Input id="street" type="text" placeholder="123 Main St" />
+    </Field>
+    <div className="grid grid-cols-2 gap-4">
+      <Field>
+        <FieldLabel htmlFor="city">City</FieldLabel>
+        <Input id="city" type="text" placeholder="New York" />
+      </Field>
+      <Field>
+        <FieldLabel htmlFor="zip">Postal Code</FieldLabel>
+        <Input id="zip" type="text" placeholder="90502" />
+      </Field>
+    </div>
+  </FieldGroup>
+</FieldSet>`} />
+      </ShowcaseSection>
+
+      {/* ── 10. Ví dụ nâng cao với Checkbox ── */}
+      <ShowcaseSection title="10. Ví dụ nâng cao với Checkbox">
+        <DemoBlock>
+          <FieldCheckbox />
+        </DemoBlock>
+        <CodeBlock code={`<FieldGroup className="w-full max-w-xs">
+  <FieldSet>
+    <FieldLegend variant="label">
+      Show these items on the desktop
+    </FieldLegend>
+    <FieldDescription>
+      Select the items you want to show on the desktop.
+    </FieldDescription>
+    <FieldGroup className="gap-3">
+      <Field orientation="horizontal">
+        <Checkbox id="hard-disks" />
+        <FieldLabel htmlFor="hard-disks" className="font-normal">
+          Hard disks
+        </FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
+        <Checkbox id="external-disks" />
+        <FieldLabel htmlFor="external-disks" className="font-normal">
+          External disks
+        </FieldLabel>
+      </Field>
+    </FieldGroup>
+  </FieldSet>
+  <FieldSeparator />
   <Field orientation="horizontal">
-    <FieldLabel htmlFor="bio">Giới thiệu</FieldLabel>
+    <Checkbox id="sync-folders" defaultChecked />
     <FieldContent>
-      <Textarea id="bio" placeholder="Vài dòng về bạn..." />
-      <FieldDescription>Tối đa 160 ký tự.</FieldDescription>
+      <FieldLabel htmlFor="sync-folders">
+        Sync Desktop & Documents folders
+      </FieldLabel>
+      <FieldDescription>
+        Your folders are being synced with iCloud Drive.
+      </FieldDescription>
     </FieldContent>
   </Field>
 </FieldGroup>`} />
       </ShowcaseSection>
 
-      {/* ── 8. Với nhiều loại input ── */}
-      <ShowcaseSection title="8. Với nhiều loại input">
+      {/* ── 11. Ví dụ với Radio ── */}
+      <ShowcaseSection title="11. Ví dụ với Radio">
+        <DemoBlock>
+          <FieldRadio />
+        </DemoBlock>
+        <CodeBlock code={`<FieldSet className="w-full max-w-xs">
+  <FieldLegend variant="label">Subscription Plan</FieldLegend>
+  <FieldDescription>
+    Yearly and lifetime plans offer significant savings.
+  </FieldDescription>
+  <RadioGroup defaultValue="monthly">
+    <Field orientation="horizontal">
+      <RadioGroupItem value="monthly" id="plan-monthly" />
+      <FieldLabel htmlFor="plan-monthly" className="font-normal">
+        Monthly ($9.99/month)
+      </FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
+      <RadioGroupItem value="yearly" id="plan-yearly" />
+      <FieldLabel htmlFor="plan-yearly" className="font-normal">
+        Yearly ($99.99/year)
+      </FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
+      <RadioGroupItem value="lifetime" id="plan-lifetime" />
+      <FieldLabel htmlFor="plan-lifetime" className="font-normal">
+        Lifetime ($299.99)
+      </FieldLabel>
+    </Field>
+  </RadioGroup>
+</FieldSet>`} />
+      </ShowcaseSection>
+
+      {/* ── 12. Ví dụ với Switch ── */}
+      <ShowcaseSection title="12. Ví dụ với Switch">
+        <DemoBlock>
+          <FieldSwitch />
+        </DemoBlock>
+        <CodeBlock code={`<Field orientation="horizontal" className="w-fit">
+  <FieldLabel htmlFor="2fa">Multi-factor authentication</FieldLabel>
+  <Switch id="2fa" />
+</Field>`} />
+      </ShowcaseSection>
+
+      {/* ── 13. Choice Card ── */}
+      <ShowcaseSection title="13. Choice Card">
+        <DemoBlock>
+          <FieldChoiceCard />
+        </DemoBlock>
+        <CodeBlock code={`<FieldSet className="w-full max-w-md">
+  <FieldLegend variant="label">Payment Method</FieldLegend>
+  <FieldDescription>Choose your preferred way to pay.</FieldDescription>
+  <RadioGroup defaultValue="card" className="grid grid-cols-1 gap-3 sm:grid-cols-3 mt-2">
+    <FieldLabel className="flex-1 cursor-pointer">
+      <RadioGroupItem value="card" id="card" className="sr-only" />
+      <Field className="items-center justify-center py-4">
+        <CreditCard className="size-6 mb-2" />
+        <span className="text-xs font-medium uppercase">Card</span>
+      </Field>
+    </FieldLabel>
+
+    <FieldLabel className="flex-1 cursor-pointer">
+      <RadioGroupItem value="paypal" id="paypal" className="sr-only" />
+      <Field className="items-center justify-center py-4">
+        <Wallet className="size-6 mb-2" />
+        <span className="text-xs font-medium uppercase">PayPal</span>
+      </Field>
+    </FieldLabel>
+  </RadioGroup>
+</FieldSet>`} />
+      </ShowcaseSection>
+
+      {/* ── 14. Ví dụ nâng cao với FieldGroup ── */}
+      <ShowcaseSection title="14. Ví dụ nâng cao với FieldGroup">
+        <DemoBlock>
+          <FieldGroupExample />
+        </DemoBlock>
+        <CodeBlock code={`<FieldGroup className="w-full max-w-xs">
+  <FieldSet>
+    <FieldLabel>Responses</FieldLabel>
+    <FieldDescription>Get notified when ChatGPT responds.</FieldDescription>
+    <FieldGroup data-slot="checkbox-group">
+      <Field orientation="horizontal">
+        <Checkbox id="push" defaultChecked disabled />
+        <FieldLabel htmlFor="push" className="font-normal">Push notifications</FieldLabel>
+      </Field>
+    </FieldGroup>
+  </FieldSet>
+  <FieldSeparator />
+  <FieldSet>
+    <FieldLabel>Tasks</FieldLabel>
+    <FieldDescription>Get notified when tasks have updates.</FieldDescription>
+    <FieldGroup data-slot="checkbox-group">
+      <Field orientation="horizontal">
+        <Checkbox id="push-tasks" />
+        <FieldLabel htmlFor="push-tasks" className="font-normal">Push notifications</FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
+        <Checkbox id="email-tasks" />
+        <FieldLabel htmlFor="email-tasks" className="font-normal">Email notifications</FieldLabel>
+      </Field>
+    </FieldGroup>
+  </FieldSet>
+</FieldGroup>`} />
+      </ShowcaseSection>
+
+      {/* ── 15. Với nhiều loại input ── */}
+      <ShowcaseSection title="15. Với nhiều loại input">
         <p className="text-sm text-muted-foreground">
           Field hoạt động với mọi input component — Input, Textarea, Select, Checkbox, Switch.
         </p>
@@ -411,8 +911,8 @@ export default function FieldPage() {
 </FieldGroup>`} />
       </ShowcaseSection>
 
-      {/* ── 9. FieldTitle vs FieldLabel ── */}
-      <ShowcaseSection title="9. FieldTitle vs FieldLabel">
+      {/* ── 16. FieldTitle vs FieldLabel ── */}
+      <ShowcaseSection title="16. FieldTitle vs FieldLabel">
         <p className="text-sm text-muted-foreground">
           <code className="text-xs font-mono">FieldLabel</code> render thành{" "}
           <code className="text-xs font-mono">&lt;label&gt;</code> — dùng khi có input đi kèm.{" "}
@@ -444,8 +944,8 @@ export default function FieldPage() {
 </Field>`} />
       </ShowcaseSection>
 
-      {/* ── 10. Ví dụ form thực tế ── */}
-      <ShowcaseSection title="10. Ví dụ form thực tế">
+      {/* ── 17. Ví dụ form thực tế ── */}
+      <ShowcaseSection title="17. Ví dụ form thực tế">
         <DemoBlock>
           <form className="w-full max-w-md space-y-0">
             <FieldGroup>
@@ -493,8 +993,8 @@ export default function FieldPage() {
         </DemoBlock>
       </ShowcaseSection>
 
-      {/* ── 11. Props reference ── */}
-      <ShowcaseSection title="11. Props reference">
+      {/* ── 18. Props reference ── */}
+      <ShowcaseSection title="18. Props reference">
         <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Field</p>
         <PropsTable rows={[
           { prop: "orientation", type: '"vertical" | "horizontal" | "responsive"', default_: '"vertical"', description: "Hướng sắp xếp nhãn và input." },
@@ -528,8 +1028,8 @@ export default function FieldPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 12. Lưu ý ── */}
-      <ShowcaseSection title="12. Lưu ý khi sử dụng">
+      {/* ── 19. Lưu ý ── */}
+      <ShowcaseSection title="19. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Thêm <code className="text-xs font-mono">data-invalid="true"</code> vào <code className="text-xs font-mono">Field</code> và <code className="text-xs font-mono">aria-invalid="true"</code> vào input để hiện trạng thái lỗi đúng cách.</li>
           <li><code className="text-xs font-mono">FieldError</code> tự ẩn khi không có <code className="text-xs font-mono">children</code> và <code className="text-xs font-mono">errors</code> rỗng — không cần điều kiện render thủ công.</li>
