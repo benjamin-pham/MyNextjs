@@ -46,4 +46,5 @@ export const components: ComponentItem[] = [
   { name: "Scroll Area", href: "/components/scroll-area", description: "Thành phần bao bọc vùng cuộn, cung cấp các thanh cuộn có thể tạo kiểu tùy chỉnh cho các trình duyệt khác nhau." },
   { name: "Select", href: "/components/select", description: "Thanh chọn cho phép người dùng chọn một giá trị từ danh sách các tùy chọn — dựa trên Radix UI Select." },
   { name: "Separator", href: "/components/separator", description: "Thanh chia tách nội dung hoặc các phần của ứng dụng — theo chiều ngang hoặc dọc." },
+  { name: "Sheet", href: "/components/sheet", description: "Tấm panel trượt ra từ các cạnh của màn hình — trên, dưới, trái, hoặc phải." },
 ];
