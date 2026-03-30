@@ -85,6 +85,77 @@ function FormDialog() {
   )
 }
 
+/* ─── Sticky Footer example ────────────────────────────────────────────────── */
+
+function DialogStickyFooter() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Sticky Footer</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Sticky Footer</DialogTitle>
+          <DialogDescription>
+            Dialog này có footer cố định ở dưới trong khi nội dung ở giữa có thể cuộn.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="-mx-4 no-scrollbar max-h-[50vh] overflow-y-auto px-4">
+          {Array.from({ length: 10 }).map((_, index) => (
+            <p key={index} className="mb-4 leading-normal text-sm text-muted-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          ))}
+        </div>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">Close</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+/* ─── Scrollable Content example ───────────────────────────────────────────── */
+
+function DialogScrollableContent() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Scrollable Content</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Scrollable Content</DialogTitle>
+          <DialogDescription>
+            Một dialog với nội dung có thể cuộn dài.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="-mx-4 no-scrollbar max-h-[50vh] overflow-y-auto px-4">
+          {Array.from({ length: 10 }).map((_, index) => (
+            <p key={index} className="mb-4 leading-normal text-sm text-muted-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          ))}
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 /* ─── page ───────────────────────────────────────────────────────────────── */
 
 export default function DialogPage() {
@@ -383,8 +454,53 @@ export default function DialogPage() {
 </DialogFooter>`} />
       </ShowcaseSection>
 
-      {/* ── 8. Props reference ── */}
-      <ShowcaseSection title="8. Props reference">
+      {/* ── 8. Sticky Footer ── */}
+      <ShowcaseSection title="8. Sticky Footer">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">overflow-y-auto</code> cho nội dung
+          ở giữa để giữ tiêu đề và footer luôn hiển thị khi nội dung quá dài.
+        </p>
+        <DemoBlock>
+          <DialogStickyFooter />
+        </DemoBlock>
+        <CodeBlock code={`<DialogContent>
+  <DialogHeader>
+    <DialogTitle>Sticky Footer</DialogTitle>
+    <DialogDescription>...</DialogDescription>
+  </DialogHeader>
+  <div className="-mx-4 max-h-[50vh] overflow-y-auto px-4">
+    {/* Nội dung dài */}
+  </div>
+  <DialogFooter>
+    <DialogClose asChild>
+      <Button variant="outline">Close</Button>
+    </DialogClose>
+  </DialogFooter>
+</DialogContent>`} />
+      </ShowcaseSection>
+
+      {/* ── 9. Scrollable Content ── */}
+      <ShowcaseSection title="9. Scrollable Content">
+        <p className="text-sm text-muted-foreground">
+          Khi không cần footer, chỉ cần bọc phần nội dung trong một{" "}
+          <code className="text-xs font-mono">div</code> có chiều cao tối đa và{" "}
+          <code className="text-xs font-mono">overflow-y-auto</code>.
+        </p>
+        <DemoBlock>
+          <DialogScrollableContent />
+        </DemoBlock>
+        <CodeBlock code={`<DialogContent>
+  <DialogHeader>
+    <DialogTitle>Tiêu đề</DialogTitle>
+  </DialogHeader>
+  <div className="-mx-4 max-h-[50vh] overflow-y-auto px-4">
+    {/* nội dung dài */}
+  </div>
+</DialogContent>`} />
+      </ShowcaseSection>
+
+      {/* ── 10. Props reference ── */}
+      <ShowcaseSection title="10. Props reference">
         <p className="text-sm font-medium mb-2">DialogContent</p>
         <PropsTable rows={[
           { prop: "showCloseButton", type: "boolean", default_: "true", description: "Hiển thị nút X ở góc trên phải." },
@@ -408,8 +524,8 @@ export default function DialogPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 9. Lưu ý ── */}
-      <ShowcaseSection title="9. Lưu ý khi sử dụng">
+      {/* ── 11. Lưu ý ── */}
+      <ShowcaseSection title="11. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>
             Luôn cung cấp <code className="text-xs font-mono">DialogTitle</code> — Radix yêu cầu
