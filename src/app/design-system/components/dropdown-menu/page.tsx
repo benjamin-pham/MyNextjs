@@ -1,11 +1,42 @@
 "use client"
 
+import * as React from "react"
 import { useState } from "react"
+import {
+  BadgeCheckIcon,
+  BellIcon,
+  Building2Icon,
+  CreditCardIcon as LucideCreditCardIcon,
+  DownloadIcon,
+  EyeIcon,
+  FileCodeIcon,
+  FileIcon,
+  FileTextIcon,
+  FolderIcon,
+  FolderOpenIcon,
+  FolderSearchIcon,
+  HelpCircleIcon,
+  KeyboardIcon,
+  LanguagesIcon,
+  LayoutIcon,
+  LogOutIcon as LucideLogOutIcon,
+  MailIcon,
+  MessageSquareIcon,
+  MonitorIcon,
+  MoonIcon,
+  MoreHorizontalIcon,
+  PaletteIcon,
+  SaveIcon,
+  ShieldIcon,
+  SunIcon,
+  WalletIcon,
+} from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuCheckboxItem,
+  DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuItem,
@@ -18,6 +49,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
@@ -171,6 +203,54 @@ function CheckboxDemo() {
   )
 }
 
+function CheckboxIconsDemo() {
+  const [notifications, setNotifications] = useState({
+    email: true,
+    sms: false,
+    push: true,
+  })
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Notifications</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
+          <DropdownMenuCheckboxItem
+            checked={notifications.email}
+            onCheckedChange={(checked) =>
+              setNotifications({ ...notifications, email: checked === true })
+            }
+          >
+            <MailIcon />
+            Email notifications
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={notifications.sms}
+            onCheckedChange={(checked) =>
+              setNotifications({ ...notifications, sms: checked === true })
+            }
+          >
+            <MessageSquareIcon />
+            SMS notifications
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={notifications.push}
+            onCheckedChange={(checked) =>
+              setNotifications({ ...notifications, push: checked === true })
+            }
+          >
+            <BellIcon />
+            Push notifications
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
 function RadioDemo() {
   const [position, setPosition] = useState("bottom")
 
@@ -187,6 +267,40 @@ function RadioDemo() {
           <DropdownMenuRadioItem value="bottom">Dưới</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="right">Phải</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
+function RadioIconsDemo() {
+  const [paymentMethod, setPaymentMethod] = useState("card")
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Payment Method</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="min-w-56">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
+          <DropdownMenuRadioGroup
+            value={paymentMethod}
+            onValueChange={setPaymentMethod}
+          >
+            <DropdownMenuRadioItem value="card">
+              <LucideCreditCardIcon />
+              Credit Card
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="paypal">
+              <WalletIcon />
+              PayPal
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="bank">
+              <Building2Icon />
+              Bank Transfer
+            </DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   )
@@ -219,6 +333,42 @@ function SubMenuDemo() {
         <DropdownMenuItem>
           <SettingsIcon />
           Cài đặt
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
+function AvatarDemo() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="rounded-full">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <BadgeCheckIcon />
+            Account
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <LucideCreditCardIcon />
+            Billing
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <BellIcon />
+            Notifications
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <LucideLogOutIcon />
+          Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -258,6 +408,235 @@ function InsetDemo() {
         <DropdownMenuItem inset>Nhân bản</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem inset variant="destructive">Xoá dự án</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
+function ComplexDemo() {
+  const [notifications, setNotifications] = React.useState({
+    email: true,
+    sms: false,
+    push: true,
+  })
+  const [theme, setTheme] = React.useState("light")
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Complex Menu</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-44">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>File</DropdownMenuLabel>
+          <DropdownMenuItem>
+            <FileIcon />
+            New File
+            <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <FolderIcon />
+            New Folder
+            <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <FolderOpenIcon />
+              Open Recent
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
+                  <DropdownMenuItem>
+                    <FileCodeIcon />
+                    Project Alpha
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <FileCodeIcon />
+                    Project Beta
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <MoreHorizontalIcon />
+                      More Projects
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuItem>
+                          <FileCodeIcon />
+                          Project Gamma
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <FileCodeIcon />
+                          Project Delta
+                        </DropdownMenuItem>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <FolderSearchIcon />
+                    Browse...
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <SaveIcon />
+            Save
+            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <DownloadIcon />
+            Export
+            <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>View</DropdownMenuLabel>
+          <DropdownMenuCheckboxItem
+            checked={notifications.email}
+            onCheckedChange={(checked) =>
+              setNotifications({ ...notifications, email: checked === true })
+            }
+          >
+            <EyeIcon />
+            Show Sidebar
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={notifications.sms}
+            onCheckedChange={(checked) =>
+              setNotifications({ ...notifications, sms: checked === true })
+            }
+          >
+            <LayoutIcon />
+            Show Status Bar
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <PaletteIcon />
+              Theme
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                  <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+                    <DropdownMenuRadioItem value="light">
+                      <SunIcon />
+                      Light
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="dark">
+                      <MoonIcon />
+                      Dark
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="system">
+                      <MonitorIcon />
+                      System
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Account</DropdownMenuLabel>
+          <DropdownMenuItem>
+            <UserIcon />
+            Profile
+            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <LucideCreditCardIcon />
+            Billing
+          </DropdownMenuItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <SettingsIcon />
+              Settings
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Preferences</DropdownMenuLabel>
+                  <DropdownMenuItem>
+                    <KeyboardIcon />
+                    Keyboard Shortcuts
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <LanguagesIcon />
+                    Language
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <BellIcon />
+                      Notifications
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuGroup>
+                          <DropdownMenuLabel>Notification Types</DropdownMenuLabel>
+                          <DropdownMenuCheckboxItem
+                            checked={notifications.push}
+                            onCheckedChange={(checked) =>
+                              setNotifications({ ...notifications, push: checked === true })
+                            }
+                          >
+                            <BellIcon />
+                            Push Notifications
+                          </DropdownMenuCheckboxItem>
+                          <DropdownMenuCheckboxItem
+                            checked={notifications.email}
+                            onCheckedChange={(checked) =>
+                              setNotifications({ ...notifications, email: checked === true })
+                            }
+                          >
+                            <MailIcon />
+                            Email Notifications
+                          </DropdownMenuCheckboxItem>
+                        </DropdownMenuGroup>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <ShieldIcon />
+                    Privacy & Security
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <HelpCircleIcon />
+            Help & Support
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <FileTextIcon />
+            Documentation
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem variant="destructive">
+            <LucideLogOutIcon />
+            Sign Out
+            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   )
@@ -362,8 +741,33 @@ export default function DropdownMenuPage() {
 </DropdownMenuCheckboxItem>`} />
       </ShowcaseSection>
 
+      {/* ── 3b. Checkboxes Icons ── */}
+      <ShowcaseSection title="4. Checkbox items với Icon">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp icon trong <code className="text-xs font-mono">DropdownMenuCheckboxItem</code> để làm rõ ngữ nghĩa của từng tuỳ chọn.
+        </p>
+        <DemoBlock>
+          <CheckboxIconsDemo />
+        </DemoBlock>
+        <CodeBlock code={`const [notifications, setNotifications] = useState({
+  email: true,
+  sms: false,
+  push: true,
+})
+
+<DropdownMenuCheckboxItem
+  checked={notifications.email}
+  onCheckedChange={(checked) =>
+    setNotifications({ ...notifications, email: checked === true })
+  }
+>
+  <MailIcon />
+  Email notifications
+</DropdownMenuCheckboxItem>`} />
+      </ShowcaseSection>
+
       {/* ── 4. Radio items ── */}
-      <ShowcaseSection title="4. Radio items">
+      <ShowcaseSection title="5. Radio items">
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">DropdownMenuRadioGroup</code> kết hợp{" "}
           <code className="text-xs font-mono">DropdownMenuRadioItem</code> để chọn một trong nhiều tuỳ chọn.
@@ -380,8 +784,34 @@ export default function DropdownMenuPage() {
 </DropdownMenuRadioGroup>`} />
       </ShowcaseSection>
 
+      {/* ── 4b. Radio Icons ── */}
+      <ShowcaseSection title="6. Radio items với Icon">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp icon trong <code className="text-xs font-mono">DropdownMenuRadioItem</code> để làm rõ ngữ nghĩa của từng lựa chọn.
+        </p>
+        <DemoBlock>
+          <RadioIconsDemo />
+        </DemoBlock>
+        <CodeBlock code={`const [paymentMethod, setPaymentMethod] = useState("card")
+
+<DropdownMenuRadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
+  <DropdownMenuRadioItem value="card">
+    <LucideCreditCardIcon />
+    Credit Card
+  </DropdownMenuRadioItem>
+  <DropdownMenuRadioItem value="paypal">
+    <WalletIcon />
+    PayPal
+  </DropdownMenuRadioItem>
+  <DropdownMenuRadioItem value="bank">
+    <Building2Icon />
+    Bank Transfer
+  </DropdownMenuRadioItem>
+</DropdownMenuRadioGroup>`} />
+      </ShowcaseSection>
+
       {/* ── 5. Submenu ── */}
-      <ShowcaseSection title="5. Submenu">
+      <ShowcaseSection title="7. Submenu">
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">DropdownMenuSub</code>,{" "}
           <code className="text-xs font-mono">DropdownMenuSubTrigger</code> và{" "}
@@ -404,8 +834,49 @@ export default function DropdownMenuPage() {
 </DropdownMenuSub>`} />
       </ShowcaseSection>
 
-      {/* ── 6. Destructive variant ── */}
-      <ShowcaseSection title="6. Destructive variant">
+      {/* ── 6. Avatar trigger ── */}
+      <ShowcaseSection title="8. Avatar trigger">
+        <p className="text-sm text-muted-foreground">
+          Dùng <code className="text-xs font-mono">Avatar</code> làm trigger thay cho button thông thường — phù hợp cho menu tài khoản người dùng.
+        </p>
+        <DemoBlock>
+          <AvatarDemo />
+        </DemoBlock>
+        <CodeBlock code={`<DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button variant="ghost" size="icon" className="rounded-full">
+      <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+        <AvatarFallback>LR</AvatarFallback>
+      </Avatar>
+    </Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent align="end">
+    <DropdownMenuGroup>
+      <DropdownMenuItem>
+        <BadgeCheckIcon />
+        Account
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <CreditCardIcon />
+        Billing
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <BellIcon />
+        Notifications
+      </DropdownMenuItem>
+    </DropdownMenuGroup>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>
+      <LogOutIcon />
+      Sign Out
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>`} />
+      </ShowcaseSection>
+
+      {/* ── 7. Destructive variant ── */}
+      <ShowcaseSection title="9. Destructive variant">
         <p className="text-sm text-muted-foreground">
           Thêm <code className="text-xs font-mono">variant="destructive"</code> vào{" "}
           <code className="text-xs font-mono">DropdownMenuItem</code> để hiển thị hành động nguy hiểm bằng màu đỏ.
@@ -420,8 +891,8 @@ export default function DropdownMenuPage() {
 </DropdownMenuItem>`} />
       </ShowcaseSection>
 
-      {/* ── 7. Inset ── */}
-      <ShowcaseSection title="7. Inset — thụt lề căn chỉnh với icon">
+      {/* ── 8. Inset ── */}
+      <ShowcaseSection title="10. Inset — thụt lề căn chỉnh với icon">
         <p className="text-sm text-muted-foreground">
           Thêm <code className="text-xs font-mono">inset</code> vào <code className="text-xs font-mono">DropdownMenuItem</code>{" "}
           hoặc <code className="text-xs font-mono">DropdownMenuLabel</code> để thụt lề trái, căn thẳng hàng với các item có icon.
@@ -434,8 +905,31 @@ export default function DropdownMenuPage() {
 <DropdownMenuItem inset variant="destructive">Xoá dự án</DropdownMenuItem>`} />
       </ShowcaseSection>
 
-      {/* ── 8. Props reference ── */}
-      <ShowcaseSection title="8. Props reference">
+      {/* ── 11. Complex ── */}
+      <ShowcaseSection title="11. Complex">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp submenu nhiều cấp, <code className="text-xs font-mono">DropdownMenuCheckboxItem</code>,{" "}
+          <code className="text-xs font-mono">DropdownMenuRadioGroup</code> và <code className="text-xs font-mono">DropdownMenuPortal</code>{" "}
+          trong một menu phức tạp thực tế.
+        </p>
+        <DemoBlock>
+          <ComplexDemo />
+        </DemoBlock>
+        <CodeBlock code={`<DropdownMenuSub>
+  <DropdownMenuSubTrigger>
+    <FolderOpenIcon />
+    Open Recent
+  </DropdownMenuSubTrigger>
+  <DropdownMenuPortal>
+    <DropdownMenuSubContent>
+      {/* nested submenu + checkbox + radio... */}
+    </DropdownMenuSubContent>
+  </DropdownMenuPortal>
+</DropdownMenuSub>`} />
+      </ShowcaseSection>
+
+      {/* ── 12. Props reference ── */}
+      <ShowcaseSection title="12. Props reference">
         <p className="text-sm text-muted-foreground font-medium mb-2">DropdownMenuContent</p>
         <PropsTable rows={[
           { prop: "align", type: '"start" | "center" | "end"', default_: '"start"', description: "Căn chỉnh ngang của content so với trigger." },
@@ -463,8 +957,8 @@ export default function DropdownMenuPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 9. Lưu ý ── */}
-      <ShowcaseSection title="9. Lưu ý khi sử dụng">
+      {/* ── 13. Lưu ý ── */}
+      <ShowcaseSection title="13. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li><code className="text-xs font-mono">DropdownMenuTrigger</code> bọc button gốc của bạn — dùng <code className="text-xs font-mono">asChild</code> để tránh render thêm thẻ <code className="text-xs font-mono">&lt;button&gt;</code> lồng nhau.</li>
           <li><code className="text-xs font-mono">DropdownMenuContent</code> tự bọc trong <code className="text-xs font-mono">Portal</code> — không cần thêm <code className="text-xs font-mono">DropdownMenuPortal</code> thủ công trừ khi cần kiểm soát container.</li>
