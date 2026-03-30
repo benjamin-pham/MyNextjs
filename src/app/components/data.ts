@@ -42,4 +42,5 @@ export const components: ComponentItem[] = [
   { name: "Popover", href: "/components/popover", description: "Cửa sổ nội dung nổi bật xuất hiện khi nhấn vào trigger — hỗ trợ header, title, description và anchor." },
   { name: "Progress", href: "/components/progress", description: "Thanh hiển thị tiến độ hoàn thành của một tác vụ hoặc thời gian chờ." },
   { name: "Radio Group", href: "/components/radio-group", description: "Nhóm các nút chọn radio cho phép người dùng chọn một tùy chọn duy nhất từ một danh sách." },
+  { name: "Resizable", href: "/components/resizable", description: "Các nhóm bảng có thể thay đổi kích thước và bố cục có hỗ trợ phím tắt." },
 ];
