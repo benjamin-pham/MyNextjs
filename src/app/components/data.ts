@@ -49,4 +49,5 @@ export const components: ComponentItem[] = [
   { name: "Sheet", href: "/components/sheet", description: "Tấm panel trượt ra từ các cạnh của màn hình — trên, dưới, trái, hoặc phải." },
   { name: "Sidebar", href: "/components/sidebar", description: "Thanh menu bên điều hướng có thể thu gọn, hỗ trợ nhiều cấp độ và tùy chỉnh giao diện." },
   { name: "Skeleton", href: "/components/skeleton", description: "Hiển thị placeholder nội dung trong khi đang tải dữ liệu với hiệu ứng pulse." },
+  { name: "Sonner", href: "/components/sonner", description: "Thành phần thông báo (toast) hiện đại, nhẹ và có thể tùy chỉnh cao." },
 ];
