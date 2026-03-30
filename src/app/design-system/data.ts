@@ -25,6 +25,7 @@ export const components: ComponentItem[] = [
   { name: "Chart", href: "/design-system/components/chart", description: "Hiển thị dữ liệu dưới dạng biểu đồ" },
   { name: "Checkbox", href: "/design-system/components/checkbox", description: "Ô vuông đánh dấu cho phép chọn hoặc bỏ chọn một tùy chọn" },
   { name: "Collapsible", href: "/design-system/components/collapsible", description: "Thành phần cho phép người dùng mở rộng hoặc thu gọn một vùng nội dung." },
+  { name: "Combobox", href: "/design-system/components/combobox", description: "Thành phần cho phép người dùng chọn một hoặc nhiều giá trị từ một danh sách có thể tìm kiếm." },
   { name: "Command", href: "/design-system/components/command", description: "Command palette giúp tìm kiếm và thực hiện các thao tác nhanh chóng" },
   { name: "Context Menu", href: "/design-system/components/context-menu", description: "Menu ngữ cảnh hiển thị khi nhấp chuột phải với các hành động phù hợp" },
   { name: "Data Table", href: "/design-system/components/data-table", description: "Bảng dữ liệu mạnh mẽ với sắp xếp, lọc, phân trang và chọn hàng dùng TanStack Table" },
