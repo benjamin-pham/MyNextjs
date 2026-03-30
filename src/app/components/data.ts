@@ -53,4 +53,5 @@ export const components: ComponentItem[] = [
   { name: "Spinner", href: "/components/spinner", description: "Thành phần hiển thị trạng thái đang tải (loading) của hệ thống hoặc tác vụ." },
   { name: "Switch", href: "/components/switch", description: "Nút gạt cho phép người dùng chuyển đổi giữa hai trạng thái — bật hoặc tắt." },
   { name: "Table", href: "/components/table", description: "Thành phần bảng mạnh mẽ để hiển thị tập dữ liệu có cấu trúc." },
+  { name: "Tabs", href: "/components/tabs", description: "Giao diện tab giúp phân loại và chuyển đổi nội dung trong cùng một không gian." },
 ];
