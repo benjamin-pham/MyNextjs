@@ -38,4 +38,5 @@ export const components: ComponentItem[] = [
   { name: "Menubar", href: "/components/menubar", description: "Thanh menu nằm ngang theo phong cách ứng dụng desktop — hỗ trợ sub-menu, checkbox, radio, shortcut và separator" },
   { name: "Native Select", href: "/components/native-select", description: "Thẻ <select> gốc của trình duyệt được tạo kiểu nhất quán với design system — nhẹ, không phụ thuộc Radix, phù hợp cho mobile." },
   { name: "Navigation Menu", href: "/components/navigation-menu", description: "Thành phần menu điều hướng chính của ứng dụng, hỗ trợ hiển thị danh sách, submenu với animation mượt mà." },
+  { name: "Pagination", href: "/components/pagination", description: "Hệ thống điều hướng phân trang giúp người dùng di chuyển giữa các tập dữ liệu lớn." },
 ]
