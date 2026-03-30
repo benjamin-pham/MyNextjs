@@ -12,6 +12,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
+import { Button } from "@/components/ui/button"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
 import {
   BellIcon,
@@ -39,6 +40,133 @@ import {
   ZoomInIcon,
   ZoomOutIcon,
 } from "lucide-react"
+
+/* ─── CommandBasic ───────────────────────────────────────────────────────── */
+
+function CommandBasic() {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <div className="flex flex-col gap-4">
+      <Button onClick={() => setOpen(true)} variant="outline" className="w-fit mx-auto">
+        Mở Command Menu
+      </Button>
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <Command>
+          <CommandInput placeholder="Type a command or search..." />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading="Suggestions">
+              <CommandItem>
+                <CalendarIcon />
+                <span>Calendar</span>
+              </CommandItem>
+              <CommandItem>
+                <SmileIcon />
+                <span>Search Emoji</span>
+              </CommandItem>
+              <CommandItem>
+                <CalculatorIcon />
+                <span>Calculator</span>
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </CommandDialog>
+    </div>
+  )
+}
+
+/* ─── CommandWithShortcuts ────────────────────────────────────────────────── */
+
+function CommandWithShortcuts() {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <Button onClick={() => setOpen(true)} variant="outline" className="w-fit mx-auto">
+        Mở Menu với Phím tắt
+      </Button>
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <Command>
+          <CommandInput placeholder="Type a command or search..." />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading="Settings">
+              <CommandItem>
+                <UserIcon />
+                <span>Profile</span>
+                <CommandShortcut>⌘P</CommandShortcut>
+              </CommandItem>
+              <CommandItem>
+                <CreditCardIcon />
+                <span>Billing</span>
+                <CommandShortcut>⌘B</CommandShortcut>
+              </CommandItem>
+              <CommandItem>
+                <SettingsIcon />
+                <span>Settings</span>
+                <CommandShortcut>⌘S</CommandShortcut>
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </CommandDialog>
+    </div>
+  )
+}
+
+function CommandWithGroups() {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <Button onClick={() => setOpen(true)} variant="outline" className="w-fit mx-auto">
+        Mở Menu với Nhóm
+      </Button>
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <Command>
+          <CommandInput placeholder="Type a command or search..." />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading="Suggestions">
+              <CommandItem>
+                <CalendarIcon />
+                <span>Calendar</span>
+              </CommandItem>
+              <CommandItem>
+                <SmileIcon />
+                <span>Search Emoji</span>
+              </CommandItem>
+              <CommandItem>
+                <CalculatorIcon />
+                <span>Calculator</span>
+              </CommandItem>
+            </CommandGroup>
+            <CommandSeparator />
+            <CommandGroup heading="Settings">
+              <CommandItem>
+                <UserIcon />
+                <span>Profile</span>
+                <CommandShortcut>⌘P</CommandShortcut>
+              </CommandItem>
+              <CommandItem>
+                <CreditCardIcon />
+                <span>Billing</span>
+                <CommandShortcut>⌘B</CommandShortcut>
+              </CommandItem>
+              <CommandItem>
+                <SettingsIcon />
+                <span>Settings</span>
+                <CommandShortcut>⌘S</CommandShortcut>
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </CommandDialog>
+    </div>
+  )
+}
 
 /* ─── CommandDialogDemo ──────────────────────────────────────────────────── */
 
@@ -317,150 +445,101 @@ export default function CommandPage() {
 
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
-        <DemoBlock>
-          <Command className="rounded-lg border shadow-md md:min-w-[450px]">
-            <CommandInput placeholder="Tìm kiếm..." />
-            <CommandList>
-              <CommandEmpty>Không tìm thấy kết quả phù hợp.</CommandEmpty>
-              <CommandGroup heading="Gợi ý">
-                <CommandItem>
-                  <CalendarIcon />
-                  <span>Lịch trình</span>
-                </CommandItem>
-                <CommandItem>
-                  <SmileIcon />
-                  <span>Tìm kiếm Emoji</span>
-                </CommandItem>
-                <CommandItem disabled>
-                  <CalculatorIcon />
-                  <span>Máy tính (Disabled)</span>
-                </CommandItem>
-              </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup heading="Cài đặt">
-                <CommandItem>
-                  <UserIcon />
-                  <span>Hồ sơ cá nhân</span>
-                  <CommandShortcut>⌘P</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <CreditCardIcon />
-                  <span>Thông tin thanh toán</span>
-                  <CommandShortcut>⌘B</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <SettingsIcon />
-                  <span>Tùy chỉnh hệ thống</span>
-                  <CommandShortcut>⌘S</CommandShortcut>
-                </CommandItem>
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </DemoBlock>
-        <CodeBlock code={`<Command className="rounded-lg border shadow-md md:min-w-[450px]">
-  <CommandInput placeholder="Tìm kiếm..." />
-  <CommandList>
-    <CommandEmpty>Không tìm thấy kết quả phù hợp.</CommandEmpty>
-    <CommandGroup heading="Gợi ý">
-      <CommandItem>
-        <CalendarIcon />
-        <span>Lịch trình</span>
-      </CommandItem>
-      <CommandItem>
-        <SmileIcon />
-        <span>Tìm kiếm Emoji</span>
-      </CommandItem>
-      <CommandItem disabled>
-        <CalculatorIcon />
-        <span>Máy tính (Disabled)</span>
-      </CommandItem>
-    </CommandGroup>
-    <CommandSeparator />
-    <CommandGroup heading="Cài đặt">
-      <CommandItem>
-        <UserIcon />
-        <span>Hồ sơ cá nhân</span>
-        <CommandShortcut>⌘P</CommandShortcut>
-      </CommandItem>
-      <CommandItem>
-        <CreditCardIcon />
-        <span>Thông tin thanh toán</span>
-        <CommandShortcut>⌘B</CommandShortcut>
-      </CommandItem>
-      <CommandItem>
-        <SettingsIcon />
-        <span>Tùy chỉnh hệ thống</span>
-        <CommandShortcut>⌘S</CommandShortcut>
-      </CommandItem>
-    </CommandGroup>
-  </CommandList>
-</Command>`} />
-      </ShowcaseSection>
-
-      {/* ── 2. Command Dialog (Modal) ── */}
-      <ShowcaseSection title="2. Dạng Dialog (Modal)">
         <p className="text-sm text-muted-foreground">
-          Sử dụng <code className="text-xs font-mono">CommandDialog</code> để render command palette dưới dạng một modal ở giữa màn hình, tương tự như Spotlight trên macOS.
+          Sử dụng <code className="text-xs font-mono">CommandDialog</code> kết hợp với một <code className="text-xs font-mono">Button</code> làm trigger để mở menu.
         </p>
         <DemoBlock>
-          <CommandDialogDemo />
+          <CommandBasic />
         </DemoBlock>
         <CodeBlock code={`"use client"
 
 import * as React from "react"
+import { Button } from "@/components/ui/button"
 import {
+  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command"
 
-export function CommandDialogDemo() {
+export function CommandBasic() {
   const [open, setOpen] = React.useState(false)
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setOpen((open) => !open)
-      }
-    }
-
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [])
-
   return (
-    <>
-      <p className="text-sm text-muted-foreground">
-        Nhấn phím <kbd>⌘ J</kbd>
-      </p>
+    <div className="flex flex-col gap-4">
+      <Button onClick={() => setOpen(true)} variant="outline" className="w-fit">
+        Open Menu
+      </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
-          <CommandInput placeholder="Tìm kiếm..." />
+          <CommandInput placeholder="Type a command or search..." />
           <CommandList>
-            <CommandEmpty>Không tìm thấy kết quả.</CommandEmpty>
-            <CommandGroup heading="Gợi ý">
-              <CommandItem>
-                <CalendarIcon />
-                <span>Lịch</span>
-              </CommandItem>
-              {/* ... */}
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading="Suggestions">
+              <CommandItem>Calendar</CommandItem>
+              <CommandItem>Search Emoji</CommandItem>
+              <CommandItem>Calculator</CommandItem>
             </CommandGroup>
           </CommandList>
         </Command>
       </CommandDialog>
-    </>
+    </div>
   )
 }`} />
       </ShowcaseSection>
 
-      {/* ── 3. Scrollable (Nhiều item) ── */}
-      <ShowcaseSection title="3. Scrollable (Nhiều item)">
+      {/* ── 2. Nhóm và Phân cách (Groups) ── */}
+      <ShowcaseSection title="2. Nhóm và Phân cách (Groups)">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">CommandGroup</code> để gom nhóm các item có cùng tính chất và <code className="text-xs font-mono">CommandSeparator</code> để ngăn cách giữa các nhóm.
+        </p>
+        <DemoBlock>
+          <CommandWithGroups />
+        </DemoBlock>
+        <CodeBlock code={`<CommandList>
+  <CommandGroup heading="Suggestions">
+    <CommandItem>Calendar</CommandItem>
+    {/* ... */}
+  </CommandGroup>
+  <CommandSeparator />
+  <CommandGroup heading="Settings">
+    <CommandItem>Profile</CommandItem>
+    {/* ... */}
+  </CommandGroup>
+</CommandList>`} />
+      </ShowcaseSection>
+
+      {/* ── 3. Dạng Dialog (Modal) ── */}
+      <ShowcaseSection title="3. Dạng Dialog (Modal)">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">CommandDialog</code> để render command palette dưới dạng một modal ở giữa màn hình, tương tự như Spotlight trên macOS.
+        </p>
+        <DemoBlock>
+          <CommandDialogDemo />
+        </DemoBlock>
+        <CodeBlock code={`/* ... code implementation ... */`} />
+      </ShowcaseSection>
+
+      {/* ── 4. Phím tắt (Shortcuts) ── */}
+      <ShowcaseSection title="4. Phím tắt (Shortcuts)">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">CommandShortcut</code> để hiển thị các tổ hợp phím tắt cho từng item, giúp người dùng thao tác nhanh hơn.
+        </p>
+        <DemoBlock>
+          <CommandWithShortcuts />
+        </DemoBlock>
+        <CodeBlock code={`<CommandItem>
+  <UserIcon />
+  <span>Profile</span>
+  <CommandShortcut>⌘P</CommandShortcut>
+</CommandItem>`} />
+      </ShowcaseSection>
+
+      {/* ── 5. Scrollable (Nhiều item) ── */}
+      <ShowcaseSection title="5. Scrollable (Nhiều item)">
         <p className="text-sm text-muted-foreground">
           Khi có quá nhiều item, <code className="text-xs font-mono">CommandList</code> sẽ tự động xuất hiện thanh cuộn nếu bạn giới hạn chiều cao của nó.
         </p>
@@ -480,8 +559,8 @@ export function CommandDialogDemo() {
 </CommandList>`} />
       </ShowcaseSection>
 
-      {/* ── 4. Lưu ý ── */}
-      <ShowcaseSection title="4. Lưu ý khi sử dụng">
+      {/* ── 6. Lưu ý ── */}
+      <ShowcaseSection title="6. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Component này bao bọc thư viện <code className="text-xs font-mono">cmdk</code>.</li>
           <li>Đảm bảo import đủ các phần phụ (Input, List, Empty, Group, Item, v.v...) để giữ đúng cấu trúc.</li>
