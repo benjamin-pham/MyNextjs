@@ -59,6 +59,20 @@ export default function SheetPage() {
 } from "@/components/ui/sheet"`} />
       </ShowcaseSection>
 
+      {/* ── Sử dụng ── */}
+      <ShowcaseSection title="Sử dụng">
+        <CodeBlock alwaysOpen code={`<Sheet>
+  <SheetTrigger>Open</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Tiêu đề</SheetTitle>
+      <SheetDescription>Mô tả nội dung của Sheet.</SheetDescription>
+    </SheetHeader>
+    {/* Nội dung của bạn */}
+  </SheetContent>
+</Sheet>`} />
+      </ShowcaseSection>
+
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
         <p className="text-sm text-muted-foreground">
@@ -66,49 +80,25 @@ export default function SheetPage() {
         </p>
         <DemoBlock>
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline">Mở Sheet</Button>
-            </SheetTrigger>
+            <SheetTrigger className="text-sm font-medium hover:underline">Mở Sheet</SheetTrigger>
             <SheetContent>
               <SheetHeader>
-                <SheetTitle>Chỉnh sửa profile</SheetTitle>
-                <SheetDescription>
-                  Thực hiện thay đổi cho profile của bạn tại đây. Nhấn lưu khi hoàn tất.
-                </SheetDescription>
+                <SheetTitle>Tiêu đề</SheetTitle>
+                <SheetDescription>Mô tả nội dung của Sheet.</SheetDescription>
               </SheetHeader>
-              <div className="grid gap-4 py-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="name">Tên</Label>
-                  <Input id="name" defaultValue="John Doe" />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" defaultValue="@johndoe" />
-                </div>
+              <div className="py-6 text-center text-muted-foreground">
+                Nội dung panel.
               </div>
-              <SheetFooter>
-                <SheetClose asChild>
-                  <Button type="submit">Lưu thay đổi</Button>
-                </SheetClose>
-              </SheetFooter>
             </SheetContent>
           </Sheet>
         </DemoBlock>
         <CodeBlock code={`<Sheet>
-  <SheetTrigger asChild>
-    <Button variant="outline">Mở Sheet</Button>
-  </SheetTrigger>
+  <SheetTrigger>Mở Sheet</SheetTrigger>
   <SheetContent>
     <SheetHeader>
       <SheetTitle>Tiêu đề</SheetTitle>
-      <SheetDescription>Mô tả nội dung của Sheet.</SheetDescription>
+      <SheetDescription>Mô tả nội dung.</SheetDescription>
     </SheetHeader>
-    {/* Nội dung của bạn */}
-    <SheetFooter>
-      <SheetClose asChild>
-        <Button type="submit">Đóng</Button>
-      </SheetClose>
-    </SheetFooter>
   </SheetContent>
 </Sheet>`} />
       </ShowcaseSection>
@@ -222,8 +212,54 @@ export default function SheetPage() {
 </SheetContent>`} />
       </ShowcaseSection>
 
-      {/* ── 5. Ví dụ thực tế ── */}
-      <ShowcaseSection title="5. Ví dụ thực tế: Mobile Menu">
+      {/* ── 5. asChild — render thành thành phần khác ── */}
+      <ShowcaseSection title="5. asChild — render thành thành phần khác">
+        <p className="text-sm text-muted-foreground">
+          Dùng <code className="text-xs font-mono">asChild</code> để <code className="text-xs font-mono">SheetTrigger</code> hoặc <code className="text-xs font-mono">SheetClose</code> render thành component con (ví dụ <code className="text-xs font-mono">Button</code>), giúp giữ ngữ nghĩa và style của component đó.
+        </p>
+        <DemoBlock>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline">Chỉnh sửa Profile</Button>
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle>Chỉnh sửa profile</SheetTitle>
+                <SheetDescription>
+                  Thay đổi thông tin cá nhân của bạn.
+                </SheetDescription>
+              </SheetHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="name-2">Tên</Label>
+                  <Input id="name-2" defaultValue="John Doe" />
+                </div>
+              </div>
+              <SheetFooter>
+                <SheetClose asChild>
+                  <Button type="submit">Lưu</Button>
+                </SheetClose>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+        </DemoBlock>
+        <CodeBlock code={`<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="outline">Mở</Button>
+  </SheetTrigger>
+  <SheetContent>
+    ...
+    <SheetFooter>
+      <SheetClose asChild>
+        <Button type="submit">Lưu</Button>
+      </SheetClose>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>`} />
+      </ShowcaseSection>
+
+      {/* ── 6. Ví dụ thực tế ── */}
+      <ShowcaseSection title="6. Ví dụ thực tế: Mobile Menu">
         <p className="text-sm text-muted-foreground">
           Sheet thường dùng để làm menu điều hướng trên thiết bị di động.
         </p>
@@ -257,8 +293,8 @@ export default function SheetPage() {
         </DemoBlock>
       </ShowcaseSection>
 
-      {/* ── 6. Props reference ── */}
-      <ShowcaseSection title="6. Props reference">
+      {/* ── 7. Props reference ── */}
+      <ShowcaseSection title="7. Props reference">
         <div className="space-y-6">
           <div>
             <h3 className="text-sm font-semibold mb-3">SheetContent</h3>
@@ -274,13 +310,14 @@ export default function SheetPage() {
         </div>
       </ShowcaseSection>
 
-      {/* ── 7. Lưu ý ── */}
-      <ShowcaseSection title="7. Lưu ý khi sử dụng">
+      {/* ── 8. Lưu ý ── */}
+      <ShowcaseSection title="8. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Sheet sử dụng Portal để render nội dung ra ngoài DOM hierarchy chính, giúp tránh các vấn đề về <code className="text-xs font-mono">z-index</code> và <code className="text-xs font-mono">overflow: hidden</code>.</li>
           <li>Khi mở Sheet, focus sẽ được khóa (trap focus) bên trong panel để đảm bảo tính accessibility.</li>
-          <li>Mặc định, click vào vùng overlay hoặc nhấn phím <kbd className="text-[10px] font-sans border rounded px-1 px-0.5 bg-muted">Esc</kbd> sẽ đóng sheet.</li>
+          <li>Mặc định, click vào vùng overlay hoặc nhấn phím <kbd className="text-[10px] font-sans border rounded px-0.5 bg-muted">Esc</kbd> sẽ đóng sheet.</li>
           <li>Dùng <code className="text-xs font-mono">asChild</code> trên <code className="text-xs font-mono">SheetTrigger</code> nếu bạn dùng Button custom hoặc component khác làm trigger.</li>
+          <li>Dùng <code className="text-xs font-mono">SheetClose</code> bên trong <code className="text-xs font-mono">SheetContent</code> để tạo các nút đóng thủ công.</li>
         </ul>
       </ShowcaseSection>
     </div>
