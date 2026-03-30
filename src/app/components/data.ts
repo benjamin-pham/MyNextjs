@@ -55,4 +55,5 @@ export const components: ComponentItem[] = [
   { name: "Table", href: "/components/table", description: "Thành phần bảng mạnh mẽ để hiển thị tập dữ liệu có cấu trúc." },
   { name: "Tabs", href: "/components/tabs", description: "Giao diện tab giúp phân loại và chuyển đổi nội dung trong cùng một không gian." },
   { name: "Textarea", href: "/components/textarea", description: "Trường nhập liệu văn bản nhiều dòng hỗ trợ tự động co giãn và trạng thái form." },
+  { name: "Toggle", href: "/components/toggle", description: "Nút chuyển đổi trạng thái bật/tắt (on/off) thường dùng cho định dạng văn bản hoặc bộ lọc." },
 ];
