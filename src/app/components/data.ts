@@ -34,4 +34,5 @@ export const components: ComponentItem[] = [
   { name: "Input OTP", href: "/components/input-otp", description: "Ô nhập mã OTP hỗ trợ paste, điều hướng bàn phím, lọc ký tự theo pattern và callback khi nhập đủ" },
   { name: "Item", href: "/components/item", description: "Component đa năng hiển thị nội dung với media, tiêu đề, mô tả và hành động — dùng cho danh sách, cài đặt, thông báo" },
   { name: "Kbd", href: "/components/kbd", description: "Hiển thị phím bàn phím hoặc tổ hợp phím tắt — dùng trong tooltip, button, input và bảng chú thích phím tắt" },
+  { name: "Label", href: "/components/label", description: "Nhãn có thể truy cập liên kết với các điều khiển form — hỗ trợ trạng thái disabled thông qua peer selector" },
 ]
