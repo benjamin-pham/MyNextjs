@@ -57,4 +57,6 @@ export const components: ComponentItem[] = [
   { name: "Textarea", href: "/components/textarea", description: "Trường nhập liệu văn bản nhiều dòng hỗ trợ tự động co giãn và trạng thái form." },
   { name: "Toggle", href: "/components/toggle", description: "Nút chuyển đổi trạng thái bật/tắt (on/off) thường dùng cho định dạng văn bản hoặc bộ lọc." },
   { name: "Toggle Group", href: "/components/toggle-group", description: "Nhóm các nút bật/tắt để chọn một hoặc nhiều tùy chọn, có hỗ trợ các dạng dính liền hoặc tách biệt." },
+  { name: "Typography", href: "/components/typography", description: "Tập hợp các kiểu chữ và định dạng văn bản chuẩn theo phong cách shadcn/ui." },
+  { name: "Tooltip", href: "/components/tooltip", description: "Cửa sổ nội dung nhỏ xuất hiện khi người dùng di chuột qua (hover) hoặc tập trung (focus) vào một thành phần." },
 ];
