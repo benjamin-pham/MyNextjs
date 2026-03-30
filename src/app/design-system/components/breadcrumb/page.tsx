@@ -8,6 +8,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { ChevronDownIcon, DotIcon } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/design-system/_showcase"
 
 export default function BreadcrumbShowcasePage() {
@@ -311,8 +319,87 @@ export default function BreadcrumbShowcasePage() {
 </Breadcrumb>`} />
       </ShowcaseSection>
 
-      {/* ── 6. Props reference ── */}
-      <ShowcaseSection title="6. Props reference">
+      {/* ── 6. Với Dropdown Menu ── */}
+      <ShowcaseSection title="6. Với Dropdown Menu">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp với <code className="text-xs font-mono">DropdownMenu</code> để hiển thị danh sách các mục trong một cấp.
+        </p>
+        <DemoBlock>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/">Home</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <DotIcon className="size-4" />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button className="flex items-center gap-1 transition-colors hover:text-foreground outline-none">
+                      Components
+                      <ChevronDownIcon className="size-3.5" />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start">
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>Documentation</DropdownMenuItem>
+                      <DropdownMenuItem>Themes</DropdownMenuItem>
+                      <DropdownMenuItem>GitHub</DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <DotIcon className="size-4" />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </DemoBlock>
+        <CodeBlock code={`<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink asChild>
+        <Link href="/">Home</Link>
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>
+      <DotIcon />
+    </BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button className="flex items-center gap-1">
+            Components
+            <ChevronDownIcon className="size-3.5" />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start">
+          <DropdownMenuGroup>
+            <DropdownMenuItem>Documentation</DropdownMenuItem>
+            <DropdownMenuItem>Themes</DropdownMenuItem>
+            <DropdownMenuItem>GitHub</DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>
+      <DotIcon />
+    </BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`} />
+      </ShowcaseSection>
+
+      {/* ── 7. Props reference ── */}
+      <ShowcaseSection title="7. Props reference">
         <PropsTable rows={[
           { prop: "BreadcrumbLink › asChild", type: "boolean", default_: "false", description: "Render thành thẻ con (vd: <Link>) thay vì <a>. Dùng với Slot." },
           { prop: "BreadcrumbLink › href", type: "string", description: "URL điều hướng khi không dùng asChild." },
@@ -322,8 +409,8 @@ export default function BreadcrumbShowcasePage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 7. Lưu ý ── */}
-      <ShowcaseSection title="7. Lưu ý khi sử dụng">
+      {/* ── 8. Lưu ý ── */}
+      <ShowcaseSection title="8. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>
             <code className="text-xs font-mono">BreadcrumbSeparator</code> phải đặt trực tiếp trong{" "}
