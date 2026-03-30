@@ -1,6 +1,9 @@
+"use client"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "@/components/ui/card"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Toaster } from "@/components/ui/sonner"
 import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/design-system/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
@@ -108,36 +111,72 @@ export default function CardPage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 2. Card Size (sm) ── */}
-      <ShowcaseSection title="2. Kích thước (size props)">
+      {/* ── 2. Kích thước (size="sm") ── */}
+      <ShowcaseSection title="2. Kích thước (size prop)">
         <p className="text-sm text-muted-foreground">
           Sử dụng prop <code className="text-xs font-mono">size="sm"</code> để tạo ra một Card với padding và khoảng cách nhỏ hơn, rất hữu ích cho các UI compact.
         </p>
         <DemoBlock>
           <div className="grid sm:grid-cols-2 gap-4 items-start">
-            <Card size="default">
+            <Card size="sm" className="mx-auto w-full max-w-sm">
               <CardHeader>
-                <CardTitle>Card Mặc định</CardTitle>
-                <CardDescription>Padding và gap lớn.</CardDescription>
+                <CardTitle>Small Card</CardTitle>
+                <CardDescription>
+                  This card uses the small size variant.
+                </CardDescription>
               </CardHeader>
-              <CardContent>Line height chuẩn.</CardContent>
+              <CardContent>
+                <p>
+                  The card component supports a size prop that can be set to
+                  &quot;sm&quot; for a more compact appearance.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Button variant="outline" size="sm" className="w-full" onClick={() => toast("Action clicked!")}>
+                  Action
+                </Button>
+              </CardFooter>
             </Card>
 
-            <Card size="sm">
+            <Card className="mx-auto w-full max-w-sm">
               <CardHeader>
-                <CardTitle>Card Nhỏ gọn (sm)</CardTitle>
-                <CardDescription>Tiết kiệm không gian hơn.</CardDescription>
+                <CardTitle>Default Card</CardTitle>
+                <CardDescription>
+                  This is the standard card size.
+                </CardDescription>
               </CardHeader>
-              <CardContent>Line height và font-size tối ưu hóa.</CardContent>
+              <CardContent>
+                <p>
+                  By default, the card has standard padding and spacing for better readability.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Button variant="outline" className="w-full" onClick={() => toast("Action clicked!")}>
+                  Action
+                </Button>
+              </CardFooter>
             </Card>
           </div>
         </DemoBlock>
         <CodeBlock code={`
-<Card size="sm">
+<Card size="sm" className="mx-auto w-full max-w-sm">
   <CardHeader>
-    <CardTitle>...</CardTitle>
+    <CardTitle>Small Card</CardTitle>
+    <CardDescription>
+      This card uses the small size variant.
+    </CardDescription>
   </CardHeader>
-  <CardContent>...</CardContent>
+  <CardContent>
+    <p>
+      The card component supports a size prop that can be set to
+      "sm" for a more compact appearance.
+    </p>
+  </CardContent>
+  <CardFooter>
+    <Button variant="outline" size="sm" className="w-full" onClick={() => toast("Action clicked!")}>
+      Action
+    </Button>
+  </CardFooter>
 </Card>
         `} />
       </ShowcaseSection>
@@ -154,7 +193,7 @@ export default function CardPage() {
                 <CardTitle>Thiết lập thông báo</CardTitle>
                 <CardDescription>Quản lý cách nhận thông báo</CardDescription>
                 <CardAction>
-                  <Button variant="ghost" size="icon" className="-mr-2 -mt-2">
+                  <Button variant="ghost" size="icon" className="-mr-2 -mt-2" onClick={() => toast("Card settings clicked!")}>
                     <span className="sr-only">Menu</span>
                     <MoreHorizontalIcon />
                   </Button>
@@ -174,7 +213,7 @@ export default function CardPage() {
 
     {/* Sẽ tự động float sang bên phải nhờ grid */}
     <CardAction>
-      <Button variant="ghost" size="icon">...</Button>
+      <Button variant="ghost" size="icon" onClick={() => toast("Action...")}>...</Button>
     </CardAction>
   </CardHeader>
 </Card>
@@ -224,6 +263,7 @@ export default function CardPage() {
           { prop: "<CardFooter>", type: "ReactNode", description: "Nằm ở cuối, thường chứa nút hoặc trạng thái. Có viền ngăn cách (border-t) và nền đục (bg-muted/50)." },
         ]} />
       </ShowcaseSection>
+      <Toaster position={"bottom-right"} />
     </div>
   )
 }
