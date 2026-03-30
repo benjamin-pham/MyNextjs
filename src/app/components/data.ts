@@ -31,5 +31,6 @@ export const components: ComponentItem[] = [
   { name: "Hover Card", href: "/components/hover-card", description: "Hiển thị nội dung bổ sung khi hover vào một phần tử — dùng để preview thông tin người dùng, link, repository" },
   { name: "Input", href: "/components/input", description: "Trường nhập liệu văn bản hỗ trợ tất cả type HTML chuẩn, trạng thái disabled/invalid và icon wrapper pattern" },
   { name: "Input Group", href: "/components/input-group", description: "Nhóm input kết hợp với addon, icon, button trong một border chung — URL prefix, tiền tệ, password toggle" },
-  { name: "Input OTP", href: "/components/input-otp", description: "Ô nhập mã OTP hỗ trợ paste, điều hướng bàn phím, lọc ký tự theo pattern và callback khi nhập đủ" }
+  { name: "Input OTP", href: "/components/input-otp", description: "Ô nhập mã OTP hỗ trợ paste, điều hướng bàn phím, lọc ký tự theo pattern và callback khi nhập đủ" },
+  { name: "Item", href: "/components/item", description: "Component đa năng hiển thị nội dung với media, tiêu đề, mô tả và hành động — dùng cho danh sách, cài đặt, thông báo" },
 ]
