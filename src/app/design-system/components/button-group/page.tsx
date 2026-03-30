@@ -1,9 +1,69 @@
+"use client"
+
+import * as React from "react"
+import {
+  AlertTriangleIcon,
+  ArrowRightIcon,
+  AudioLinesIcon,
+  BotIcon,
+  CheckIcon,
+  ChevronDownIcon,
+  CopyIcon,
+  PlusIcon,
+  SearchIcon,
+  ShareIcon,
+  TrashIcon,
+  UserRoundXIcon,
+  VolumeOffIcon,
+} from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import {
   ButtonGroup,
   ButtonGroupSeparator,
   ButtonGroupText,
 } from "@/components/ui/button-group"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group"
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { ShowcaseSection, CodeBlock, PropsTable, DemoBlock } from "@/app/design-system/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
@@ -37,6 +97,41 @@ const ArrowIcon = () => (
     <path d="M5 12h14M12 5l7 7-7 7" />
   </svg>
 )
+
+const CURRENCIES = [
+  { value: "$", label: "US Dollar" },
+  { value: "€", label: "Euro" },
+  { value: "£", label: "British Pound" },
+]
+
+function ButtonGroupSelectDemo() {
+  const [currency, setCurrency] = React.useState("$")
+
+  return (
+    <ButtonGroup>
+      <ButtonGroup>
+        <Select value={currency} onValueChange={setCurrency}>
+          <SelectTrigger className="font-mono min-w-20">{currency}</SelectTrigger>
+          <SelectContent className="min-w-32">
+            <SelectGroup>
+              {CURRENCIES.map((c) => (
+                <SelectItem key={c.value} value={c.value}>
+                  {c.value} <span className="text-muted-foreground ml-2 text-xs">{c.label}</span>
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <Input placeholder="10.00" pattern="[0-9]*" className="w-32" />
+      </ButtonGroup>
+      <ButtonGroup>
+        <Button aria-label="Send" size="icon" variant="outline">
+          <ArrowRightIcon className="w-4 h-4" />
+        </Button>
+      </ButtonGroup>
+    </ButtonGroup>
+  )
+}
 
 /* ─── page ───────────────────────────────────────────────────────────────── */
 
@@ -334,8 +429,259 @@ export default function ButtonGroupPage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 10. Props reference ── */}
-      <ShowcaseSection title="10. Props reference">
+      {/* ── 10. Nested ── */}
+      <ShowcaseSection title="10. Nested">
+        <p className="text-sm text-muted-foreground">
+          ButtonGroup có thể lồng vào nhau hoặc kết hợp với các component khác như InputGroup.
+        </p>
+        <DemoBlock>
+          <TooltipProvider>
+            <ButtonGroup>
+              <ButtonGroup>
+                <Button variant="outline" size="icon">
+                  <PlusIcon className="w-4 h-4" />
+                </Button>
+              </ButtonGroup>
+              <ButtonGroup>
+                <InputGroup>
+                  <InputGroupInput placeholder="Send a message..." />
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <InputGroupAddon align="inline-end">
+                        <AudioLinesIcon className="w-4 h-4" />
+                      </InputGroupAddon>
+                    </TooltipTrigger>
+                    <TooltipContent>Voice Mode</TooltipContent>
+                  </Tooltip>
+                </InputGroup>
+              </ButtonGroup>
+            </ButtonGroup>
+          </TooltipProvider>
+        </DemoBlock>
+        <CodeBlock code={`
+<ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline" size="icon">
+      <PlusIcon />
+    </Button>
+  </ButtonGroup>
+  <ButtonGroup>
+    <InputGroup>
+      <InputGroupInput placeholder="Send a message..." />
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <InputGroupAddon align="inline-end">
+            <AudioLinesIcon />
+          </InputGroupAddon>
+        </TooltipTrigger>
+        <TooltipContent>Voice Mode</TooltipContent>
+      </Tooltip>
+    </InputGroup>
+  </ButtonGroup>
+</ButtonGroup>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 11. Input ── */}
+      <ShowcaseSection title="11. Input">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">&lt;Input&gt;</code> bên trong ButtonGroup để tạo thanh tìm kiếm hoặc nhập liệu có nút đi kèm.
+        </p>
+        <DemoBlock>
+          <ButtonGroup>
+            <Input placeholder="Search..." className="min-w-[200px]" />
+            <Button variant="outline" aria-label="Search" size="icon">
+              <SearchIcon className="w-4 h-4" />
+            </Button>
+          </ButtonGroup>
+        </DemoBlock>
+        <CodeBlock code={`
+<ButtonGroup>
+  <Input placeholder="Search..." />
+  <Button variant="outline" aria-label="Search">
+    <SearchIcon />
+  </Button>
+</ButtonGroup>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 12. Dropdown Menu ── */}
+      <ShowcaseSection title="12. Dropdown Menu">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp với <code className="text-xs font-mono">&lt;DropdownMenu&gt;</code> để tạo các nút hành động mở rộng (Split Button).
+        </p>
+        <DemoBlock>
+          <ButtonGroup>
+            <Button variant="outline">Follow</Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="px-2">
+                  <ChevronDownIcon className="w-4 h-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <VolumeOffIcon className="mr-2 w-4 h-4" />
+                    Mute Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <CheckIcon className="mr-2 w-4 h-4" />
+                    Mark as Read
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <AlertTriangleIcon className="mr-2 w-4 h-4" />
+                    Report Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <UserRoundXIcon className="mr-2 w-4 h-4" />
+                    Block User
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <ShareIcon className="mr-2 w-4 h-4" />
+                    Share Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <CopyIcon className="mr-2 w-4 h-4" />
+                    Copy Conversation
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem variant="destructive">
+                    <TrashIcon className="mr-2 w-4 h-4" />
+                    Delete Conversation
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </ButtonGroup>
+        </DemoBlock>
+        <CodeBlock code={`
+<ButtonGroup>
+  <Button variant="outline">Follow</Button>
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline" size="icon">
+        <ChevronDownIcon />
+      </Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuGroup>
+        <DropdownMenuItem>
+          <VolumeOffIcon />
+          Mute Conversation
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <CheckIcon />
+          Mark as Read
+        </DropdownMenuItem>
+        {/* ... */}
+      </DropdownMenuGroup>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem variant="destructive">
+        <TrashIcon />
+        Delete Conversation
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</ButtonGroup>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 13. Select ── */}
+      <ShowcaseSection title="13. Select">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp với <code className="text-xs font-mono">&lt;Select&gt;</code> để tạo các điều khiển chọn lựa nâng cao trong nhóm.
+        </p>
+        <DemoBlock>
+          <ButtonGroupSelectDemo />
+        </DemoBlock>
+        <CodeBlock code={`
+<ButtonGroup>
+  <ButtonGroup>
+    <Select value={currency} onValueChange={setCurrency}>
+      <SelectTrigger className="font-mono">{currency}</SelectTrigger>
+      <SelectContent>
+        <SelectItem value="$">$ US Dollar</SelectItem>
+        <SelectItem value="€">€ Euro</SelectItem>
+      </SelectContent>
+    </Select>
+    <Input placeholder="10.00" />
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button size="icon" variant="outline">
+      <ArrowRightIcon />
+    </Button>
+  </ButtonGroup>
+</ButtonGroup>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 14. Popover ── */}
+      <ShowcaseSection title="14. Popover">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp với <code className="text-xs font-mono">&lt;Popover&gt;</code> để hiển thị các form hoặc nội dung bổ sung khi nhấn nút.
+        </p>
+        <DemoBlock>
+          <ButtonGroup>
+            <Button variant="outline">
+              <BotIcon className="w-4 h-4 mr-2" /> Copilot
+            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" size="icon" aria-label="Open Popover">
+                  <ChevronDownIcon className="w-4 h-4" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent align="end" className="text-sm w-80 font-normal">
+                <PopoverHeader className="px-1.5 pt-1.5 pb-2">
+                  <PopoverTitle>Start a new task with Copilot</PopoverTitle>
+                  <PopoverDescription>
+                    Describe your task in natural language.
+                  </PopoverDescription>
+                </PopoverHeader>
+                <div className="flex flex-col gap-4 p-1.5 pt-0">
+                  <Field>
+                    <FieldLabel htmlFor="task" className="sr-only">
+                      Task Description
+                    </FieldLabel>
+                    <Textarea
+                      id="task"
+                      placeholder="I need to..."
+                      className="resize-none min-h-[80px]"
+                    />
+                    <FieldDescription>
+                      Copilot will open a pull request for review.
+                    </FieldDescription>
+                  </Field>
+                  <Button className="w-full h-8 text-xs">Start task</Button>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </ButtonGroup>
+        </DemoBlock>
+        <CodeBlock code={`
+<ButtonGroup>
+  <Button variant="outline">
+    <BotIcon /> Copilot
+  </Button>
+  <Popover>
+    <PopoverTrigger asChild>
+      <Button variant="outline" size="icon">
+        <ChevronDownIcon />
+      </Button>
+    </PopoverTrigger>
+    <PopoverContent>
+      {/* Popover content with Field and Textarea */}
+    </PopoverContent>
+  </Popover>
+</ButtonGroup>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 15. Props reference ── */}
+      <ShowcaseSection title="15. Props reference">
         <p className="text-sm font-medium mb-2">ButtonGroup</p>
         <PropsTable rows={[
           { prop: "orientation", type: '"horizontal" | "vertical"', default_: '"horizontal"', description: "Hướng xếp các button trong nhóm." },
@@ -353,8 +699,8 @@ export default function ButtonGroupPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 11. Lưu ý ── */}
-      <ShowcaseSection title="11. Lưu ý khi sử dụng">
+      {/* ── 16. Lưu ý ── */}
+      <ShowcaseSection title="16. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Các button trong nhóm nên dùng cùng <code className="text-xs font-mono">variant</code> và <code className="text-xs font-mono">size</code> để giao diện nhất quán.</li>
           <li><code className="text-xs font-mono">ButtonGroupSeparator</code> mặc định là <code className="text-xs font-mono">orientation="vertical"</code> — phù hợp với nhóm ngang. Đổi sang <code className="text-xs font-mono">"horizontal"</code> khi dùng nhóm dọc.</li>
