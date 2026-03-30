@@ -39,4 +39,5 @@ export const components: ComponentItem[] = [
   { name: "Native Select", href: "/components/native-select", description: "Thẻ <select> gốc của trình duyệt được tạo kiểu nhất quán với design system — nhẹ, không phụ thuộc Radix, phù hợp cho mobile." },
   { name: "Navigation Menu", href: "/components/navigation-menu", description: "Thành phần menu điều hướng chính của ứng dụng, hỗ trợ hiển thị danh sách, submenu với animation mượt mà." },
   { name: "Pagination", href: "/components/pagination", description: "Hệ thống điều hướng phân trang giúp người dùng di chuyển giữa các tập dữ liệu lớn." },
+  { name: "Popover", href: "/components/popover", description: "Cửa sổ nội dung nổi bật xuất hiện khi nhấn vào trigger — hỗ trợ header, title, description và anchor." },
 ]
