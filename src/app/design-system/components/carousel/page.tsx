@@ -23,6 +23,30 @@ export default function CarouselPage() {
         </p>
       </div>
 
+      {/* ── Import ── */}
+      <ShowcaseSection title="Import">
+        <CodeBlock alwaysOpen code={`import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"`} />
+      </ShowcaseSection>
+
+      {/* ── Sử dụng ── */}
+      <ShowcaseSection title="Sử dụng">
+        <CodeBlock alwaysOpen code={`<Carousel>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>`} />
+      </ShowcaseSection>
+
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
         <DemoBlock>
@@ -224,35 +248,8 @@ export default function CarouselPage() {
 </Carousel>`} />
       </ShowcaseSection>
 
-      {/* ── 6. Cấu trúc Custom với Plugins ── */}
-      <ShowcaseSection title="6. Autoplay Plugin (Giả mạo do demo)">
-        <p className="text-sm text-muted-foreground">
-          Bạn có thể tích hợp qua <code className="text-xs font-mono">plugins</code>. Lưu ý: Cần cài đặt <code className="text-xs font-mono">embla-carousel-autoplay</code>.
-        </p>
-        <CodeBlock code={`import Autoplay from "embla-carousel-autoplay"
-
-export function CarouselPlugin() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
-  )
-
-  return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="w-full max-w-xs"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
-    >
-      <CarouselContent>
-        {/* ... */}
-      </CarouselContent>
-    </Carousel>
-  )
-}`} />
-      </ShowcaseSection>
-
-      {/* ── 7. Props reference ── */}
-      <ShowcaseSection title="7. Props reference">
+      {/* ── 6. Props reference ── */}
+      <ShowcaseSection title="6. Props reference">
         <PropsTable rows={[
           { prop: "opts", type: "CarouselOptions (Embla)", description: "Các tùy chọn cho thư viện embla-carousel." },
           { prop: "plugins", type: "CarouselPlugin", description: "Các plugin cho embla-carousel (ví dụ Autoplay)." },
