@@ -10,6 +10,16 @@ import {
   InputGroupTextarea,
 } from "@/components/ui/input-group"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
+import { Kbd } from "@/components/ui/kbd"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Spinner } from "@/components/ui/spinner"
+import TextareaAutosize from "react-textarea-autosize"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
 
@@ -58,6 +68,42 @@ const CopyIcon = () => (
 const XIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 6 6 18M6 6l12 12" />
+  </svg>
+)
+
+const MoreHorizontalIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" />
+  </svg>
+)
+
+const ChevronDownIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="m6 9 6 6 6-6" />
+  </svg>
+)
+
+const LoaderIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+  </svg>
+)
+
+const JavascriptIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 4L20 20L4 20L4 4L20 4Z" /><path d="M15 8L15 12C15 13.1046 14.1046 14 13 14H11" /><path d="M7 8H9V12C9 13.1046 8.10457 14 7 14C5.89543 14 5 13.1046 5 12" />
+  </svg>
+)
+
+const CornerDownLeftIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 10l-5 5l5 5" /><path d="M20 4v7a4 4 0 0 1-4 4H4" />
+  </svg>
+)
+
+const RefreshIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
   </svg>
 )
 
@@ -552,8 +598,262 @@ export default function InputGroupPage() {
 </InputGroup>`} />
       </ShowcaseSection>
 
-      {/* ── 8. Props reference ── */}
-      <ShowcaseSection title="8. Props reference">
+      {/* ── 8. Kết hợp với Kbd ── */}
+      <ShowcaseSection title="8. Kết hợp với Kbd">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">Kbd</code> bên trong <code className="text-xs font-mono">InputGroupAddon</code> để hiển thị phím tắt đi kèm với input.
+        </p>
+        <DemoBlock>
+          <div className="w-full max-w-sm">
+            <InputGroup>
+              <InputGroupAddon align="inline-start">
+                <SearchIcon />
+              </InputGroupAddon>
+              <InputGroupInput placeholder="Search..." />
+              <InputGroupAddon align="inline-end">
+                <Kbd>⌘K</Kbd>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`<InputGroup>
+  <InputGroupAddon align="inline-start">
+    <SearchIcon />
+  </InputGroupAddon>
+  <InputGroupInput placeholder="Search..." />
+  <InputGroupAddon align="inline-end">
+    <Kbd>⌘K</Kbd>
+  </InputGroupAddon>
+</InputGroup>`} />
+      </ShowcaseSection>
+
+      {/* ── 9. Kết hợp với Dropdown ── */}
+      <ShowcaseSection title="9. Kết hợp với Dropdown">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">DropdownMenu</code> bên trong <code className="text-xs font-mono">InputGroupAddon</code> để tạo menu hành động hoặc bộ lọc cho input.
+        </p>
+        <DemoBlock>
+          <div className="grid w-full max-w-sm gap-4">
+            <InputGroup>
+              <InputGroupInput placeholder="Enter file name" />
+              <InputGroupAddon align="inline-end">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <InputGroupButton
+                      variant="ghost"
+                      aria-label="More"
+                      size="icon-xs"
+                    >
+                      <MoreHorizontalIcon />
+                    </InputGroupButton>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>Settings</DropdownMenuItem>
+                      <DropdownMenuItem>Copy path</DropdownMenuItem>
+                      <DropdownMenuItem>Open location</DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </InputGroupAddon>
+            </InputGroup>
+
+            <InputGroup className="[--radius:1rem]">
+              <InputGroupInput placeholder="Enter search query" />
+              <InputGroupAddon align="inline-end">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <InputGroupButton variant="ghost" className="pr-1.5! text-xs h-6 px-1.5">
+                      Search In... <ChevronDownIcon className="size-3" />
+                    </InputGroupButton>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="[--radius:0.95rem]">
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>Documentation</DropdownMenuItem>
+                      <DropdownMenuItem>Blog Posts</DropdownMenuItem>
+                      <DropdownMenuItem>Changelog</DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`<InputGroup>
+  <InputGroupInput placeholder="Enter file name" />
+  <InputGroupAddon align="inline-end">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <InputGroupButton variant="ghost" size="icon-xs">
+          <MoreHorizontalIcon />
+        </InputGroupButton>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuItem>Copy path</DropdownMenuItem>
+        <DropdownMenuItem>Open location</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </InputGroupAddon>
+</InputGroup>
+
+<InputGroup className="[--radius:1rem]">
+  <InputGroupInput placeholder="Enter search query" />
+  <InputGroupAddon align="inline-end">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <InputGroupButton variant="ghost" className="pr-1.5! text-xs h-6 px-1.5">
+          Search In... <ChevronDownIcon className="size-3" />
+        </InputGroupButton>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="[--radius:0.95rem]">
+        <DropdownMenuItem>Documentation</DropdownMenuItem>
+        <DropdownMenuItem>Blog Posts</DropdownMenuItem>
+        <DropdownMenuItem>Changelog</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </InputGroupAddon>
+</InputGroup>`} />
+      </ShowcaseSection>
+
+      {/* ── 10. Với Spinner / Loading ── */}
+      <ShowcaseSection title="10. Với Spinner / Loading">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">Spinner</code> bên trong <code className="text-xs font-mono">InputGroupAddon</code> để hiển thị trạng thái đang xử lý.
+        </p>
+        <DemoBlock>
+          <div className="grid w-full max-w-sm gap-4">
+            <InputGroup>
+              <InputGroupInput placeholder="Searching..." />
+              <InputGroupAddon align="inline-end">
+                <Spinner />
+              </InputGroupAddon>
+            </InputGroup>
+
+            <InputGroup>
+              <InputGroupInput placeholder="Saving changes..." />
+              <InputGroupAddon align="inline-end">
+                <InputGroupText>Saving...</InputGroupText>
+                <Spinner />
+              </InputGroupAddon>
+            </InputGroup>
+
+            <InputGroup>
+              <InputGroupAddon align="inline-start">
+                <LoaderIcon className="animate-spin text-muted-foreground" />
+              </InputGroupAddon>
+              <InputGroupInput placeholder="Refreshing data..." />
+              <InputGroupAddon align="inline-end">
+                <InputGroupText>Please wait...</InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`<InputGroup>
+  <InputGroupInput placeholder="Searching..." />
+  <InputGroupAddon align="inline-end">
+    <Spinner />
+  </InputGroupAddon>
+</InputGroup>
+
+<InputGroup>
+  <InputGroupInput placeholder="Saving changes..." />
+  <InputGroupAddon align="inline-end">
+    <InputGroupText>Saving...</InputGroupText>
+    <Spinner />
+  </InputGroupAddon>
+</InputGroup>`} />
+      </ShowcaseSection>
+
+      {/* ── 11. Textarea nâng cao ── */}
+      <ShowcaseSection title="11. Textarea nâng cao">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp nhiều <code className="text-xs font-mono">block-start</code> và <code className="text-xs font-mono">block-end</code> cùng class border để tạo giao diện soạn thảo code phức tạp.
+        </p>
+        <DemoBlock>
+          <div className="w-full max-w-md">
+            <InputGroup>
+              <InputGroupAddon align="block-start" className="border-b">
+                <InputGroupText className="font-mono font-medium">
+                  <JavascriptIcon />
+                  script.js
+                </InputGroupText>
+                <div className="ml-auto flex items-center gap-1">
+                  <InputGroupButton size="icon-xs">
+                    <RefreshIcon />
+                  </InputGroupButton>
+                  <InputGroupButton variant="ghost" size="icon-xs">
+                    <CopyIcon />
+                  </InputGroupButton>
+                </div>
+              </InputGroupAddon>
+              <InputGroupTextarea
+                placeholder="console.log('Hello, world!');"
+                className="min-h-[160px] font-mono text-xs"
+              />
+              <InputGroupAddon align="block-end" className="border-t">
+                <InputGroupText className="text-xs">Line 1, Column 1</InputGroupText>
+                <InputGroupButton size="xs" className="ml-auto" variant="default">
+                  Run <CornerDownLeftIcon />
+                </InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`<InputGroup>
+  <InputGroupAddon align="block-start" className="border-b">
+    <InputGroupText className="font-mono font-medium">
+      <JavascriptIcon /> script.js
+    </InputGroupText>
+    {/* ... buttons ... */}
+  </InputGroupAddon>
+  <InputGroupTextarea className="min-h-[200px]" />
+  <InputGroupAddon align="block-end" className="border-t">
+    <InputGroupText>Line 1, Col 1</InputGroupText>
+    <InputGroupButton size="xs" variant="default" className="ml-auto">
+      Run <CornerDownLeftIcon />
+    </InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>`} />
+      </ShowcaseSection>
+
+      {/* ── 12. Component tùy chỉnh ── */}
+      <ShowcaseSection title="12. Component tùy chỉnh">
+        <p className="text-sm text-muted-foreground">
+          Khi dùng các thư viện ngoài (như <code className="text-xs font-mono">react-textarea-autosize</code>), hãy thêm prop <code className="text-xs font-mono">data-slot="input-group-control"</code> để <code className="text-xs font-mono">InputGroup</code> nhận diện và áp dụng style focus/invalid/disabled một cách tự động.
+        </p>
+        <DemoBlock>
+          <div className="w-full max-w-sm">
+            <InputGroup>
+              <TextareaAutosize
+                data-slot="input-group-control"
+                className="flex field-sizing-content min-h-[64px] w-full resize-none rounded-md bg-transparent px-3 py-2.5 text-base transition-[color,box-shadow] outline-none md:text-sm"
+                placeholder="Autoresize textarea..."
+              />
+              <InputGroupAddon align="block-end">
+                <InputGroupButton className="ml-auto" size="xs">
+                  Gửi tin nhắn
+                </InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`import TextareaAutosize from "react-textarea-autosize"
+
+<InputGroup>
+  <TextareaAutosize
+    data-slot="input-group-control"
+    className="flex w-full min-h-[64px] resize-none bg-transparent outline-none ..."
+    placeholder="Autoresize textarea..."
+  />
+  <InputGroupAddon align="block-end">
+    <InputGroupButton size="xs">Gửi</InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>`} />
+      </ShowcaseSection>
+
+      {/* ── 13. Props reference ── */}
+      <ShowcaseSection title="13. Props reference">
         <p className="text-sm font-medium mb-2">InputGroupAddon</p>
         <PropsTable rows={[
           { prop: "align", type: '"inline-start" | "inline-end" | "block-start" | "block-end"', default_: '"inline-start"', description: "Vị trí của addon so với input." },
@@ -576,8 +876,8 @@ export default function InputGroupPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 9. Lưu ý ── */}
-      <ShowcaseSection title="9. Lưu ý khi sử dụng">
+      {/* ── 14. Lưu ý ── */}
+      <ShowcaseSection title="14. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>
             Click vào <code className="text-xs font-mono">InputGroupAddon</code> sẽ tự động focus vào input bên trong group — trừ khi click trúng một button.

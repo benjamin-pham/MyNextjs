@@ -1,7 +1,30 @@
 "use client"
+import { InfoIcon } from "lucide-react"
 
 import * as React from "react"
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { ButtonGroup } from "@/components/ui/button-group"
+import { Badge } from "@/components/ui/badge"
+import {
+  Field,
+  FieldLabel,
+  FieldDescription,
+  FieldGroup,
+} from "@/components/ui/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "@/components/ui/input-group"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
@@ -287,8 +310,436 @@ export default function InputPage() {
 </form>`} />
       </ShowcaseSection>
 
-      {/* ── 9. Props reference ── */}
-      <ShowcaseSection title="9. Props reference">
+      {/* ── 9. Inline ── */}
+      <ShowcaseSection title="9. Inline — Kết hợp với Button">
+        <p className="text-sm text-muted-foreground">
+          Dùng <code className="text-xs font-mono">Field</code> với <code className="text-xs font-mono">orientation="horizontal"</code> để hiển thị Input và Button trên cùng một hàng.
+        </p>
+        <DemoBlock>
+          <Field orientation="horizontal" className="max-w-sm">
+            <Input type="search" placeholder="Search..." />
+            <Button>Search</Button>
+          </Field>
+        </DemoBlock>
+        <CodeBlock code={`import { Button } from "@/components/ui/button"
+import { Field } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export function InputInline() {
+  return (
+    <Field orientation="horizontal">
+      <Input type="search" placeholder="Search..." />
+      <Button>Search</Button>
+    </Field>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 10. Field ── */}
+      <ShowcaseSection title="10. Field — Với Label và Description">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">Field</code> kết hợp với <code className="text-xs font-mono">FieldLabel</code> và <code className="text-xs font-mono">FieldDescription</code> để tạo ra một trường nhập liệu đầy đủ thông tin và có cấu trúc tốt.
+        </p>
+        <DemoBlock>
+          <Field className="max-w-sm">
+            <FieldLabel htmlFor="input-field-username">Username</FieldLabel>
+            <Input
+              id="input-field-username"
+              type="text"
+              placeholder="Enter your username"
+            />
+            <FieldDescription>
+              Choose a unique username for your account.
+            </FieldDescription>
+          </Field>
+        </DemoBlock>
+        <CodeBlock code={`import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export function InputField() {
+  return (
+    <Field>
+      <FieldLabel htmlFor="input-field-username">Username</FieldLabel>
+      <Input
+        id="input-field-username"
+        type="text"
+        placeholder="Enter your username"
+      />
+      <FieldDescription>
+        Choose a unique username for your account.
+      </FieldDescription>
+    </Field>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 11. Field Group ── */}
+      <ShowcaseSection title="11. Field Group — Nhóm nhiều trường">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">FieldGroup</code> để bọc các <code className="text-xs font-mono">Field</code> riêng lẻ, giúp tạo khoảng cách và cấu trúc nhất quán cho biểu mẫu.
+        </p>
+        <DemoBlock>
+          <FieldGroup className="w-full max-w-sm">
+            <Field>
+              <FieldLabel htmlFor="fieldgroup-name">Name</FieldLabel>
+              <Input id="fieldgroup-name" placeholder="Jordan Lee" />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="fieldgroup-email">Email</FieldLabel>
+              <Input
+                id="fieldgroup-email"
+                type="email"
+                placeholder="name@example.com"
+              />
+              <FieldDescription>
+                We&apos;ll send updates to this address.
+              </FieldDescription>
+            </Field>
+            <Field orientation="horizontal">
+              <Button type="reset" variant="outline" className="flex-1">
+                Reset
+              </Button>
+              <Button type="submit" className="flex-1">Submit</Button>
+            </Field>
+          </FieldGroup>
+        </DemoBlock>
+        <CodeBlock code={`import { Button } from "@/components/ui/button"
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export function InputFieldgroup() {
+  return (
+    <FieldGroup>
+      <Field>
+        <FieldLabel htmlFor="fieldgroup-name">Name</FieldLabel>
+        <Input id="fieldgroup-name" placeholder="Jordan Lee" />
+      </Field>
+      <Field>
+        <FieldLabel htmlFor="fieldgroup-email">Email</FieldLabel>
+        <Input
+          id="fieldgroup-email"
+          type="email"
+          placeholder="name@example.com"
+        />
+        <FieldDescription>
+          We&apos;ll send updates to this address.
+        </FieldDescription>
+      </Field>
+      <Field orientation="horizontal">
+        <Button type="reset" variant="outline">
+          Reset
+        </Button>
+        <Button type="submit">Submit</Button>
+      </Field>
+    </FieldGroup>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 12. Grid ── */}
+      <ShowcaseSection title="12. Grid — Chia cột biểu mẫu">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp <code className="text-xs font-mono">FieldGroup</code> với các class <code className="text-xs font-mono">grid</code> của Tailwind để chia các trường nhập liệu thành nhiều cột.
+        </p>
+        <DemoBlock>
+          <FieldGroup className="grid max-w-sm grid-cols-2 gap-4">
+            <Field>
+              <FieldLabel htmlFor="first-name">First Name</FieldLabel>
+              <Input id="first-name" placeholder="Jordan" />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="last-name">Last Name</FieldLabel>
+              <Input id="last-name" placeholder="Lee" />
+            </Field>
+          </FieldGroup>
+        </DemoBlock>
+        <CodeBlock code={`import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export function InputGrid() {
+  return (
+    <FieldGroup className="grid max-w-sm grid-cols-2 gap-4">
+      <Field>
+        <FieldLabel htmlFor="first-name">First Name</FieldLabel>
+        <Input id="first-name" placeholder="Jordan" />
+      </Field>
+      <Field>
+        <FieldLabel htmlFor="last-name">Last Name</FieldLabel>
+        <Input id="last-name" placeholder="Lee" />
+      </Field>
+    </FieldGroup>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 13. Required ── */}
+      <ShowcaseSection title="13. Required — Trường bắt buộc">
+        <p className="text-sm text-muted-foreground">
+          Đánh dấu các trường bắt buộc bằng prop <code className="text-xs font-mono">required</code> và bổ sung ký tự <code className="text-xs font-mono text-destructive">*</code> vào nhãn (Label).
+        </p>
+        <DemoBlock>
+          <Field className="max-w-sm">
+            <FieldLabel htmlFor="input-required">
+              Required Field <span className="text-destructive">*</span>
+            </FieldLabel>
+            <Input
+              id="input-required"
+              placeholder="This field is required"
+              required
+            />
+            <FieldDescription>This field must be filled out.</FieldDescription>
+          </Field>
+        </DemoBlock>
+        <CodeBlock code={`import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export function InputRequired() {
+  return (
+    <Field>
+      <FieldLabel htmlFor="input-required">
+        Required Field <span className="text-destructive">*</span>
+      </FieldLabel>
+      <Input
+        id="input-required"
+        placeholder="This field is required"
+        required
+      />
+      <FieldDescription>This field must be filled out.</FieldDescription>
+    </Field>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 14. Badge ── */}
+      <ShowcaseSection title="14. Badge — Nhãn đi kèm trạng thái">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">Badge</code> bên cạnh nhãn để đánh dấu trạng thái (ví dụ: Beta, New, v.v.).
+        </p>
+        <DemoBlock>
+          <Field className="max-w-sm">
+            <FieldLabel htmlFor="input-badge" className="flex items-center">
+              Webhook URL
+              <Badge variant="secondary" className="ml-auto">
+                Beta
+              </Badge>
+            </FieldLabel>
+            <Input
+              id="input-badge"
+              type="url"
+              placeholder="https://api.example.com/webhook"
+            />
+          </Field>
+        </DemoBlock>
+        <CodeBlock code={`import { Badge } from "@/components/ui/badge"
+import { Field, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export function InputBadge() {
+  return (
+    <Field>
+      <FieldLabel htmlFor="input-badge" className="flex items-center">
+        Webhook URL
+        <Badge variant="secondary" className="ml-auto">
+          Beta
+        </Badge>
+      </FieldLabel>
+      <Input
+        id="input-badge"
+        type="url"
+        placeholder="https://api.example.com/webhook"
+      />
+    </Field>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 15. Input Group ── */}
+      <ShowcaseSection title="15. Input Group — Nhóm các thành phần">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">InputGroup</code> để kết hợp trường nhập liệu với các phần tử bổ sung như tiền tố, hậu tố hoặc icon.
+        </p>
+        <DemoBlock>
+          <Field className="max-w-sm">
+            <FieldLabel htmlFor="input-group-url">Website URL</FieldLabel>
+            <InputGroup>
+              <InputGroupAddon>
+                <InputGroupText>https://</InputGroupText>
+              </InputGroupAddon>
+              <InputGroupInput id="input-group-url" placeholder="example.com" />
+              <InputGroupAddon align="inline-end">
+                <InfoIcon className="size-4" />
+              </InputGroupAddon>
+            </InputGroup>
+          </Field>
+        </DemoBlock>
+        <CodeBlock code={`import { InfoIcon } from "lucide-react"
+
+import { Field, FieldLabel } from "@/components/ui/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "@/components/ui/input-group"
+
+export function InputInputGroup() {
+  return (
+    <Field>
+      <FieldLabel htmlFor="input-group-url">Website URL</FieldLabel>
+      <InputGroup>
+        <InputGroupAddon>
+          <InputGroupText>https://</InputGroupText>
+        </InputGroupAddon>
+        <InputGroupInput id="input-group-url" placeholder="example.com" />
+        <InputGroupAddon align="inline-end">
+          <InfoIcon />
+        </InputGroupAddon>
+      </InputGroup>
+    </Field>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 16. Button Group ── */}
+      <ShowcaseSection title="16. Button Group — Kết hợp với Button">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">ButtonGroup</code> để gắn chặt Input với Button, tạo cảm giác là một khối thống nhất (bo góc ngoài, bỏ viền giữa).
+        </p>
+        <DemoBlock>
+          <Field className="max-w-sm">
+            <FieldLabel htmlFor="input-button-group">Search</FieldLabel>
+            <ButtonGroup>
+              <Input id="input-button-group" placeholder="Type to search..." />
+              <Button variant="outline">Search</Button>
+            </ButtonGroup>
+          </Field>
+        </DemoBlock>
+        <CodeBlock code={`import { Button } from "@/components/ui/button"
+import { ButtonGroup } from "@/components/ui/button-group"
+import { Field, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export function InputButtonGroup() {
+  return (
+    <Field>
+      <FieldLabel htmlFor="input-button-group">Search</FieldLabel>
+      <ButtonGroup>
+        <Input id="input-button-group" placeholder="Type to search..." />
+        <Button variant="outline">Search</Button>
+      </ButtonGroup>
+    </Field>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 17. Form ── */}
+      <ShowcaseSection title="17. Ví dụ thực tế — Form thông tin">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp tất cả các thành phần để tạo ra một biểu mẫu hoàn chỉnh, nhất quán về giao diện và trải nghiệm.
+        </p>
+        <DemoBlock>
+          <form className="w-full max-w-sm" onSubmit={(e) => e.preventDefault()}>
+            <FieldGroup>
+              <Field>
+                <FieldLabel htmlFor="form-name">
+                  Name <span className="text-destructive">*</span>
+                </FieldLabel>
+                <Input
+                  id="form-name"
+                  type="text"
+                  placeholder="Evil Rabbit"
+                  required
+                />
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="form-email">Email</FieldLabel>
+                <Input id="form-email" type="email" placeholder="john@example.com" />
+                <FieldDescription>
+                   Chúng tôi sẽ không chia sẻ email của bạn.
+                </FieldDescription>
+              </Field>
+              <div className="grid grid-cols-2 gap-4">
+                <Field>
+                  <FieldLabel htmlFor="form-phone">Phone</FieldLabel>
+                  <Input id="form-phone" type="tel" placeholder="+1 (555) 123-4567" />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="form-country">Country</FieldLabel>
+                  <Select defaultValue="us">
+                    <SelectTrigger id="form-country">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="us">United States</SelectItem>
+                      <SelectItem value="uk">United Kingdom</SelectItem>
+                      <SelectItem value="ca">Canada</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </Field>
+              </div>
+              <Field>
+                <FieldLabel htmlFor="form-address">Address</FieldLabel>
+                <Input id="form-address" type="text" placeholder="123 Main St" />
+              </Field>
+              <Field orientation="horizontal">
+                <Button type="button" variant="outline" className="flex-1">
+                  Cancel
+                </Button>
+                <Button type="submit" className="flex-1">Submit</Button>
+              </Field>
+            </FieldGroup>
+          </form>
+        </DemoBlock>
+        <CodeBlock code={`import { Button } from "@/components/ui/button"
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+export function InputForm() {
+  return (
+    <form className="w-full max-w-sm">
+      <FieldGroup>
+        <Field>
+          <FieldLabel htmlFor="form-name">Name</FieldLabel>
+          <Input id="form-name" type="text" placeholder="Evil Rabbit" required />
+        </Field>
+        ...
+        <Field orientation="horizontal">
+          <Button type="button" variant="outline">Cancel</Button>
+          <Button type="submit">Submit</Button>
+        </Field>
+      </FieldGroup>
+    </form>
+  )
+}`} />
+      </ShowcaseSection>
+
+      {/* ── 18. Props reference ── */}
+      <ShowcaseSection title="18. Props reference">
         <PropsTable rows={[
           { prop: "type", type: "string", default_: '"text"', description: 'Type HTML chuẩn: "text", "email", "password", "number", "file", "search", "url", "tel", v.v.' },
           { prop: "placeholder", type: "string", description: "Văn bản gợi ý hiển thị khi input trống." },
@@ -302,8 +753,8 @@ export default function InputPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 10. Lưu ý ── */}
-      <ShowcaseSection title="10. Lưu ý khi sử dụng">
+      {/* ── 19. Lưu ý ── */}
+      <ShowcaseSection title="19. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Luôn liên kết với <code className="text-xs font-mono">&lt;label&gt;</code> qua <code className="text-xs font-mono">id</code> / <code className="text-xs font-mono">htmlFor</code> hoặc dùng <code className="text-xs font-mono">aria-label</code> để đảm bảo accessibility.</li>
           <li>Input không có icon slot tích hợp — dùng wrapper <code className="text-xs font-mono">relative</code> + icon <code className="text-xs font-mono">absolute</code> rồi thêm <code className="text-xs font-mono">pl-8</code> / <code className="text-xs font-mono">pr-9</code> cho Input.</li>
