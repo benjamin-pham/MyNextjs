@@ -35,4 +35,5 @@ export const components: ComponentItem[] = [
   { name: "Item", href: "/components/item", description: "Component đa năng hiển thị nội dung với media, tiêu đề, mô tả và hành động — dùng cho danh sách, cài đặt, thông báo" },
   { name: "Kbd", href: "/components/kbd", description: "Hiển thị phím bàn phím hoặc tổ hợp phím tắt — dùng trong tooltip, button, input và bảng chú thích phím tắt" },
   { name: "Label", href: "/components/label", description: "Nhãn có thể truy cập liên kết với các điều khiển form — hỗ trợ trạng thái disabled thông qua peer selector" },
+  { name: "Menubar", href: "/components/menubar", description: "Thanh menu nằm ngang theo phong cách ứng dụng desktop — hỗ trợ sub-menu, checkbox, radio, shortcut và separator" },
 ]
