@@ -47,4 +47,5 @@ export const components: ComponentItem[] = [
   { name: "Select", href: "/components/select", description: "Thanh chọn cho phép người dùng chọn một giá trị từ danh sách các tùy chọn — dựa trên Radix UI Select." },
   { name: "Separator", href: "/components/separator", description: "Thanh chia tách nội dung hoặc các phần của ứng dụng — theo chiều ngang hoặc dọc." },
   { name: "Sheet", href: "/components/sheet", description: "Tấm panel trượt ra từ các cạnh của màn hình — trên, dưới, trái, hoặc phải." },
+  { name: "Sidebar", href: "/components/sidebar", description: "Thanh menu bên điều hướng có thể thu gọn, hỗ trợ nhiều cấp độ và tùy chỉnh giao diện." },
 ];
