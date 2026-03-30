@@ -56,13 +56,13 @@ import { Separator } from "@/components/ui/separator"
 
 /* ─── demo components ────────────────────────────────────────────────────── */
 
-const SidebarDemo = ({ 
-  variant = "sidebar", 
+const SidebarDemo = ({
+  variant = "sidebar",
   collapsible = "offcanvas",
   side = "left",
   defaultOpen = false,
   children
-}: { 
+}: {
   variant?: "sidebar" | "floating" | "inset",
   collapsible?: "offcanvas" | "icon" | "none",
   side?: "left" | "right",
@@ -73,9 +73,9 @@ const SidebarDemo = ({
     <TooltipProvider>
       <div className="relative border rounded-lg overflow-hidden bg-background h-[500px] flex w-full">
         <SidebarProvider defaultOpen={defaultOpen} className="min-h-0 w-full">
-          <Sidebar 
-            variant={variant} 
-            collapsible={collapsible} 
+          <Sidebar
+            variant={variant}
+            collapsible={collapsible}
             side={side}
             className="absolute! h-full!"
           >
@@ -87,7 +87,7 @@ const SidebarDemo = ({
                       A
                     </div>
                     <div className="flex flex-col group-data-[collapsible=icon]:hidden">
-                      <span className="text-sm font-semibold leading-none text-nowrap">Antigravity</span>
+                      <span className="text-sm font-semibold leading-none text-nowrap">Admin</span>
                       <span className="text-xs text-muted-foreground mt-1 text-nowrap">Admin Dashboard</span>
                     </div>
                   </div>
@@ -193,7 +193,7 @@ export default function SidebarPage() {
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
         <p className="text-sm text-muted-foreground mb-4">
-          Sidebar cần được bao bởi <code className="text-xs font-mono">SidebarProvider</code>. Cấu trúc gồm Header, Content (với các Group/Menu) và Footer. 
+          Sidebar cần được bao bởi <code className="text-xs font-mono">SidebarProvider</code>. Cấu trúc gồm Header, Content (với các Group/Menu) và Footer.
           Mặc định trong ví dụ này tôi đặt <code className="text-xs font-mono">defaultOpen={'{false}'}</code> và sử dụng chế độ thu gọn icon.
         </p>
         <DemoBlock>
@@ -277,7 +277,7 @@ export default function SidebarPage() {
         <DemoBlock>
           <SidebarDemo defaultOpen={true}>
             <SidebarHeader className="border-b">
-               <div className="px-2 py-1 font-semibold text-sm group-data-[collapsible=icon]:hidden text-nowrap">Nested Menu</div>
+              <div className="px-2 py-1 font-semibold text-sm group-data-[collapsible=icon]:hidden text-nowrap">Nested Menu</div>
             </SidebarHeader>
             <SidebarContent>
               <SidebarGroup>

@@ -35,7 +35,7 @@ const ListItem = React.forwardRef<
       <NavigationMenuLink asChild>
         <Link
           href={href ?? "#"}
-          ref={ref as any}
+          ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
@@ -141,13 +141,13 @@ export default function NavigationMenuPage() {
                       <NavigationMenuLink asChild>
                         <a
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-indigo-500/20 via-purple-500/10 to-muted p-6 no-underline outline-none focus:shadow-md border border-indigo-500/10"
-                          href="/"
+                          href="#"
                         >
                           <div className="size-10 rounded-full bg-indigo-500 flex items-center justify-center mb-2">
-                             <svg className="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            <svg className="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                           </div>
                           <div className="mb-1 mt-2 text-lg font-bold">
-                            Antigravity UI
+                            Admin UI
                           </div>
                           <p className="text-xs leading-tight text-muted-foreground">
                             Xây dựng ứng dụng nhanh hơn với bộ component được tối ưu hóa.
