@@ -51,4 +51,5 @@ export const components: ComponentItem[] = [
   { name: "Skeleton", href: "/components/skeleton", description: "Hiển thị placeholder nội dung trong khi đang tải dữ liệu với hiệu ứng pulse." },
   { name: "Sonner", href: "/components/sonner", description: "Thành phần thông báo (toast) hiện đại, nhẹ và có thể tùy chỉnh cao." },
   { name: "Spinner", href: "/components/spinner", description: "Thành phần hiển thị trạng thái đang tải (loading) của hệ thống hoặc tác vụ." },
+  { name: "Switch", href: "/components/switch", description: "Nút gạt cho phép người dùng chuyển đổi giữa hai trạng thái — bật hoặc tắt." },
 ];
