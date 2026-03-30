@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { BluetoothIcon } from "lucide-react"
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -34,6 +35,34 @@ const AlertTriangleIcon = () => (
     <line x1="12" y1="17" x2="12.01" y2="17" />
   </svg>
 )
+
+/* ─── example components ─────────────────────────────────────────────────── */
+
+export function AlertDialogSmallWithMedia() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="outline">Show Dialog</Button>
+      </AlertDialogTrigger>
+
+      <AlertDialogContent size="sm">
+        <AlertDialogHeader>
+          <AlertDialogMedia>
+            <BluetoothIcon />
+          </AlertDialogMedia>
+          <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
+          <AlertDialogDescription>
+            Do you want to allow the USB accessory to connect to this device?
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
+          <AlertDialogAction>Allow</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+}
 
 /* ─── controlled demo ────────────────────────────────────────────────────── */
 
@@ -289,8 +318,41 @@ export default function AlertDialogPage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 4. Action & Cancel variants ── */}
-      <ShowcaseSection title="4. Action & Cancel variants">
+      {/* ── 4. Small with Media ── */}
+      <ShowcaseSection title="4. Small with Media">
+        <p className="text-sm text-muted-foreground">
+          Use the <code className="text-xs font-mono">size="sm"</code> prop to make the alert dialog smaller and the <code className="text-xs font-mono">AlertDialogMedia</code> component to add a media element such as an icon or image to the alert dialog.
+        </p>
+        <DemoBlock>
+          <AlertDialogSmallWithMedia />
+        </DemoBlock>
+        <CodeBlock code={`
+<AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button variant="outline">Show Dialog</Button>
+  </AlertDialogTrigger>
+
+  <AlertDialogContent size="sm">
+    <AlertDialogHeader>
+      <AlertDialogMedia>
+        <BluetoothIcon />
+      </AlertDialogMedia>
+      <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
+      <AlertDialogDescription>
+        Do you want to allow the USB accessory to connect to this device?
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
+      <AlertDialogAction>Allow</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 5. Action & Cancel variants ── */}
+      <ShowcaseSection title="5. Action & Cancel variants">
         <p className="text-sm text-muted-foreground">
           <code className="text-xs font-mono">AlertDialogAction</code> và <code className="text-xs font-mono">AlertDialogCancel</code> nhận prop <code className="text-xs font-mono">variant</code> và <code className="text-xs font-mono">size</code> giống <code className="text-xs font-mono">Button</code>.
         </p>
@@ -357,8 +419,8 @@ export default function AlertDialogPage() {
         `} />
       </ShowcaseSection>
 
-      {/* ── 5. Controlled ── */}
-      <ShowcaseSection title="5. Controlled (open + onOpenChange)">
+      {/* ── 6. Controlled ── */}
+      <ShowcaseSection title="6. Controlled (open + onOpenChange)">
         <p className="text-sm text-muted-foreground">
           Bỏ <code className="text-xs font-mono">AlertDialogTrigger</code>, điều khiển dialog bằng <code className="text-xs font-mono">open</code> và <code className="text-xs font-mono">onOpenChange</code> — hữu ích khi cần mở dialog từ logic nghiệp vụ hoặc sự kiện ngoài UI.
         </p>
@@ -388,8 +450,8 @@ const [open, setOpen] = useState(false)
         `} />
       </ShowcaseSection>
 
-      {/* ── 6. Props reference ── */}
-      <ShowcaseSection title="6. Props reference">
+      {/* ── 7. Props reference ── */}
+      <ShowcaseSection title="7. Props reference">
         <div className="space-y-6">
           <div className="space-y-2">
             <h3 className="text-sm font-semibold font-mono">&lt;AlertDialog&gt;</h3>
@@ -444,8 +506,8 @@ const [open, setOpen] = useState(false)
         </div>
       </ShowcaseSection>
 
-      {/* ── 7. Lưu ý ── */}
-      <ShowcaseSection title="7. Lưu ý khi sử dụng">
+      {/* ── 8. Lưu ý ── */}
+      <ShowcaseSection title="8. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>
             <code className="text-xs font-mono">AlertDialog</code> khác <code className="text-xs font-mono">Dialog</code> ở chỗ người dùng <strong>bắt buộc</strong> phải chọn Action hoặc Cancel — không thể đóng bằng click ngoài vùng content.
