@@ -54,4 +54,5 @@ export const components: ComponentItem[] = [
   { name: "Switch", href: "/components/switch", description: "Nút gạt cho phép người dùng chuyển đổi giữa hai trạng thái — bật hoặc tắt." },
   { name: "Table", href: "/components/table", description: "Thành phần bảng mạnh mẽ để hiển thị tập dữ liệu có cấu trúc." },
   { name: "Tabs", href: "/components/tabs", description: "Giao diện tab giúp phân loại và chuyển đổi nội dung trong cùng một không gian." },
+  { name: "Textarea", href: "/components/textarea", description: "Trường nhập liệu văn bản nhiều dòng hỗ trợ tự động co giãn và trạng thái form." },
 ];
