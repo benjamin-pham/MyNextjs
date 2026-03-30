@@ -7,6 +7,20 @@ import {
   EmptyContent,
 } from "@/components/ui/empty"
 import { Button } from "@/components/ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group"
+import { Kbd } from "@/components/ui/kbd"
+import { Search } from "lucide-react"
+
+
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
 
 /* ─── icons ──────────────────────────────────────────────────────────────── */
@@ -60,7 +74,109 @@ const FilterIcon = () => (
   </svg>
 )
 
+/* ─── components ─────────────────────────────────────────────────────────── */
+
+export function EmptyAvatar() {
+  return (
+    <Empty className="border">
+      <EmptyHeader>
+        <EmptyMedia variant="default">
+          <Avatar className="size-12">
+            <AvatarImage
+              src="https://github.com/shadcn.png"
+              className="grayscale"
+            />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+        </EmptyMedia>
+        <EmptyTitle>User Offline</EmptyTitle>
+        <EmptyDescription>
+          This user is currently offline. You can leave a message to notify them
+          or try again later.
+        </EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Button size="sm">Leave Message</Button>
+      </EmptyContent>
+    </Empty>
+  )
+}
+
+export function EmptyAvatarGroup() {
+  return (
+    <Empty className="border">
+      <EmptyHeader>
+        <EmptyMedia>
+          <div className="flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage
+                src="https://github.com/maxleiter.png"
+                alt="@maxleiter"
+              />
+              <AvatarFallback>LR</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage
+                src="https://github.com/evilrabbit.png"
+                alt="@evilrabbit"
+              />
+              <AvatarFallback>ER</AvatarFallback>
+            </Avatar>
+          </div>
+        </EmptyMedia>
+        <EmptyTitle>No Team Members</EmptyTitle>
+        <EmptyDescription>
+          Invite your team to collaborate on this project.
+        </EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Button size="sm">
+          <PlusIcon />
+          Invite Members
+        </Button>
+      </EmptyContent>
+    </Empty>
+  )
+}
+
+export function EmptyInputGroup() {
+  return (
+    <Empty className="border">
+      <EmptyHeader>
+        <EmptyTitle>404 - Not Found</EmptyTitle>
+        <EmptyDescription>
+          The page you&apos;re looking for doesn&apos;t exist. Try searching for
+          what you need below.
+        </EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <div className="flex flex-col items-center gap-4 w-full max-w-sm">
+          <InputGroup className="w-full">
+            <InputGroupInput placeholder="Try searching for pages..." />
+            <InputGroupAddon>
+              <Search className="size-4" />
+            </InputGroupAddon>
+            <InputGroupAddon align="inline-end" className="pr-1.5">
+              <Kbd>/</Kbd>
+            </InputGroupAddon>
+          </InputGroup>
+          <EmptyDescription>
+            Need help? <a href="#">Contact support</a>
+          </EmptyDescription>
+        </div>
+      </EmptyContent>
+    </Empty>
+  )
+}
+
+
+
 /* ─── page ───────────────────────────────────────────────────────────────── */
+
 
 export default function EmptyPage() {
   return (
@@ -257,8 +373,117 @@ export default function EmptyPage() {
         </div>
       </ShowcaseSection>
 
-      {/* ── 5. Không có border ── */}
-      <ShowcaseSection title="5. Không có border (embedded)">
+      {/* ── 5. Với Avatar ── */}
+      <ShowcaseSection title="5. Với Avatar">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">Avatar</code> bên trong <code className="text-xs font-mono">EmptyMedia</code> để hiển thị trạng thái rỗng liên quan đến người dùng hoặc hồ sơ.
+        </p>
+        <DemoBlock>
+          <EmptyAvatar />
+        </DemoBlock>
+        <CodeBlock code={`import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+<Empty className="border">
+  <EmptyHeader>
+    <EmptyMedia variant="default">
+      <Avatar className="size-12">
+        <AvatarImage src="https://github.com/shadcn.png" className="grayscale" />
+        <AvatarFallback>LR</AvatarFallback>
+      </Avatar>
+    </EmptyMedia>
+    <EmptyTitle>User Offline</EmptyTitle>
+    <EmptyDescription>
+      This user is currently offline. You can leave a message to notify them or try again later.
+    </EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button size="sm">Leave Message</Button>
+  </EmptyContent>
+</Empty>`} />
+      </ShowcaseSection>
+
+      {/* ── 6. Với Avatar Group ── */}
+      <ShowcaseSection title="6. Với Avatar Group">
+        <p className="text-sm text-muted-foreground">
+          Hiển thị một nhóm <code className="text-xs font-mono">Avatar</code> để biểu thị danh sách thành viên hoặc đội ngũ đang trống.
+        </p>
+        <DemoBlock>
+          <EmptyAvatarGroup />
+        </DemoBlock>
+        <CodeBlock code={`<Empty className="border">
+  <EmptyHeader>
+    <EmptyMedia>
+      <div className="flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarImage src="https://github.com/maxleiter.png" alt="@maxleiter" />
+          <AvatarFallback>LR</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
+          <AvatarFallback>ER</AvatarFallback>
+        </Avatar>
+      </div>
+    </EmptyMedia>
+    <EmptyTitle>No Team Members</EmptyTitle>
+    <EmptyDescription>
+      Invite your team to collaborate on this project.
+    </EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button size="sm">
+      <PlusIcon />
+      Invite Members
+    </Button>
+  </EmptyContent>
+</Empty>`} />
+      </ShowcaseSection>
+
+      {/* ── 7. Với Input Group ── */}
+      <ShowcaseSection title="7. Với Input Group">
+        <p className="text-sm text-muted-foreground">
+          Kết hợp với <code className="text-xs font-mono">InputGroup</code> để tạo trang 404 hoặc tìm kiếm không kết quả có tích hợp ô tìm kiếm.
+        </p>
+        <DemoBlock>
+          <EmptyInputGroup />
+        </DemoBlock>
+        <CodeBlock code={`<Empty className="border">
+  <EmptyHeader>
+    <EmptyTitle>404 - Not Found</EmptyTitle>
+    <EmptyDescription>
+      The page you're looking for doesn't exist. Try searching for what you need below.
+    </EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <div className="flex flex-col items-center gap-4 w-full max-w-sm">
+      <InputGroup className="w-full">
+        <InputGroupInput placeholder="Try searching for pages..." />
+        <InputGroupAddon>
+          <Search className="size-4" />
+        </InputGroupAddon>
+        <InputGroupAddon align="inline-end" className="pr-1.5">
+          <Kbd>/</Kbd>
+        </InputGroupAddon>
+      </InputGroup>
+      <EmptyDescription>
+        Need help? <a href="#">Contact support</a>
+      </EmptyDescription>
+    </div>
+  </EmptyContent>
+</Empty>`} />
+      </ShowcaseSection>
+
+
+
+
+      {/* ── 8. Không có border ── */}
+      <ShowcaseSection title="8. Không có border (embedded)">
+
+
+
         <p className="text-sm text-muted-foreground">
           Mặc định <code className="text-xs font-mono">Empty</code> không có border — bạn tự thêm{" "}
           <code className="text-xs font-mono">className="border"</code> khi cần. Phù hợp để nhúng trực tiếp vào bên trong panel hoặc bảng.
@@ -284,8 +509,11 @@ export default function EmptyPage() {
 </Empty>`} />
       </ShowcaseSection>
 
-      {/* ── 6. Props reference ── */}
-      <ShowcaseSection title="6. Props reference">
+      {/* ── 9. Props reference ── */}
+      <ShowcaseSection title="9. Props reference">
+
+
+
         <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Empty</p>
         <PropsTable rows={[
           { prop: "className", type: "string", description: 'Thêm "border" để hiện viền nét đứt. Mặc định không có border.' },
@@ -305,8 +533,11 @@ export default function EmptyPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 7. Lưu ý ── */}
-      <ShowcaseSection title="7. Lưu ý khi sử dụng">
+      {/* ── 10. Lưu ý ── */}
+      <ShowcaseSection title="10. Lưu ý khi sử dụng">
+
+
+
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li><code className="text-xs font-mono">Empty</code> mặc định không có border — thêm <code className="text-xs font-mono">className="border"</code> để hiện viền nét đứt.</li>
           <li>Dùng <code className="text-xs font-mono">EmptyHeader</code> để nhóm icon + tiêu đề + mô tả, <code className="text-xs font-mono">EmptyContent</code> cho các nút hành động bên dưới.</li>
