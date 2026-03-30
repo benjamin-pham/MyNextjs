@@ -43,4 +43,5 @@ export const components: ComponentItem[] = [
   { name: "Progress", href: "/components/progress", description: "Thanh hiển thị tiến độ hoàn thành của một tác vụ hoặc thời gian chờ." },
   { name: "Radio Group", href: "/components/radio-group", description: "Nhóm các nút chọn radio cho phép người dùng chọn một tùy chọn duy nhất từ một danh sách." },
   { name: "Resizable", href: "/components/resizable", description: "Các nhóm bảng có thể thay đổi kích thước và bố cục có hỗ trợ phím tắt." },
+  { name: "Scroll Area", href: "/components/scroll-area", description: "Thành phần bao bọc vùng cuộn, cung cấp các thanh cuộn có thể tạo kiểu tùy chỉnh cho các trình duyệt khác nhau." },
 ];
