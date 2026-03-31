@@ -1,3 +1,22 @@
+"use client"
+
+import * as React from "react"
+import Image from "next/image"
+import { Plus, PlusIcon, ChevronDownIcon } from "lucide-react"
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import {
   Item,
   ItemMedia,
@@ -42,11 +61,6 @@ const ChevronRightIcon = () => (
   </svg>
 )
 
-const PlusIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="size-4">
-    <path d="M5 12h14M12 5v14" />
-  </svg>
-)
 
 const ExternalLinkIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="size-4 text-muted-foreground">
@@ -60,6 +74,254 @@ const MusicIcon = () => (
     <circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />
   </svg>
 )
+
+/* ─── Examples ───────────────────────────────────────────────────────────── */
+
+export function ItemAvatar() {
+  return (
+    <div className="flex w-full max-w-lg flex-col gap-6">
+      <Item variant="outline">
+        <ItemMedia>
+          <Avatar className="size-10">
+            <AvatarImage src="https://github.com/evilrabbit.png" />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Evil Rabbit</ItemTitle>
+          <ItemDescription>Last seen 5 months ago</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button
+            size="icon-sm"
+            variant="outline"
+            className="rounded-full"
+            aria-label="Invite"
+          >
+            <Plus />
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline">
+        <ItemMedia>
+          <div className="flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
+            <Avatar className="hidden sm:flex">
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar className="hidden sm:flex">
+              <AvatarImage
+                src="https://github.com/maxleiter.png"
+                alt="@maxleiter"
+              />
+              <AvatarFallback>LR</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage
+                src="https://github.com/evilrabbit.png"
+                alt="@evilrabbit"
+              />
+              <AvatarFallback>ER</AvatarFallback>
+            </Avatar>
+          </div>
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>No Team Members</ItemTitle>
+          <ItemDescription>
+            Invite your team to collaborate on this project.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm" variant="outline">
+            Invite
+          </Button>
+        </ItemActions>
+      </Item>
+    </div>
+  )
+}
+
+const people = [
+  {
+    username: "shadcn",
+    avatar: "https://github.com/shadcn.png",
+    email: "shadcn@vercel.com",
+  },
+  {
+    username: "maxleiter",
+    avatar: "https://github.com/maxleiter.png",
+    email: "maxleiter@vercel.com",
+  },
+  {
+    username: "evilrabbit",
+    avatar: "https://github.com/evilrabbit.png",
+    email: "evilrabbit@vercel.com",
+  },
+]
+
+export function ItemGroupExample() {
+  return (
+    <ItemGroup className="max-w-sm">
+      {people.map((person) => (
+        <Item key={person.username} variant="outline">
+          <ItemMedia>
+            <Avatar>
+              <AvatarImage src={person.avatar} className="grayscale" />
+              <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+            </Avatar>
+          </ItemMedia>
+          <ItemContent className="gap-1">
+            <ItemTitle>{person.username}</ItemTitle>
+            <ItemDescription>{person.email}</ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <PlusIcon />
+            </Button>
+          </ItemActions>
+        </Item>
+      ))}
+    </ItemGroup>
+  )
+}
+
+const models = [
+  {
+    name: "v0-1.5-sm",
+    description: "Everyday tasks and UI generation.",
+    image:
+      "https://images.unsplash.com/photo-1650804068570-7fb2e3dbf888?q=80&w=640&auto=format&fit=crop",
+    credit: "Valeria Reverdo on Unsplash",
+  },
+  {
+    name: "v0-1.5-lg",
+    description: "Advanced thinking or reasoning.",
+    image:
+      "https://images.unsplash.com/photo-1610280777472-54133d004c8c?q=80&w=640&auto=format&fit=crop",
+    credit: "Michael Oeser on Unsplash",
+  },
+  {
+    name: "v0-2.0-mini",
+    description: "Open Source model for everyone.",
+    image:
+      "https://images.unsplash.com/photo-1602146057681-08560aee8cde?q=80&w=640&auto=format&fit=crop",
+    credit: "Cherry Laithang on Unsplash",
+  },
+]
+
+export function ItemHeaderDemo() {
+  return (
+    <div className="flex w-full max-w-xl flex-col gap-6">
+      <ItemGroup className="grid grid-cols-3 gap-4">
+        {models.map((model) => (
+          <Item key={model.name} variant="outline">
+            <ItemHeader>
+              <Image
+                src={model.image}
+                alt={model.name}
+                width={128}
+                height={128}
+                className="aspect-square w-full rounded-sm object-cover"
+              />
+            </ItemHeader>
+            <ItemContent>
+              <ItemTitle>{model.name}</ItemTitle>
+              <ItemDescription>{model.description}</ItemDescription>
+            </ItemContent>
+          </Item>
+        ))}
+      </ItemGroup>
+    </div>
+  )
+}
+
+export function ItemDropdown() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">
+          Select <ChevronDownIcon />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48" align="end">
+        <DropdownMenuGroup>
+          {people.map((person) => (
+            <DropdownMenuItem key={person.username}>
+              <Item size="xs" className="w-full p-2">
+                <ItemMedia>
+                  <Avatar className="size-[--spacing(6.5)]">
+                    <AvatarImage src={person.avatar} className="grayscale" />
+                    <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </ItemMedia>
+                <ItemContent className="gap-0">
+                  <ItemTitle>{person.username}</ItemTitle>
+                  <ItemDescription className="leading-none">
+                    {person.email}
+                  </ItemDescription>
+                </ItemContent>
+              </Item>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
+export function ItemFullDemo() {
+  return (
+    <div className="w-full max-w-sm">
+      <ItemGroup className="border rounded-xl bg-card overflow-hidden shadow-sm">
+        <ItemHeader className="px-4 pt-4 border-b pb-2 bg-muted/30">
+          <div className="flex items-center justify-between w-full">
+            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Kho lưu trữ</span>
+            <span className="text-xs text-primary font-medium cursor-pointer hover:underline">Quản lý</span>
+          </div>
+        </ItemHeader>
+        
+        <Item variant="default" className="hover:bg-muted/50 transition-colors">
+          <ItemMedia variant="image">
+           <div className="size-full bg-blue-500/10 rounded-md flex items-center justify-center text-blue-600">
+             <InboxIcon />
+           </div>
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle className="font-semibold">Bản nháp thiết kế</ItemTitle>
+            <ItemDescription>Dự án Antigravity - v2.4.0</ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <ChevronRightIcon />
+          </ItemActions>
+        </Item>
+        
+        <ItemSeparator />
+        
+        <Item variant="default" className="hover:bg-muted/50 transition-colors">
+          <ItemMedia variant="image">
+           <div className="size-full bg-green-500/10 rounded-md flex items-center justify-center text-green-600">
+             <BadgeCheckIcon />
+           </div>
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle className="font-semibold">Tài liệu đã duyệt</ItemTitle>
+            <ItemDescription>Chỉ số hiệu năng quý 1/2026</ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button size="sm" variant="outline" className="h-7 text-xs">Xem</Button>
+          </ItemActions>
+        </Item>
+        
+        <ItemFooter className="px-4 py-3 border-t bg-muted/30">
+          <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
+            <div className="size-1.5 rounded-full bg-green-500 animate-pulse" />
+            <span>Hệ thống đang hoạt động bình thường</span>
+          </div>
+        </ItemFooter>
+      </ItemGroup>
+    </div>
+  )
+}
 
 /* ─── page ───────────────────────────────────────────────────────────────── */
 
@@ -199,8 +461,39 @@ export default function ItemPage() {
 <Item size="xs">...</Item>`} />
       </ShowcaseSection>
 
-      {/* ── 4. Icon ── */}
-      <ShowcaseSection title="4. Với Icon (ItemMedia variant=&quot;icon&quot;)">
+      {/* ── 4. ItemActions ── */}
+      <ShowcaseSection title="4. Hành động (ItemActions)">
+        <p className="text-sm text-muted-foreground">
+          Dùng <code className="text-xs font-mono">ItemActions</code> để thêm các nút bấm hoặc hành động bên phải item.
+        </p>
+        <DemoBlock>
+          <div className="w-full max-w-sm">
+            <Item variant="outline">
+              <ItemContent>
+                <ItemTitle>Cài đặt tài khoản</ItemTitle>
+                <ItemDescription>Quản lý các tuỳ chọn bảo mật và thông tin cá nhân.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button size="sm" variant="outline">
+                  Action
+                </Button>
+              </ItemActions>
+            </Item>
+          </div>
+        </DemoBlock>
+        <CodeBlock code={`<Item variant="outline">
+  <ItemContent>
+    <ItemTitle>Title</ItemTitle>
+    <ItemDescription>Description</ItemDescription>
+  </ItemContent>
+  <ItemActions>
+    <Button>Action</Button>
+  </ItemActions>
+</Item>`} />
+      </ShowcaseSection>
+
+      {/* ── 5. Icon ── */}
+      <ShowcaseSection title="5. Với Icon (ItemMedia variant=&quot;icon&quot;)">
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">{"<ItemMedia variant=\"icon\">"}</code> để hiển thị icon bên trái.
         </p>
@@ -240,55 +533,54 @@ export default function ItemPage() {
 </Item>`} />
       </ShowcaseSection>
 
-      {/* ── 5. Avatar ── */}
-      <ShowcaseSection title="5. Với Avatar (ItemMedia)">
+      {/* ── 6. Avatar ── */}
+      <ShowcaseSection title="6. Với Avatar (ItemMedia)">
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">{"<ItemMedia>"}</code> kết hợp với Avatar component để hiển thị hình đại diện.
         </p>
         <DemoBlock>
-          <div className="w-full max-w-sm space-y-2">
-            {[
-              { name: "shadcn@vercel.com", initials: "SC", color: "bg-violet-500" },
-              { name: "maxleiter@vercel.com", initials: "ML", color: "bg-blue-500" },
-              { name: "evilrabbit@vercel.com", initials: "ER", color: "bg-rose-500" },
-            ].map((user) => (
-              <Item key={user.name} variant="outline">
-                <ItemMedia>
-                  <div className={`flex size-8 shrink-0 items-center justify-center rounded-full ${user.color} text-xs font-semibold text-white`}>
-                    {user.initials}
-                  </div>
-                </ItemMedia>
-                <ItemContent>
-                  <ItemTitle>{user.name}</ItemTitle>
-                </ItemContent>
-                <ItemActions>
-                  <button className="rounded-full p-1 hover:bg-muted transition-colors text-muted-foreground">
-                    <PlusIcon />
-                  </button>
-                </ItemActions>
-              </Item>
-            ))}
-          </div>
+          <ItemAvatar />
         </DemoBlock>
-        <CodeBlock code={`<Item variant="outline">
-  <ItemMedia>
-    <Avatar>
-      <AvatarFallback>SC</AvatarFallback>
-    </Avatar>
-  </ItemMedia>
-  <ItemContent>
-    <ItemTitle>shadcn@vercel.com</ItemTitle>
-  </ItemContent>
-  <ItemActions>
-    <Button variant="ghost" size="icon">
-      <PlusIcon />
-    </Button>
-  </ItemActions>
-</Item>`} />
+        <CodeBlock code={`<ItemGroup className="max-w-lg flex flex-col gap-6">
+  <Item variant="outline">
+    <ItemMedia>
+      <Avatar className="size-10">
+        <AvatarImage src="https://github.com/evilrabbit.png" />
+        <AvatarFallback>ER</AvatarFallback>
+      </Avatar>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Evil Rabbit</ItemTitle>
+      <ItemDescription>Last seen 5 months ago</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Button size="icon-sm" variant="outline" className="rounded-full">
+        <Plus />
+      </Button>
+    </ItemActions>
+  </Item>
+  
+  <Item variant="outline">
+    <ItemMedia>
+      <div className="flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
+        <Avatar><AvatarImage src="..." /><AvatarFallback>CN</AvatarFallback></Avatar>
+        <Avatar><AvatarImage src="..." /><AvatarFallback>LR</AvatarFallback></Avatar>
+        <Avatar><AvatarImage src="..." /><AvatarFallback>ER</AvatarFallback></Avatar>
+      </div>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>No Team Members</ItemTitle>
+      <ItemDescription>Invite your team to collaborate.</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Button size="sm" variant="outline">Invite</Button>
+    </ItemActions>
+  </Item>
+</ItemGroup>`} />
       </ShowcaseSection>
 
-      {/* ── 6. Image ── */}
-      <ShowcaseSection title="6. Với Image (ItemMedia variant=&quot;image&quot;)">
+      {/* ── 7. Image ── */}
+      <ShowcaseSection title="7. Với Image (ItemMedia variant=&quot;image&quot;)">
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">{"<ItemMedia variant=\"image\">"}</code> để hiển thị ảnh thumbnail.
         </p>
@@ -333,101 +625,111 @@ export default function ItemPage() {
 </Item>`} />
       </ShowcaseSection>
 
-      {/* ── 7. Group & Separator ── */}
-      <ShowcaseSection title="7. ItemGroup & ItemSeparator">
+      {/* ── 8. Group & Separator ── */}
+      <ShowcaseSection title="8. ItemGroup & ItemSeparator">
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">ItemGroup</code> để nhóm các item liên quan. Dùng{" "}
           <code className="text-xs font-mono">ItemSeparator</code> để phân tách các nhóm.
         </p>
         <DemoBlock>
-          <div className="w-full max-w-sm">
+          <div className="w-full max-w-sm space-y-8">
             <ItemGroup>
               <Item>
-                <ItemMedia variant="icon">
-                  <BadgeCheckIcon />
-                </ItemMedia>
+                <ItemMedia variant="icon"><BadgeCheckIcon /></ItemMedia>
                 <ItemContent>
                   <ItemTitle>Cài đặt tài khoản</ItemTitle>
-                  <ItemDescription>Quản lý thông tin hồ sơ của bạn</ItemDescription>
+                  <ItemDescription>Quản lý thông tin hồ sơ</ItemDescription>
                 </ItemContent>
                 <ChevronRightIcon />
               </Item>
               <ItemSeparator />
               <Item>
-                <ItemMedia variant="icon">
-                  <ShieldAlertIcon />
-                </ItemMedia>
+                <ItemMedia variant="icon"><ShieldAlertIcon /></ItemMedia>
                 <ItemContent>
-                  <ItemTitle>Bảo mật & quyền riêng tư</ItemTitle>
-                  <ItemDescription>Mật khẩu và xác thực hai lớp</ItemDescription>
-                </ItemContent>
-                <ChevronRightIcon />
-              </Item>
-              <ItemSeparator />
-              <Item>
-                <ItemMedia variant="icon">
-                  <InboxIcon />
-                </ItemMedia>
-                <ItemContent>
-                  <ItemTitle>Thông báo</ItemTitle>
-                  <ItemDescription>Tuỳ chỉnh cách nhận thông báo</ItemDescription>
+                  <ItemTitle>Bảo mật</ItemTitle>
+                  <ItemDescription>Mật khẩu và xác thực</ItemDescription>
                 </ItemContent>
                 <ChevronRightIcon />
               </Item>
             </ItemGroup>
+
+            <ItemGroupExample />
           </div>
         </DemoBlock>
-        <CodeBlock code={`<ItemGroup>
-  <Item>
-    <ItemMedia variant="icon"><Icon /></ItemMedia>
-    <ItemContent>
-      <ItemTitle>Cài đặt tài khoản</ItemTitle>
-      <ItemDescription>Quản lý thông tin hồ sơ của bạn</ItemDescription>
-    </ItemContent>
-  </Item>
-  <ItemSeparator />
-  <Item>...</Item>
+        <CodeBlock code={`<ItemGroup className="max-w-sm">
+  {people.map((person) => (
+    <Item key={person.username} variant="outline">
+      <ItemMedia>
+        <Avatar>
+          <AvatarImage src={person.avatar} className="grayscale" />
+          <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+        </Avatar>
+      </ItemMedia>
+      <ItemContent className="gap-1">
+        <ItemTitle>{person.username}</ItemTitle>
+        <ItemDescription>{person.email}</ItemDescription>
+      </ItemContent>
+      <ItemActions>
+        <Button variant="ghost" size="icon" className="rounded-full">
+          <PlusIcon />
+        </Button>
+      </ItemActions>
+    </Item>
+  ))}
 </ItemGroup>`} />
       </ShowcaseSection>
 
-      {/* ── 8. ItemHeader ── */}
-      <ShowcaseSection title="8. ItemHeader & ItemFooter">
+      {/* ── 9. ItemHeader & ItemFooter ── */}
+      <ShowcaseSection title="9. ItemHeader & ItemFooter">
         <p className="text-sm text-muted-foreground">
-          Dùng <code className="text-xs font-mono">ItemHeader</code> để thêm header bên trên nội dung,{" "}
+          Dùng <code className="text-xs font-mono">ItemHeader</code> để thêm header bên trên nội dung (thường là media/ảnh lớn),{" "}
           <code className="text-xs font-mono">ItemFooter</code> để thêm footer bên dưới.
         </p>
         <DemoBlock>
-          <div className="w-full max-w-sm space-y-3">
-            {[
-              { model: "GPT-4o", desc: "Tác vụ hằng ngày & tạo UI.", badge: "Phổ biến", badgeClass: "bg-primary/10 text-primary" },
-              { model: "Claude 3.5", desc: "Suy luận nâng cao và phân tích.", badge: "Nâng cao", badgeClass: "bg-violet-500/10 text-violet-600 dark:text-violet-400" },
-              { model: "Llama 3.3", desc: "Mô hình mã nguồn mở cho mọi người.", badge: "Mã nguồn mở", badgeClass: "bg-green-500/10 text-green-600 dark:text-green-400" },
-            ].map((m) => (
-              <Item key={m.model} variant="outline">
-                <ItemHeader>
-                  <span className="text-xs font-semibold">{m.model}</span>
-                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${m.badgeClass}`}>{m.badge}</span>
-                </ItemHeader>
-                <ItemContent>
-                  <ItemDescription>{m.desc}</ItemDescription>
-                </ItemContent>
-              </Item>
-            ))}
+          <div className="w-full max-w-2xl space-y-12">
+            <div className="w-full max-w-sm space-y-3">
+              {[
+                { model: "GPT-4o", desc: "Tác vụ hằng ngày & tạo UI.", badge: "Phổ biến", badgeClass: "bg-primary/10 text-primary" },
+                { model: "Claude 3.5", desc: "Suy luận nâng cao và phân tích.", badge: "Nâng cao", badgeClass: "bg-violet-500/10 text-violet-600 dark:text-violet-400" },
+              ].map((m) => (
+                <Item key={m.model} variant="outline">
+                  <ItemHeader>
+                    <span className="text-xs font-semibold">{m.model}</span>
+                    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${m.badgeClass}`}>{m.badge}</span>
+                  </ItemHeader>
+                  <ItemContent>
+                    <ItemDescription>{m.desc}</ItemDescription>
+                  </ItemContent>
+                </Item>
+              ))}
+            </div>
+
+            <ItemHeaderDemo />
           </div>
         </DemoBlock>
-        <CodeBlock code={`<Item variant="outline">
-  <ItemHeader>
-    <span>GPT-4o</span>
-    <Badge>Phổ biến</Badge>
-  </ItemHeader>
-  <ItemContent>
-    <ItemDescription>Tác vụ hằng ngày & tạo UI.</ItemDescription>
-  </ItemContent>
-</Item>`} />
+        <CodeBlock code={`<ItemGroup className="grid grid-cols-3 gap-4">
+  {models.map((model) => (
+    <Item key={model.name} variant="outline">
+      <ItemHeader>
+        <Image
+          src={model.image}
+          alt={model.name}
+          width={128}
+          height={128}
+          className="aspect-square w-full rounded-sm object-cover"
+        />
+      </ItemHeader>
+      <ItemContent>
+        <ItemTitle>{model.name}</ItemTitle>
+        <ItemDescription>{model.description}</ItemDescription>
+      </ItemContent>
+    </Item>
+  ))}
+</ItemGroup>`} />
       </ShowcaseSection>
 
-      {/* ── 9. asChild / Link ── */}
-      <ShowcaseSection title="9. asChild — Render thành Link">
+      {/* ── 10. asChild / Link ── */}
+      <ShowcaseSection title="10. asChild — Render thành Link">
         <p className="text-sm text-muted-foreground">
           Dùng <code className="text-xs font-mono">asChild</code> để render Item thành thẻ{" "}
           <code className="text-xs font-mono">{"<a>"}</code>. Trạng thái hover/focus được áp dụng tự động.
@@ -471,8 +773,75 @@ export default function ItemPage() {
 </Item>`} />
       </ShowcaseSection>
 
-      {/* ── 10. Props reference ── */}
-      <ShowcaseSection title="10. Props reference — Item">
+      {/* ── 11. Dropdown ── */}
+      <ShowcaseSection title="11. Trong Dropdown">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">Item</code> với kích thước{" "}
+          <code className="text-xs font-mono">xs</code> để hiển thị thông tin chi tiết trong menu dropdown.
+        </p>
+        <DemoBlock>
+          <ItemDropdown />
+        </DemoBlock>
+        <CodeBlock code={`<DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline">Select <ChevronDownIcon /></Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent className="w-48" align="end">
+    <DropdownMenuGroup>
+      {people.map((person) => (
+        <DropdownMenuItem key={person.username}>
+          <Item size="xs" className="w-full p-2">
+            <ItemMedia>
+              <Avatar className="size-[--spacing(6.5)]">
+                <AvatarImage src={person.avatar} className="grayscale" />
+                <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+              </Avatar>
+            </ItemMedia>
+            <ItemContent className="gap-0">
+              <ItemTitle>{person.username}</ItemTitle>
+              <ItemDescription className="leading-none">{person.email}</ItemDescription>
+            </ItemContent>
+          </Item>
+        </DropdownMenuItem>
+      ))}
+    </DropdownMenuGroup>
+  </DropdownMenuContent>
+</DropdownMenu>`} />
+      </ShowcaseSection>
+
+      {/* ── 12. Full Demo ── */}
+      <ShowcaseSection title="12. Demo tổng hợp (Tất cả thành phần)">
+        <p className="text-sm text-muted-foreground">
+          Ví dụ kết hợp tất cả các thành phần: <code className="text-xs font-mono">ItemGroup</code>, <code className="text-xs font-mono">Item</code>,{" "}
+          <code className="text-xs font-mono">ItemHeader</code>, <code className="text-xs font-mono">ItemFooter</code>,{" "}
+          <code className="text-xs font-mono">ItemSeparator</code>, <code className="text-xs font-mono">ItemMedia</code>,{" "}
+          <code className="text-xs font-mono">ItemContent</code>, <code className="text-xs font-mono">ItemActions</code>.
+        </p>
+        <DemoBlock>
+          <ItemFullDemo />
+        </DemoBlock>
+        <CodeBlock code={`<ItemGroup className="border rounded-xl ...">
+  <ItemHeader>...</ItemHeader>
+  
+  <Item>
+    <ItemMedia>...</ItemMedia>
+    <ItemContent>
+      <ItemTitle>...</ItemTitle>
+      <ItemDescription>...</ItemDescription>
+    </ItemContent>
+    <ItemActions>...</ItemActions>
+  </Item>
+  
+  <ItemSeparator />
+  
+  <Item>...</Item>
+  
+  <ItemFooter>...</ItemFooter>
+</ItemGroup>`} />
+      </ShowcaseSection>
+
+      {/* ── 13. Props reference ── */}
+      <ShowcaseSection title="13. Props reference — Item">
         <PropsTable rows={[
           { prop: "variant", type: '"default" | "outline" | "muted"', default_: '"default"', description: "Kiểu hiển thị của item." },
           { prop: "size", type: '"default" | "sm" | "xs"', default_: '"default"', description: "Kích thước của item." },
@@ -488,8 +857,8 @@ export default function ItemPage() {
         ]} />
       </ShowcaseSection>
 
-      {/* ── 11. Lưu ý ── */}
-      <ShowcaseSection title="11. Lưu ý khi sử dụng">
+      {/* ── 14. Lưu ý ── */}
+      <ShowcaseSection title="14. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>
             Dùng <code className="text-xs font-mono">Item</code> khi cần hiển thị nội dung (title, description, actions). Dùng{" "}
