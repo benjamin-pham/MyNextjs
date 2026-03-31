@@ -54,6 +54,7 @@ export const components: ComponentItem[] = [
   { name: "Sheet", href: "/design-system/components/sheet", description: "Tấm panel trượt ra từ các cạnh của màn hình — trên, dưới, trái, hoặc phải." },
   { name: "Sidebar", href: "/design-system/components/sidebar", description: "Thanh menu bên điều hướng có thể thu gọn, hỗ trợ nhiều cấp độ và tùy chỉnh giao diện." },
   { name: "Skeleton", href: "/design-system/components/skeleton", description: "Hiển thị placeholder nội dung trong khi đang tải dữ liệu với hiệu ứng pulse." },
+  { name: "Slider", href: "/design-system/components/slider", description: "Thanh trượt cho phép người dùng chọn một giá trị từ một khoảng hoặc dải giá trị cho trước." },
   { name: "Sonner", href: "/design-system/components/sonner", description: "Thành phần thông báo (toast) hiện đại, nhẹ và có thể tùy chỉnh cao." },
   { name: "Spinner", href: "/design-system/components/spinner", description: "Thành phần hiển thị trạng thái đang tải (loading) của hệ thống hoặc tác vụ." },
   { name: "Switch", href: "/design-system/components/switch", description: "Nút gạt cho phép người dùng chuyển đổi giữa hai trạng thái — bật hoặc tắt." },
