@@ -1,3 +1,10 @@
+import { SearchIcon } from "lucide-react"
+
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
 
@@ -232,42 +239,53 @@ export default function KbdPage() {
 </Tooltip>`} />
       </ShowcaseSection>
 
-      {/* ── 6. Trong Input ── */}
+      {/* ── 6. Trong Input / Search ── */}
       <ShowcaseSection title="6. Trong Input / Search">
         <p className="text-sm text-muted-foreground">
-          Đặt <code className="text-xs font-mono">Kbd</code> bên trong ô input như một addon phía phải
-          để gợi ý phím tắt kích hoạt tìm kiếm.
+          Đặt <code className="text-xs font-mono">Kbd</code> bên trong ô input dùng{" "}
+          <code className="text-xs font-mono">InputGroup</code> để gợi ý phím tắt kích hoạt tìm kiếm.
         </p>
         <DemoBlock>
-          <div className="flex flex-col gap-3 w-full max-w-sm">
-            <div className="flex h-9 items-center rounded-md border border-input bg-background px-3 text-sm shadow-sm gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="size-4 shrink-0 text-muted-foreground">
-                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-              </svg>
-              <span className="flex-1 text-muted-foreground text-sm">Tìm kiếm...</span>
-              <Kbd>/</Kbd>
-            </div>
-            <div className="flex h-9 items-center rounded-md border border-input bg-background px-3 text-sm shadow-sm gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="size-4 shrink-0 text-muted-foreground">
-                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-              </svg>
-              <span className="flex-1 text-muted-foreground text-sm">Tìm kiếm lệnh...</span>
-              <KbdGroup>
-                <Kbd>Ctrl</Kbd>
+          <div className="flex w-full max-w-xs flex-col gap-6">
+            <InputGroup>
+              <InputGroupInput placeholder="Search..." />
+              <InputGroupAddon>
+                <SearchIcon />
+              </InputGroupAddon>
+              <InputGroupAddon align="inline-end">
+                <Kbd>⌘</Kbd>
                 <Kbd>K</Kbd>
-              </KbdGroup>
-            </div>
+              </InputGroupAddon>
+            </InputGroup>
+
+            <InputGroup>
+              <InputGroupInput placeholder="Tìm kiếm tài liệu..." />
+              <InputGroupAddon align="inline-end">
+                <Kbd>/</Kbd>
+              </InputGroupAddon>
+            </InputGroup>
           </div>
         </DemoBlock>
-        <CodeBlock code={`<InputGroup>
-  <InputGroupAddon>
-    <SearchIcon />
-  </InputGroupAddon>
-  <Input placeholder="Tìm kiếm..." />
-  <InputGroupAddon>
-    <Kbd>/</Kbd>
-  </InputGroupAddon>
-</InputGroup>`} />
+        <CodeBlock
+          code={`import { SearchIcon } from "lucide-react"
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group"
+import { Kbd } from "@/components/ui/kbd"
+
+export function KbdInputGroup() {
+  return (
+    <InputGroup>
+      <InputGroupInput placeholder="Search..." />
+      <InputGroupAddon>
+        <SearchIcon />
+      </InputGroupAddon>
+      <InputGroupAddon align="inline-end">
+        <Kbd>⌘</Kbd>
+        <Kbd>K</Kbd>
+      </InputGroupAddon>
+    </InputGroup>
+  )
+}`}
+        />
       </ShowcaseSection>
 
       {/* ── 7. Phím tắt thực tế ── */}
