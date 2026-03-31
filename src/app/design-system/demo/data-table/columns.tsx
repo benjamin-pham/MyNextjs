@@ -1,3 +1,4 @@
+'use client'
 import type { IProductTable } from "./IProductTable"
 import {
     DropdownMenu,
@@ -10,7 +11,7 @@ import {
 import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { DataTableColumnHeader } from "@/components/data-table"
+import { DataTableColumnHeader } from "@/components/composite/data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 
 export const columns: ColumnDef<IProductTable>[] = [
@@ -20,7 +21,11 @@ export const columns: ColumnDef<IProductTable>[] = [
     },
     {
         accessorKey: "price",
-        header: () => <div className="text-right"> Amount </div>,
+        header: ({ column }) => {
+            return (
+                <DataTableColumnHeader column={column} title="Price" />
+            )
+        },
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("price"))
             const formatted = new Intl.NumberFormat("en-US", {
@@ -41,12 +46,20 @@ export const columns: ColumnDef<IProductTable>[] = [
     },
     {
         accessorKey: "stock",
-        header: "stock",
+        header: ({ column }) => {
+            return (
+                <DataTableColumnHeader column={column} title="Stock" />
+            )
+        }
 
     },
     {
         accessorKey: "description",
-        header: "description",
+        header: ({ column }) => {
+            return (
+                <DataTableColumnHeader column={column} title="Description" />
+            )
+        }
     },
     {
         id: "actions",

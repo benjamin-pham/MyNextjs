@@ -1,15 +1,52 @@
-
-import { columns } from '@/app/design-system/demo/data-table/columns'
-import { DataTable } from '@/components/data-table'
-import React from 'react'
+import { IProductTable } from '@/app/design-system/demo/data-table/IProductTable'
+import PageInteractive from '@/app/design-system/demo/data-table/page.interactive'
 
 export default function page() {
+    const data: IProductTable[] = [
+        {
+            id: "1",
+            name: 'Product 1',
+            price: 10.99,
+            categoryId: 'Category A',
+            stock: 100,
+            description: 'This is a description for Product 1',
+        },
+        {
+            id: "2",
+            name: 'Product 1',
+            price: 10.99,
+            categoryId: 'Category A',
+            stock: 100,
+            description: 'This is a description for Product 1',
+        },
+        {
+            id: "3",
+            name: 'Product 1',
+            price: 10.99,
+            categoryId: 'Category A',
+            stock: 100,
+            description: 'This is a description for Product 1',
+        },
+        {
+            id: "4",
+            name: 'Product 1',
+            price: 10.99,
+            categoryId: 'Category A',
+            stock: 100,
+            description: 'This is a description for Product 1',
+        },
+        {
+            id: "5",
+            name: 'Product 1',
+            price: 10.99,
+            categoryId: 'Category A',
+            stock: 100,
+            description: 'This is a description for Product 1',
+        }
+    ]
     return (
         <div>
-            <DataTable
-                columns={columns} data={[]}
-                isLoading={false}
-                onSortChange={() => { }} />
+            <PageInteractive initialData={data} />
         </div>
     )
 }

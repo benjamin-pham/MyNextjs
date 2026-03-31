@@ -21,7 +21,8 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { DropdownMenuTrigger, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, ArrowUp, ChevronsUpDown, EyeOff } from "lucide-react";
+import { ArrowDown, ArrowUp, ChevronsUpDown, EyeOff, InboxIcon } from "lucide-react";
+import { Empty, EmptyContent, EmptyHeader, EmptyMedia } from "@/components/ui/empty";
 
 export type SortingType = {
     column: string,
@@ -41,81 +42,98 @@ export function DataTable<TData, TValue>({
     isLoading,
     onSortChange,
 }: DataTableProps<TData, TValue>) {
-    const [sorting, setSorting] = useState<SortingState>([])
+    const [sorting, setSorting] = useState<SortingState>([]);
+    // eslint-disable-next-line react-hooks/incompatible-library
     const table = useReactTable({
         data,
         columns,
         state: {
             sorting,
         },
+        manualSorting: true,
+        manualFiltering: true,
         onSortingChange: (newSorting) => {
             const sortingValue =
                 typeof newSorting === "function"
                     ? newSorting(sorting)
-                    : newSorting
+                    : newSorting;
+
             setSorting(sortingValue);
-            onSortChange?.({
-                column: sortingValue[0].id,
-                type: sortingValue[0].desc ? "desc" : "asc"
-            });
+
+            if (sortingValue.length > 0) {
+                onSortChange?.({
+                    column: sortingValue[0].id,
+                    type: sortingValue[0].desc ? "desc" : "asc"
+                });
+            } else {
+                onSortChange?.({
+                    column: "",
+                    type: "asc"
+                });
+            }
         },
         getCoreRowModel: getCoreRowModel(),
     })
 
     return (
-        <div className="table-wrapper flex-1 overflow-auto rounded-md border">
-            <Table className="rounded-md border-collapse">
-                <TableHeader className="sticky top-0 bg-background z-10">
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <TableRow key={headerGroup.id} className="border-b">
-                            {headerGroup.headers.map((header) => {
+        <Table className="rounded-md border-collapse">
+            <TableHeader className="sticky top-0 bg-background z-10">
+                {table.getHeaderGroups().map((headerGroup) => (
+                    <TableRow key={headerGroup.id} className="border-b">
+                        {headerGroup.headers.map((header) => {
+                            return (
+                                <TableHead key={header.id}>
+                                    {header.isPlaceholder
+                                        ? null
+                                        : flexRender(
+                                            header.column.columnDef.header,
+                                            header.getContext()
+                                        )}
+                                </TableHead>
+                            )
+                        })}
+                    </TableRow>
+                ))}
+            </TableHeader>
+            <TableBody className={"[&_tr:nth-child(odd)]:bg-muted/50"}>
+                {isLoading ? (<TableRow>
+                    <TableCell colSpan={columns.length} className="h-24 text-center">
+                        <div className="flex justify-center items-center">
+                            <span className="animate-spin h-6 w-6 border-4 border-primary border-t-transparent rounded-full"></span>
+                            <span className="ml-2">Loading...</span>
+                        </div>
+                    </TableCell>
+                </TableRow>) : table.getRowModel().rows?.length ? (
+                    table.getRowModel().rows.map((row) => (
+                        <TableRow
+                            key={row.id}
+                            data-state={row.getIsSelected() && "selected"}
+                        >
+                            {row.getVisibleCells().map((cell) => {
                                 return (
-                                    <TableHead key={header.id}>
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(
-                                                header.column.columnDef.header,
-                                                header.getContext()
-                                            )}
-                                    </TableHead>
+                                    <TableCell key={cell.id}>
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </TableCell>
                                 )
                             })}
                         </TableRow>
-                    ))}
-                </TableHeader>
-                <TableBody>
-                    {isLoading ? (<TableRow>
+                    ))
+                ) : (
+                    <TableRow>
                         <TableCell colSpan={columns.length} className="h-24 text-center">
-                            <div className="flex justify-center items-center">
-                                <span className="animate-spin h-6 w-6 border-4 border-primary border-t-transparent rounded-full"></span>
-                                <span className="ml-2">Loading...</span>
-                            </div>
+                            <Empty className="border">
+                                <EmptyHeader>
+                                    <EmptyMedia>
+                                        <InboxIcon />
+                                    </EmptyMedia>
+                                    <EmptyContent>Không có dữ liệu</EmptyContent>
+                                </EmptyHeader>
+                            </Empty>
                         </TableCell>
-                    </TableRow>) : table.getRowModel().rows?.length ? (
-                        table.getRowModel().rows.map((row) => (
-                            <TableRow
-                                key={row.id}
-                                data-state={row.getIsSelected() && "selected"}
-                            >
-                                {row.getVisibleCells().map((cell) => {
-                                    return (
-                                        <TableCell key={cell.id}>
-                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                        </TableCell>
-                                    )
-                                })}
-                            </TableRow>
-                        ))
-                    ) : (
-                        <TableRow>
-                            <TableCell colSpan={columns.length} className="h-24 text-center">
-                                No results.
-                            </TableCell>
-                        </TableRow>
-                    )}
-                </TableBody>
-            </Table>
-        </div>
+                    </TableRow>
+                )}
+            </TableBody>
+        </Table >
     )
 }
 

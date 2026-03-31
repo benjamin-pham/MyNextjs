@@ -66,6 +66,9 @@ export const components: ComponentItem[] = [
   { name: "Tooltip", href: "/design-system/components/tooltip", description: "Cửa sổ nội dung nhỏ xuất hiện khi người dùng di chuột qua (hover) hoặc tập trung (focus) vào một thành phần." },
   { name: "Typography", href: "/design-system/components/typography", description: "Tập hợp các kiểu chữ và định dạng văn bản chuẩn theo phong cách shadcn/ui." },
 ]
+export const demos: ComponentItem[] = [
+  { name: "Data Table", href: "/design-system/demo/data-table", description: "A powerful table component for displaying structured data." },
+]
 
 export const categories: Category[] = [
   {
@@ -74,6 +77,6 @@ export const categories: Category[] = [
   },
   {
     name: "Demo",
-    items: [],
+    items: demos,
   },
 ]
