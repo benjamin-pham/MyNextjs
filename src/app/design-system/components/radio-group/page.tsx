@@ -11,6 +11,37 @@ import {
 } from "@/components/ui/field"
 import { ShowcaseSection, DemoBlock, CodeBlock, PropsTable } from "@/app/design-system/_showcase"
 
+export function RadioGroupInvalid() {
+  return (
+    <FieldSet className="w-full max-w-xs">
+      <FieldLegend variant="label">Notification Preferences</FieldLegend>
+      <FieldDescription>
+        Choose how you want to receive notifications.
+      </FieldDescription>
+      <RadioGroup defaultValue="email">
+        <Field orientation="horizontal" data-invalid>
+          <RadioGroupItem value="email" id="invalid-email" aria-invalid />
+          <FieldLabel htmlFor="invalid-email" className="font-normal">
+            Email only
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal" data-invalid>
+          <RadioGroupItem value="sms" id="invalid-sms" aria-invalid />
+          <FieldLabel htmlFor="invalid-sms" className="font-normal">
+            SMS only
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal" data-invalid>
+          <RadioGroupItem value="both" id="invalid-both" aria-invalid />
+          <FieldLabel htmlFor="invalid-both" className="font-normal">
+            Both Email & SMS
+          </FieldLabel>
+        </Field>
+      </RadioGroup>
+    </FieldSet>
+  )
+}
+
 export default function RadioGroupPage() {
   return (
     <div className="p-8 space-y-12 max-w-2xl">
@@ -282,8 +313,55 @@ import {
         `} />
       </ShowcaseSection>
 
-      {/* ── 6. Props reference ── */}
-      <ShowcaseSection title="6. Props reference">
+      {/* ── 6. Trạng thái lỗi (Invalid) ── */}
+      <ShowcaseSection title="6. Trạng thái lỗi (Invalid)">
+        <p className="text-sm text-muted-foreground">
+          Sử dụng <code className="text-xs font-mono">data-invalid</code> trên <code className="text-xs font-mono">Field</code> và <code className="text-xs font-mono">aria-invalid</code> trên <code className="text-xs font-mono">RadioGroupItem</code> để biểu thị trạng thái lỗi.
+        </p>
+        <DemoBlock>
+          <RadioGroupInvalid />
+        </DemoBlock>
+        <CodeBlock code={`
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from "@/components/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+
+<FieldSet className="w-full max-w-xs">
+  <FieldLegend variant="label">Notification Preferences</FieldLegend>
+  <FieldDescription>
+    Choose how you want to receive notifications.
+  </FieldDescription>
+  <RadioGroup defaultValue="email">
+    <Field orientation="horizontal" data-invalid>
+      <RadioGroupItem value="email" id="invalid-email" aria-invalid />
+      <FieldLabel htmlFor="invalid-email" className="font-normal">
+        Email only
+      </FieldLabel>
+    </Field>
+    <Field orientation="horizontal" data-invalid>
+      <RadioGroupItem value="sms" id="invalid-sms" aria-invalid />
+      <FieldLabel htmlFor="invalid-sms" className="font-normal">
+        SMS only
+      </FieldLabel>
+    </Field>
+    <Field orientation="horizontal" data-invalid>
+      <RadioGroupItem value="both" id="invalid-both" aria-invalid />
+      <FieldLabel htmlFor="invalid-both" className="font-normal">
+        Both Email & SMS
+      </FieldLabel>
+    </Field>
+  </RadioGroup>
+</FieldSet>
+        `} />
+      </ShowcaseSection>
+
+      {/* ── 7. Props reference ── */}
+      <ShowcaseSection title="7. Props reference">
         <div className="space-y-8">
           <div>
             <h3 className="text-sm font-semibold mb-3">RadioGroup (Root)</h3>
@@ -311,8 +389,8 @@ import {
         </div>
       </ShowcaseSection>
 
-      {/* ── 7. Lưu ý ── */}
-      <ShowcaseSection title="7. Lưu ý khi sử dụng">
+      {/* ── 8. Lưu ý ── */}
+      <ShowcaseSection title="8. Lưu ý khi sử dụng">
         <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-4">
           <li>Luôn sử dụng <code className="text-xs font-mono">Label</code> kết hợp với <code className="text-xs font-mono">id</code> của <code className="text-xs font-mono">RadioGroupItem</code> để đảm bảo tính truy cập (accessibility).</li>
           <li>Component tự động xử lý điều hướng bằng bàn phím (phím mũi tên để di chuyển giữa các lựa chọn).</li>
