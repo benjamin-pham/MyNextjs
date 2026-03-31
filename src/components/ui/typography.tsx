@@ -5,7 +5,7 @@ export function TypographyH1({ className, ...props }: React.HTMLAttributes<HTMLH
   return (
     <h1
       className={cn(
-        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
+        "scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance",
         className
       )}
       {...props}
@@ -70,14 +70,6 @@ export function TypographyBlockquote({ className, ...props }: React.BlockquoteHT
   )
 }
 
-export function TypographyTable({ className, ...props }: React.TableHTMLAttributes<HTMLTableElement>) {
-  return (
-    <div className="my-6 w-full overflow-y-auto">
-      <table className={cn("w-full", className)} {...props} />
-    </div>
-  )
-}
-
 export function TypographyList({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) {
   return (
     <ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)} {...props} />
@@ -112,7 +104,7 @@ export function TypographyLarge({ className, ...props }: React.HTMLAttributes<HT
 export function TypographySmall({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
   return (
     <small
-      className={cn("text-sm font-medium leading-none", className)}
+      className={cn("text-sm leading-none font-medium", className)}
       {...props}
     />
   )

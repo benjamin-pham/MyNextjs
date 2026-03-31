@@ -68,9 +68,9 @@ export default function SelectPage() {
 
       {/* ── 1. Cấu trúc cơ bản ── */}
       <ShowcaseSection title="1. Cấu trúc cơ bản">
-        <DemoBlock>
+        <DemoBlock >
           <Select defaultValue="apple">
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-full max-w-64">
               <SelectValue placeholder="Chọn một loại quả" />
             </SelectTrigger>
             <SelectContent>
